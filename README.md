@@ -4,14 +4,17 @@ A Tiny Blog Written in Asp.Net Core
 ### Install:
 Download the final release version from [Release](https://github.com/OmidID/DotNetBlog/releases/) page
 
-##### Windows:
+#### Windows:
 run `DotNetBlog.Web.exe`
 
-##### Linux:
+#### Linux:
 ```bash
 sudo chmod +x DotNetBlog.Web
 ./DotNetBlog.Web
 ```
+
+#### Start:
+http://{YourBlogAddress}/install to setup your blog for the first time.
 
 ### How to Build and Run:
 
