@@ -28,11 +28,9 @@ namespace DotNetBlog.Web
     {
         private IConfiguration Configuration { get; set; }
 
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
-            this.Configuration = new ConfigurationBuilder()
-                .AddJsonFile("config.json", false, true)
-                .Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
