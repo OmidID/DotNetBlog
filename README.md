@@ -1,8 +1,6 @@
 # DotNetBlog
 A Tiny Blog Written in Asp.Net Core
 
-The blog is hosted on [http://120.24.36.219/](http://120.24.36.219/)
-
 How to Build and Run:
 
 *   Clone the repository
@@ -18,12 +16,7 @@ How to Build and Run:
     npm install
     webpack
     ```
-*   Install front-end client libraries
 
-    ```
-    cd src/DotNetBlog.Web
-	bower install
-    ```
 *   Edit connection string
 
 	Open 'src/DotNetBlog.Web/App_Data/config.json' to specify you own connection string.
@@ -45,6 +38,4 @@ How to Build and Run:
     ```
 *   Initialize the blog
 
-    You can access 'http://{YourBlogAddress}/install' to initialize the blog, this will help to create a default admin user, which username and password are both 'admin'.
-
-The project is still in DEVELOPMENT!
+    You can access 'http://{YourBlogAddress}/install' to initialize the blog.

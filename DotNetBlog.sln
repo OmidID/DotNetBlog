@@ -30,6 +30,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotNetBlog.Admin", "src\Dot
 		SlnRelativePath = "src\DotNetBlog.Admin\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{02C7FD13-EC96-4951-A672-8791CDF11331}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
