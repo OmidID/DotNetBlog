@@ -14,7 +14,7 @@ sudo chmod +x DotNetBlog.Web
 ```
 
 #### Start:
-http://{YourBlogAddress}/install to setup your blog for the first time.
+`http://{YourBlogAddress}/install` to setup your blog for the first time.
 
 ### How to Build and Run:
 
