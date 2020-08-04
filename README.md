@@ -5,12 +5,12 @@ A Tiny Blog Written in Asp.Net Core
 Download the final release version from [Release](https://github.com/OmidID/DotNetBlog/releases/) page
 
 ##### Windows:
-run `DotNetBlog.exe`
+run `DotNetBlog.Web.exe`
 
 ##### Linux:
 ```bash
-sudo chmod +x DotNetBlog
-./DotNetBlog
+sudo chmod +x DotNetBlog.Web
+./DotNetBlog.Web
 ```
 
 ### How to Build and Run:
