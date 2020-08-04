@@ -20,6 +20,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+package-lock.json
+
 /.vs
 /src/DotNetBlog.Admin/node_modules
 /src/DotNetBlog.Admin/**/*.js.map
