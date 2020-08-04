@@ -1,7 +1,19 @@
 # DotNetBlog
 A Tiny Blog Written in Asp.Net Core
 
-How to Build and Run:
+### Install:
+Download the final release version from [Release](https://github.com/OmidID/DotNetBlog/releases/) page
+
+##### Windows:
+run `DotNetBlog.exe`
+
+##### Linux:
+```bash
+sudo chmod +x DotNetBlog
+./DotNetBlog
+```
+
+### How to Build and Run:
 
 *   Clone the repository
 *   Restore the dependencies
