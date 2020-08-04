@@ -2,6 +2,8 @@
 using DotNetBlog.Web.Areas.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -13,7 +15,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
     [ValidateRequestApiFilter]
     public class ControllerBase : Controller
     {
-        private static readonly JsonSerializerOptions _DefaultJsonSerializerSettings;
+        private static readonly JsonSerializerSettings _DefaultJsonSerializerSettings;
 
         IHtmlLocalizer<ControllerBase> localizer;
         private IHtmlLocalizer<ControllerBase> L
@@ -30,12 +32,10 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
 
         static ControllerBase()
         {
-            _DefaultJsonSerializerSettings = new JsonSerializerOptions
+            _DefaultJsonSerializerSettings = new JsonSerializerSettings
             {
-                //DateFormatString = "yyyy-MM-dd HH:mm:ss",
-                //ContractResolver = new CamelCasePropertyNamesContractResolver()
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-
+                DateFormatString = "yyyy-MM-dd HH:mm:ss",
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
         }
 

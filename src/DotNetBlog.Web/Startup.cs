@@ -44,7 +44,8 @@ namespace DotNetBlog.Web
                 .AddViewLocalization(
                     LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization();
+                .AddDataAnnotationsLocalization()
+                .AddNewtonsoftJson();
 
             services.AddMemoryCache();
 
