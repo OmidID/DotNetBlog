@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <AspNetLibrariesVersion>3.1.6</AspNetLibrariesVersion>
+    <EfLibrariesVersion>3.1.6</EfLibrariesVersion>
+    <AutoMapperVersion>10.0.0</AutoMapperVersion>
+    <NewtonsoftJsonVersion>12.0.3</NewtonsoftJsonVersion>
+    <HumanizerVersion>2.8.26</HumanizerVersion>
+    <MarkdigVersion>0.20.0</MarkdigVersion>
+    <MailKitVersion>2.8.0</MailKitVersion>
+    <NLogVersion>1.6.1</NLogVersion>
+    <SystemVersion>4.3.0</SystemVersion>
+  </PropertyGroup>
+  
+</Project>
