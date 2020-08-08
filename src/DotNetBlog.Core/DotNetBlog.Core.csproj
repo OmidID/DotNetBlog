@@ -1,52 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>DotNetBlog.Core</AssemblyName>
-    <PackageId>DotNetBlog.Core</PackageId>
-    <Version>1.3.1</Version>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.20.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="3.1.6" />
-    <PackageReference Include="System.Reflection" Version="4.3.0" />
-    <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-    <PackageReference Include="MailKit" Version="2.8.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.6.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Model\Setting\SettingModel.en-GB.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Model\Setting\SettingModel.zh-CN.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\CommentService.en-GB.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\CommentService.zh-CN.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\CategoryService.en-GB.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\CategoryService.zh-CN.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\AuthService.en-GB.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Service\AuthService.zh-CN.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+  <Import Project="../../build/Library.props"/>
 
 </Project>
