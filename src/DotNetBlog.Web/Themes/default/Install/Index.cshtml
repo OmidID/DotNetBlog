@@ -63,14 +63,14 @@
                         <div class="form-group">
                             <label class="control-label">@L["Username"]</label>
                             <div>
-                                <input type="text" name="UserName" class="form-control" value="@Model.Model.UserName" required maxlength="20"/>
+                                <input type="text" name="UserName" class="form-control" value="@Model.Model.UserName" required maxlength="20" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">@L["Password"]</label>
                             <div>
-                                <input type="password" name="Password" id="txtPassword" class="form-control" value="@Model.Model.Password" required maxlength="20"/>
+                                <input type="password" name="Password" id="txtPassword" class="form-control" value="@Model.Model.Password" required maxlength="20" />
                             </div>
                         </div>
 
@@ -84,15 +84,18 @@
                         <div class="form-group">
                             <label class="control-label">@L["Email"]</label>
                             <div>
-                                <input type="text" name="Email" class="form-control" value="@Model.Model.Email" required maxlength="100"/>
+                                <input type="text" name="Email" class="form-control" value="@Model.Model.Email" required maxlength="100" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">@L["Nickname"]</label>
                             <div>
-                                <input type="text" name="Nickname" class="form-control" value="@Model.Model.Nickname" required maxlength="20"/>
+                                <input type="text" name="Nickname" class="form-control" value="@Model.Model.Nickname" required maxlength="20" />
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label"><input name="AddWelcomeTopic" type="checkbox" checked="checked" value="true" /> @L["Add welcome topic"]</label>
                         </div>
                     </div>
                 </fieldset>

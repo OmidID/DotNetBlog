@@ -16,24 +16,12 @@ namespace DotNetBlog.Web.Controllers
     [Filters.ErrorHandleFilter]
     public class HomeController : Controller
     {
-        private static readonly string Cookie_CommentName = "DotNetBlog_CommentName";
+        private const string CookieCommentName = "DotNetBlog_CommentName";
 
-        private static readonly string Cookie_CommentEmail = "DotNetBlog_CommentEmail";
+        private const string CookieCommentEmail = "DotNetBlog_CommentEmail";
 
         private TopicService TopicService { get; set; }
-
-        private CategoryService CategoryService { get; set; }
-
-        private TagService TagService { get; set; }
-
-        private CommentService CommentService { get; set; }
-
-        private PageService PageService { get; set; }
-
         private SettingModel SettingModel { get; set; }
-
-        private ClientManager ClientManager { get; set; }
-
         private IHtmlLocalizer<HomeController> L { get; set; }
 
         public HomeController(
@@ -47,20 +35,17 @@ namespace DotNetBlog.Web.Controllers
             IHtmlLocalizer<HomeController> localizer)
         {
             TopicService = topicService;
-            CategoryService = categoryService;
             SettingModel = settingModel;
-            TagService = tagService;
-            CommentService = commentService;
-            PageService = pageService;
-            ClientManager = clientManager;
             L = localizer;
         }
 
         [Route("{page:int?}")]
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index([FromServices] InstallService installService, int page = 1)
         {
-            int pageSize = SettingModel.TopicsPerPage;
+            if (installService.NeedToInstall())
+                return RedirectToAction("Index", "Install");
 
+            var pageSize = SettingModel.TopicsPerPage;
             var topicList = await TopicService.QueryNotTrash(page, pageSize, Core.Enums.TopicStatus.Published, null);
 
             var vm = new IndexPageViewModel
@@ -78,9 +63,9 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [HttpGet("category/{id:int}/{page:int?}")]
-        public async Task<IActionResult> Category(int id, int page = 1)
+        public async Task<IActionResult> Category([FromServices] CategoryService categoryService, int id, int page = 1)
         {
-            var category = (await CategoryService.All()).SingleOrDefault(t => t.ID == id);
+            var category = (await categoryService.All()).SingleOrDefault(t => t.ID == id);
 
             if (category == null)
             {
@@ -157,19 +142,23 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [HttpGet("topic/{id:int}")]
-        public async Task<IActionResult> Topic(int id)
+        public async Task<IActionResult> Topic(int id,
+            [FromServices] ClientManager clientManager,
+            [FromServices] CommentService commentService)
         {
             var topic = await TopicService.Get(id);
 
-            return await this.TopicView(topic);
+            return await this.TopicView(topic, clientManager, commentService);
         }
 
         [HttpGet("topic/{alias}")]
-        public async Task<IActionResult> TopicByAlias(string alias)
+        public async Task<IActionResult> TopicByAlias(string alias,
+            [FromServices] ClientManager clientManager,
+            [FromServices] CommentService commentService)
         {
             var topic = await TopicService.Get(alias);
 
-            return await this.TopicView(topic);
+            return await this.TopicView(topic, clientManager, commentService);
         }
 
         [HttpGet("search")]
@@ -205,29 +194,33 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [HttpGet("page/{id:int}")]
-        public async Task<IActionResult> Page(int id)
+        public async Task<IActionResult> Page(int id,
+            [FromServices] PageService pageService,
+            [FromServices] ClientManager clientManager)
         {
-            var page = await this.PageService.Get(id);
+            var page = await pageService.Get(id);
 
-            return this.PageView(page);
+            return this.PageView(page, clientManager);
         }
 
         [HttpGet("page/{alias}")]
-        public async Task<IActionResult> PageByAlias(string alias)
+        public async Task<IActionResult> PageByAlias(string alias,
+            [FromServices] PageService pageService,
+            [FromServices] ClientManager clientManager)
         {
-            var page = await this.PageService.Get(alias);
+            var page = await pageService.Get(alias);
 
-            return this.PageView(page);
+            return this.PageView(page, clientManager);
         }
 
         [NonAction]
-        private async Task<IActionResult> TopicView(TopicModel topic)
+        private async Task<IActionResult> TopicView(TopicModel topic, ClientManager clientManager, CommentService commentService)
         {
             if (topic == null)
             {
                 return NotFound();
             }
-            if (topic.Status != Core.Enums.TopicStatus.Published && !this.ClientManager.IsLogin)
+            if (topic.Status != Core.Enums.TopicStatus.Published && !clientManager.IsLogin)
             {
                 return NotFound();
             }
@@ -237,7 +230,7 @@ namespace DotNetBlog.Web.Controllers
             var prevTopic = await TopicService.GetPrev(topic);
             var nextTopic = await TopicService.GetNext(topic);
             var relatedTopicList = await TopicService.QueryRelated(topic);
-            var commentList = await CommentService.QueryByTopic(topic.ID);
+            var commentList = await commentService.QueryByTopic(topic.ID);
 
             var vm = new TopicPageViewModel
             {
@@ -250,20 +243,20 @@ namespace DotNetBlog.Web.Controllers
                 CommentForm = new CommentFormModel()
             };
 
-            vm.CommentForm.Name = Request.Cookies[Cookie_CommentName];
-            vm.CommentForm.Email = Request.Cookies[Cookie_CommentEmail];
+            vm.CommentForm.Name = Request.Cookies[CookieCommentName];
+            vm.CommentForm.Email = Request.Cookies[CookieCommentEmail];
 
             return View("Topic", vm);
         }
 
         [NonAction]
-        private IActionResult PageView(PageModel page)
+        private IActionResult PageView(PageModel page, ClientManager clientManager)
         {
             if (page == null)
             {
                 return NotFound();
             }
-            if (page.Status != Core.Enums.PageStatus.Published && !this.ClientManager.IsLogin)
+            if (page.Status != Core.Enums.PageStatus.Published && !clientManager.IsLogin)
             {
                 return NotFound();
             }
@@ -274,7 +267,8 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [HttpPost("comment/add")]
-        public async Task<IActionResult> AddComment([FromForm] AddCommentModel model)
+        public async Task<IActionResult> AddComment([FromForm] AddCommentModel model,
+            [FromServices] CommentService commentService)
         {
             if (model == null || !ModelState.IsValid)
             {
@@ -286,10 +280,10 @@ namespace DotNetBlog.Web.Controllers
                 });
             }
 
-            var result = await this.CommentService.Add(model);
+            var result = await commentService.Add(model);
 
-            this.Response.Cookies.Append(Cookie_CommentName, model.Name);
-            this.Response.Cookies.Append(Cookie_CommentEmail, model.Email);
+            this.Response.Cookies.Append(CookieCommentName, model.Name);
+            this.Response.Cookies.Append(CookieCommentEmail, model.Email);
 
             if (result.Success)
             {

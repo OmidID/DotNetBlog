@@ -123,4 +123,13 @@
   <data name="Not supported language" xml:space="preserve">
     <value>Not supported language</value>
   </data>
+  <data name="Welcome comment" xml:space="preserve">
+    <value>This is an example comment</value>
+  </data>
+  <data name="Welcome to DotNetBlog" xml:space="preserve">
+    <value>Welcome to DotNetBlog</value>
+  </data>
+  <data name="Welcome topic content" xml:space="preserve">
+    <value>Thanks to install DotNetBlog 😊. To modify this content and manage your blog you could open &lt;a href="/admin"&gt;Admin&lt;/a&gt; Page and login with your username and password.</value>
+  </data>
 </root>

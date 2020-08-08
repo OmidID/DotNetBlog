@@ -324,9 +324,9 @@ namespace DotNetBlog.Core.Service
                     {
                         TopicID = g.Key,
                         Total = g.Count(),
-                        Approved = g.Count(t => t.Status == Enums.CommentStatus.Approved),
-                        Pending = g.Count(t => t.Status == Enums.CommentStatus.Pending),
-                        Reject = g.Count(t => t.Status == Enums.CommentStatus.Reject)
+                        Approved = BlogContext.Comments.Where(t => t.Status == Enums.CommentStatus.Approved).Count(),
+                        Pending = BlogContext.Comments.Where(t => t.Status == Enums.CommentStatus.Pending).Count(),
+                        Reject = BlogContext.Comments.Where(t => t.Status == Enums.CommentStatus.Reject).Count()
                     }).ToListAsync();
 
                 var modelList = entityList.Select(entity =>

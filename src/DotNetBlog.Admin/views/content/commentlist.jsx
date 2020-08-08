@@ -278,7 +278,7 @@ class CommentList extends React.Component{
 
                 <div className="box box-solid">
                     <div className="box-body table-responsive no-padding">
-                        <BootstrapTable keyField="id" data={this.state.commentList} selectRow={selectRowProp} options={{noDataText:"empt".L()}}>
+                        <BootstrapTable keyField="id" data={this.state.commentList} selectRow={selectRowProp} options={{noDataText:"empty".L()}}>
                             <TableHeaderColumn dataField="content" dataFormat={this.formatContent.bind(this)}>{"content".L()}</TableHeaderColumn>
                             <TableHeaderColumn width="180" dataAlign="center" dataField="createDate">{"date".L()}</TableHeaderColumn>
                             <TableHeaderColumn width="180" dataAlign="center" dataField="name">{"author".L()}</TableHeaderColumn>

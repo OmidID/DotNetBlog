@@ -35,5 +35,7 @@ namespace DotNetBlog.Core.Model.Install
 
         [Required]
         public string Language { get; set; }
+
+        public bool AddWelcomeTopic { get; set; }
     }
 }

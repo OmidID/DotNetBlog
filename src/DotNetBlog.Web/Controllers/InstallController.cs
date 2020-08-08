@@ -39,7 +39,7 @@ namespace DotNetBlog.Web.Controllers
 
         [HttpPost("install")]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(InstallModel model)
+        public IActionResult Index([FromForm] InstallModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -77,7 +77,8 @@ namespace DotNetBlog.Web.Controllers
                 vm.LanguageList = new SelectList(RequestLocalizationOptions.Value.SupportedCultures, "Name", "Name");
                 vm.Model = new InstallModel
                 {
-                    BlogHost = blogHost
+                    BlogHost = blogHost,
+                    AddWelcomeTopic = true
                 };
             }
 

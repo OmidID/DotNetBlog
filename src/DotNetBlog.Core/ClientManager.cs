@@ -12,13 +12,13 @@ namespace DotNetBlog.Core
     {
         private static readonly string CookieName = "DotNetBlog_User";
 
-        public HttpContext HttpContext { get; private set; }
+        public HttpContext HttpContext { get; internal set; }
 
         private BlogContext BlogContext { get; set; }
 
-        public string Token { get; private set; }
+        public string Token { get; internal set; }
 
-        public User CurrentUser { get; private set; }
+        public User CurrentUser { get; internal set; }
 
         private string _clientIP;
 
@@ -88,7 +88,7 @@ namespace DotNetBlog.Core
                 }
                 catch
                 {
-
+                    /* */
                 }
             }
         }

@@ -123,4 +123,13 @@
   <data name="Not supported language" xml:space="preserve">
     <value>不支持的语言</value>
   </data>
+  <data name="Welcome comment" xml:space="preserve">
+    <value>这是一个示例注释</value>
+  </data>
+  <data name="Welcome to DotNetBlog" xml:space="preserve">
+    <value>欢迎使用DotNetBlog</value>
+  </data>
+  <data name="Welcome topic content" xml:space="preserve">
+    <value>感谢安装DotNetBlog😊。 要修改此内容并管理您的博客，您可以打开&lt;a href="/admin"&gt; Admin &lt;/a&gt;页面并使用您的用户名和密码登录。</value>
+  </data>
 </root>
