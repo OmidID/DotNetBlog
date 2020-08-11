@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBlog.Web", "src\DotNe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBlog.Core", "src\DotNetBlog.Core\DotNetBlog.Core.csproj", "{89065586-C5EF-4EF4-BCD5-63D47E6E3816}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotNetBlog.Admin", "src\DotNetBlog.Admin\", "{20DDD64F-264C-439F-9281-96616A46C457}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DotNetBlog.Admin", "src\DotNetBlog.Admin\", "{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_57806"
@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{23C6DF76
 		build\Definitions.props = build\Definitions.props
 		build\Library.props = build\Library.props
 		build\LibraryBuildTarget.props = build\LibraryBuildTarget.props
+		publish.sh = publish.sh
 		build\Web.props = build\Web.props
 	EndProjectSection
 EndProject
@@ -61,10 +62,10 @@ Global
 		{89065586-C5EF-4EF4-BCD5-63D47E6E3816}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89065586-C5EF-4EF4-BCD5-63D47E6E3816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89065586-C5EF-4EF4-BCD5-63D47E6E3816}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20DDD64F-264C-439F-9281-96616A46C457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20DDD64F-264C-439F-9281-96616A46C457}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20DDD64F-264C-439F-9281-96616A46C457}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{20DDD64F-264C-439F-9281-96616A46C457}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,7 +73,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{89F9B8C8-2F34-41CF-B39E-C23935AFADC8} = {9728357A-237B-4337-A648-6F56FE479A6F}
 		{89065586-C5EF-4EF4-BCD5-63D47E6E3816} = {9728357A-237B-4337-A648-6F56FE479A6F}
-		{20DDD64F-264C-439F-9281-96616A46C457} = {9728357A-237B-4337-A648-6F56FE479A6F}
+		{D2657CFC-8E57-49BB-9BE9-4FE37599F0E3} = {9728357A-237B-4337-A648-6F56FE479A6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8BDBED8-2603-4771-8572-3EBAA91BF2E5}

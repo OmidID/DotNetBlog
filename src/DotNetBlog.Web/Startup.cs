@@ -97,12 +97,12 @@ namespace DotNetBlog.Web
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
-                options.ViewLocationExpanders.Add(new ViewEngines.ThemeViewEngine());
+                options.ViewLocationExpanders.Add(new ThemeViewEngine());
             });
 
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/build";
+                configuration.RootPath = "wwwroot/dist";
             });
 
             services.AddSingleton<IStringLocalizerFactory, ThemeResourceLocalizationFactory>();
@@ -152,15 +152,12 @@ namespace DotNetBlog.Web
                 endpoints.MapRazorPages();
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "../DotNetBlog.Admin";
-
-                if (env.IsDevelopment())
+            if (env.IsDevelopment())
+                app.UseSpa(spa =>
                 {
+                    spa.Options.SourcePath = "../DotNetBlog.Admin";
                     spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
+                });
         }
     }
 }
