@@ -33,6 +33,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{02C7FD13-EC96-4951-A672-8791CDF11331}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		publish.ps1 = publish.ps1
+		publish.sh = publish.sh
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -44,7 +46,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{23C6DF76
 		build\Definitions.props = build\Definitions.props
 		build\Library.props = build\Library.props
 		build\LibraryBuildTarget.props = build\LibraryBuildTarget.props
-		publish.sh = publish.sh
 		build\Web.props = build\Web.props
 	EndProjectSection
 EndProject
