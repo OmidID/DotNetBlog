@@ -10,9 +10,9 @@ namespace DotNetBlog.Core.Data.Mappings
         {
             builder.ToTable("Comment");
 
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
 
             builder.Property(t => t.Content).IsRequired();
             builder.Property(t => t.CreateIP).IsRequired().HasMaxLength(40);

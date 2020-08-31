@@ -8,7 +8,7 @@
 
 @foreach (TopicModel topic in Model)
 {
-    <article class="post" id="post@(topic.ID)">
+    <article class="post" id="post@(topic.Id)">
         <header class="post-header">
             <h2 class="post-title">
                 <a blog-topic="topic">@topic.Title</a>
@@ -22,7 +22,7 @@
                     <i class="fa fa-folder"></i>
                     @foreach (var category in topic.Categories)
                     {
-                        <a asp-action="Category" asp-controller="Home" asp-route-id="@category.ID">@category.Name</a>
+                        <a asp-action="Category" asp-controller="Home" asp-route-id="@category.Id">@category.Name</a>
                     }
                 </span>
                 <a rel="nofollow" class="pull-right post-comment-link" blog-topic="topic" blog-topic-fragment="comments">
@@ -43,11 +43,11 @@
 
         <visible condition="clientManager.IsLogin">
             <visible condition="topic.Comments.Pending > 0">
-                <a asp-action="Topic" asp-controller="Home" asp-route-id="@topic.ID" asp-fragment="comments">@L["Unaudited comments({0})", topic.Comments.Pending]</a> |
-                <a asp-action="ApproveComments" asp-controller="QuickAction" asp-route-topicID="@topic.ID">@L["Approve comments"]</a> |
+                <a asp-action="Topic" asp-controller="Home" asp-route-id="@topic.Id" asp-fragment="comments">@L["Unaudited comments({0})", topic.Comments.Pending]</a> |
+                <a asp-action="ApproveComments" asp-controller="QuickAction" asp-route-topicId="@topic.Id">@L["Approve comments"]</a> |
             </visible>
-            <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/topic/" + topic.ID.ToString())">@L["Edit"]</a> |
-            <a asp-action="DeleteTopic" asp-controller="QuickAction" asp-route-topicID="@topic.ID" onclick="if (!confirm('Are you sure you want to delete the article?')) return false">@L["Delete"]</a>
+            <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/topic/" + topic.Id.ToString())">@L["Edit"]</a> |
+            <a asp-action="DeleteTopic" asp-controller="QuickAction" asp-route-topicId="@topic.Id" onclick="if (!confirm('Are you sure you want to delete the article?')) return false">@L["Delete"]</a>
         </visible>
 
     </article>

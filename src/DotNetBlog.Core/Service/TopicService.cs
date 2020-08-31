@@ -50,7 +50,7 @@ namespace DotNetBlog.Core.Service
             model.CategoryList = (model.CategoryList ?? new int[0]).Distinct().ToArray();
             model.TagList = (model.TagList ?? new string[0]).Distinct().ToArray();
 
-            List<Category> categoryEntityList = await BlogContext.Categories.Where(t => model.CategoryList.Contains(t.ID)).ToListAsync();
+            List<Category> categoryEntityList = await BlogContext.Categories.Where(t => model.CategoryList.Contains(t.Id)).ToListAsync();
             List<Tag> tagEntityList = await BlogContext.Tags.Where(t => model.TagList.Contains(t.Keyword)).ToListAsync();
 
             model.Alias = await this.GenerateAlias(null, model.Alias, model.Title);
@@ -75,9 +75,9 @@ namespace DotNetBlog.Core.Service
                 AllowComment = model.AllowComment,
                 Content = model.Content,
                 CreateDate = DateTime.Now,
-                CreateUserID = this.ClientManager.CurrentUser.ID,
+                CreateUserId = this.ClientManager.CurrentUser.Id,
                 EditDate = model.Date ?? DateTime.Now,
-                EditUserID = 1,
+                EditUserId = 1,
                 Status = model.Status,
                 Summary = model.Summary,
                 Title = model.Title
@@ -110,7 +110,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<OperationResult<TopicModel>> Edit(EditTopicModel model)
         {
-            var entity = await BlogContext.Topics.SingleOrDefaultAsync(t => t.ID == model.ID);
+            var entity = await BlogContext.Topics.SingleOrDefaultAsync(t => t.Id == model.Id);
             if (entity == null)
             {
                 return OperationResult<TopicModel>.Failure(L["The article does not exists"].Value);
@@ -118,9 +118,9 @@ namespace DotNetBlog.Core.Service
 
             using (var tran = await BlogContext.Database.BeginTransactionAsync())
             {
-                List<CategoryTopic> deletedCategoryTopicList = await BlogContext.CategoryTopics.Where(t => t.TopicID == model.ID).ToListAsync();
+                List<CategoryTopic> deletedCategoryTopicList = await BlogContext.CategoryTopics.Where(t => t.TopicId == model.Id).ToListAsync();
                 BlogContext.RemoveRange(deletedCategoryTopicList);
-                List<TagTopic> deletedTagTopicList = await BlogContext.TagTopics.Where(t => t.TopicID == model.ID).ToListAsync();
+                List<TagTopic> deletedTagTopicList = await BlogContext.TagTopics.Where(t => t.TopicId == model.Id).ToListAsync();
                 BlogContext.RemoveRange(deletedTagTopicList);
 
                 await BlogContext.SaveChangesAsync();
@@ -128,10 +128,10 @@ namespace DotNetBlog.Core.Service
                 model.CategoryList = (model.CategoryList ?? new int[0]).Distinct().ToArray();
                 model.TagList = (model.TagList ?? new string[0]).Distinct().ToArray();
 
-                List<Category> categoryEntityList = await BlogContext.Categories.Where(t => model.CategoryList.Contains(t.ID)).ToListAsync();
+                List<Category> categoryEntityList = await BlogContext.Categories.Where(t => model.CategoryList.Contains(t.Id)).ToListAsync();
                 List<Tag> tagEntityList = await BlogContext.Tags.Where(t => model.TagList.Contains(t.Keyword)).ToListAsync();
 
-                model.Alias = await this.GenerateAlias(model.ID, model.Alias, model.Title);
+                model.Alias = await this.GenerateAlias(model.Id, model.Alias, model.Title);
                 model.Summary = this.GenerateSummary(model.Summary, model.Content);
 
                 foreach (var tag in model.TagList)
@@ -217,12 +217,12 @@ namespace DotNetBlog.Core.Service
         /// </summary>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
-        /// <param name="categoryID"></param>
+        /// <param name="categoryId"></param>
         /// <returns></returns>
-        public async Task<PagedResult<TopicModel>> QueryByCategory(int pageIndex, int pageSize, int categoryID)
+        public async Task<PagedResult<TopicModel>> QueryByCategory(int pageIndex, int pageSize, int categoryId)
         {
-            var topicIDQuery = BlogContext.CategoryTopics.Where(t => t.CategoryID == categoryID).Select(t => t.TopicID);
-            var query = BlogContext.Topics.Where(t => t.Status == Enums.TopicStatus.Published && topicIDQuery.Contains(t.ID));
+            var topicIdQuery = BlogContext.CategoryTopics.Where(t => t.CategoryId == categoryId).Select(t => t.TopicId);
+            var query = BlogContext.Topics.Where(t => t.Status == Enums.TopicStatus.Published && topicIdQuery.Contains(t.Id));
 
             int total = await query.CountAsync();
 
@@ -242,12 +242,12 @@ namespace DotNetBlog.Core.Service
         /// <returns></returns>
         public async Task<PagedResult<TopicModel>> QueryByTag(int pageIndex, int pageSize, string keyword)
         {
-            var topicIDQuery = from tag in BlogContext.Tags
+            var topicIdQuery = from tag in BlogContext.Tags
                                where tag.Keyword == keyword
-                               join tagTopic in BlogContext.TagTopics on tag.ID equals tagTopic.TagID
-                               select tagTopic.TopicID;
+                               join tagTopic in BlogContext.TagTopics on tag.Id equals tagTopic.TagId
+                               select tagTopic.TopicId;
 
-            var query = BlogContext.Topics.Where(t => t.Status == Enums.TopicStatus.Published && topicIDQuery.Contains(t.ID));
+            var query = BlogContext.Topics.Where(t => t.Status == Enums.TopicStatus.Published && topicIdQuery.Contains(t.Id));
 
             int total = await query.CountAsync();
 
@@ -309,15 +309,15 @@ namespace DotNetBlog.Core.Service
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        public async Task<List<TopicModel>> QueryRecent(int count, int? categoryID)
+        public async Task<List<TopicModel>> QueryRecent(int count, int? categoryId)
         {
             var query = BlogContext.Topics.AsNoTracking().Where(t => t.Status == Enums.TopicStatus.Published);
 
-            if (categoryID.HasValue)
+            if (categoryId.HasValue)
             {
-                var topicIDQuery = BlogContext.CategoryTopics.AsNoTracking().Where(t => t.CategoryID == categoryID.Value)
-                    .Select(t => t.TopicID);
-                query = query.Where(t => topicIDQuery.Contains(t.ID));
+                var topicIdQuery = BlogContext.CategoryTopics.AsNoTracking().Where(t => t.CategoryId == categoryId.Value)
+                    .Select(t => t.TopicId);
+                query = query.Where(t => topicIdQuery.Contains(t.Id));
             }
 
             query = query.OrderByDescending(t => t.EditDate).Take(count);
@@ -336,7 +336,7 @@ namespace DotNetBlog.Core.Service
         /// <returns></returns>
         public async Task<TopicModel> Get(int id)
         {
-            var entity = await BlogContext.Topics.AsNoTracking().SingleOrDefaultAsync(t => t.ID == id);
+            var entity = await BlogContext.Topics.AsNoTracking().SingleOrDefaultAsync(t => t.Id == id);
 
             if (entity == null)
             {
@@ -408,7 +408,7 @@ namespace DotNetBlog.Core.Service
         /// <returns></returns>
         public async Task<List<TopicModel>> QueryRelated(TopicModel topic)
         {
-            string cacheKey = $"Cache_RelatedTopic_{topic.ID}";
+            string cacheKey = $"Cache_RelatedTopic_{topic.Id}";
 
             var list = Cache.Get<List<TopicModel>>(cacheKey);
             if (list == null)
@@ -420,25 +420,25 @@ namespace DotNetBlog.Core.Service
                     return list;
                 }
 
-                var query = BlogContext.Topics.AsNoTracking().Where(t => t.Status == Enums.TopicStatus.Published && t.ID != topic.ID);
+                var query = BlogContext.Topics.AsNoTracking().Where(t => t.Status == Enums.TopicStatus.Published && t.Id != topic.Id);
                 if (topic.Tags.Length > 0)
                 {
-                    var topicIDQuery = from tag in BlogContext.Tags.AsNoTracking()
+                    var topicIdQuery = from tag in BlogContext.Tags.AsNoTracking()
                                        where topic.Tags.Contains(tag.Keyword)
-                                       join tagTopic in BlogContext.TagTopics on tag.ID equals tagTopic.TagID
-                                       select tagTopic.TopicID;
+                                       join tagTopic in BlogContext.TagTopics on tag.Id equals tagTopic.TagId
+                                       select tagTopic.TopicId;
 
-                    query = query.Where(t => topicIDQuery.Contains(t.ID));
+                    query = query.Where(t => topicIdQuery.Contains(t.Id));
                 }
                 if (topic.Categories.Length > 0)
                 {
-                    var categoryIDList = topic.Categories.Select(t => t.ID).ToArray();
-                    var topicIDQuery = from category in BlogContext.Categories.AsNoTracking()
-                                       where categoryIDList.Contains(category.ID)
-                                       join categoryTopic in BlogContext.CategoryTopics on category.ID equals categoryTopic.CategoryID
-                                       select categoryTopic.TopicID;
+                    var categoryIdList = topic.Categories.Select(t => t.Id).ToArray();
+                    var topicIdQuery = from category in BlogContext.Categories.AsNoTracking()
+                                       where categoryIdList.Contains(category.Id)
+                                       join categoryTopic in BlogContext.CategoryTopics on category.Id equals categoryTopic.CategoryId
+                                       select categoryTopic.TopicId;
 
-                    query = query.Where(t => topicIDQuery.Contains(t.ID));
+                    query = query.Where(t => topicIdQuery.Contains(t.Id));
                 }
 
                 var entityList = await query.OrderByDescending(t => t.EditDate).Take(10).ToArrayAsync();
@@ -469,7 +469,7 @@ namespace DotNetBlog.Core.Service
         /// <returns></returns>
         public async Task BatchUpdateStatus(int[] idList, Enums.TopicStatus status)
         {
-            var topicList = await BlogContext.Topics.Where(t => idList.Contains(t.ID)).ToListAsync();
+            var topicList = await BlogContext.Topics.Where(t => idList.Contains(t.Id)).ToListAsync();
 
             topicList.ForEach(topic =>
             {
@@ -489,15 +489,15 @@ namespace DotNetBlog.Core.Service
                 return null;
             }
 
-            int[] idList = entityList.Select(t => t.ID).ToArray();
+            int[] idList = entityList.Select(t => t.Id).ToArray();
 
-            var categoryTopicList = await BlogContext.CategoryTopics.Include(t => t.Category).Where(t => idList.Contains(t.TopicID)).ToListAsync();
-            var tagTopicList = await BlogContext.TagTopics.Include(t => t.Tag).Where(t => idList.Contains(t.TopicID)).ToListAsync();
-            var topicComments = await BlogContext.Comments.Where(t => idList.Contains(t.TopicID))
-                                .GroupBy(t => t.TopicID)
+            var categoryTopicList = await BlogContext.CategoryTopics.Include(t => t.Category).Where(t => idList.Contains(t.TopicId)).ToListAsync();
+            var tagTopicList = await BlogContext.TagTopics.Include(t => t.Tag).Where(t => idList.Contains(t.TopicId)).ToListAsync();
+            var topicComments = await BlogContext.Comments.Where(t => idList.Contains(t.TopicId))
+                                .GroupBy(t => t.TopicId)
                                 .Select(t => new
                                 {
-                                    TopicID = t.Key,
+                                    TopicId = t.Key,
                                     Approved = BlogContext.Comments.Where(c => c.Status == Enums.CommentStatus.Approved).Count(),
                                     Reject = BlogContext.Comments.Where(c => c.Status == Enums.CommentStatus.Reject).Count(),
                                     Pending = BlogContext.Comments.Where(c => c.Status == Enums.CommentStatus.Pending).Count(),
@@ -507,18 +507,18 @@ namespace DotNetBlog.Core.Service
             List<TopicModel> result = entityList.Select(entity =>
             {
                 var model = _mapper.Map<TopicModel>(entity);
-                model.Categories = categoryTopicList.Where(category => category.TopicID == entity.ID)
+                model.Categories = categoryTopicList.Where(category => category.TopicId == entity.Id)
                     .Select(category => new CategoryBasicModel
                     {
-                        ID = category.CategoryID,
+                        Id = category.CategoryId,
                         Name = category.Category.Name
                     }).ToArray();
-                model.Tags = tagTopicList.Where(tag => tag.TopicID == entity.ID)
+                model.Tags = tagTopicList.Where(tag => tag.TopicId == entity.Id)
                     .Select(tag => tag.Tag.Keyword)
                     .ToArray();
                 model.Comments = new Model.Comment.CommentCountModel();
 
-                var topicComment = topicComments.SingleOrDefault(t => t.TopicID == entity.ID);
+                var topicComment = topicComments.SingleOrDefault(t => t.TopicId == entity.Id);
                 if (topicComment != null)
                 {
                     model.Comments.Approved = topicComment.Approved;
@@ -546,7 +546,7 @@ namespace DotNetBlog.Core.Service
                 var query = this.BlogContext.Topics.Where(t => t.Alias == r_alias);
                 if (id.HasValue)
                 {
-                    query = query.Where(t => t.ID != id.Value);
+                    query = query.Where(t => t.Id != id.Value);
                 }
 
                 if (await query.AnyAsync())

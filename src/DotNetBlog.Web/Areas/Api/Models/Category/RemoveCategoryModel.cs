@@ -2,6 +2,6 @@
 {
     public class RemoveCategoryModel
     {
-        public int[] IDList { get; set; }
+        public int[] IdList { get; set; }
     }
 }

@@ -31,10 +31,10 @@ namespace DotNetBlog.Core.Extensions
                 List<Category> entityList = context.Categories.ToList();
 
                 var categoryTopics = context.CategoryTopics.Include(ct => ct.Topic)
-                                    .GroupBy(ct => ct.CategoryID)
+                                    .GroupBy(ct => ct.CategoryId)
                                     .Select(ct => new
                                     {
-                                        ID = ct.Key,
+                                        Id = ct.Key,
                                         Total = ct.Count(),
                                         Published =
                                             context.Topics
@@ -48,11 +48,11 @@ namespace DotNetBlog.Core.Extensions
                                     .ToList();
 
                 var query = from entity in entityList
-                            join ct in categoryTopics on entity.ID equals ct.ID into temp
+                            join ct in categoryTopics on entity.Id equals ct.Id into temp
                             from ct in temp.DefaultIfEmpty()
                             select new CategoryModel
                             {
-                                ID = entity.ID,
+                                Id = entity.Id,
                                 Name = entity.Name,
                                 Description = entity.Description,
                                 Topics = new TopicCountModel
@@ -76,10 +76,10 @@ namespace DotNetBlog.Core.Extensions
                 var entityList = context.Tags.ToList();
 
                 var tagTopics = context.TagTopics.Include(ct => ct.Topic)
-                                .GroupBy(ct => ct.TagID)
+                                .GroupBy(ct => ct.TagId)
                                 .Select(ct => new
                                 {
-                                    ID = ct.Key,
+                                    Id = ct.Key,
                                     Total = ct.Count(),
                                     Published = context.TagTopics.Where(t => t.Topic.Status == Enums.TopicStatus.Published).Count(),
                                     Draft = context.TagTopics.Where(t => t.Topic.Status == Enums.TopicStatus.Draft).Count()
@@ -87,11 +87,11 @@ namespace DotNetBlog.Core.Extensions
                                 .ToList();
 
                 var query = from entity in entityList
-                            join tt in tagTopics on entity.ID equals tt.ID into temp
+                            join tt in tagTopics on entity.Id equals tt.Id into temp
                             from tt in temp.DefaultIfEmpty()
                             select new TagModel
                             {
-                                ID = entity.ID,
+                                Id = entity.Id,
                                 Keyword = entity.Keyword,
                                 Topics = new TopicCountModel
                                 {
@@ -127,16 +127,6 @@ namespace DotNetBlog.Core.Extensions
 
                 return query.ToList();
             }, new MemoryCacheEntryOptions { AbsoluteExpiration = DateTime.Now.AddMinutes(20) });
-
-            return result;
-        }
-
-        public static Dictionary<string, UserToken> QueryUserTokenFromCache(this BlogContext context)
-        {
-            var result = RetriveCache(context, CacheKey_UserToken, () =>
-            {
-                return context.UserTokens.ToDictionary(t => t.Token);
-            });
 
             return result;
         }

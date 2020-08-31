@@ -1,11 +1,12 @@
 ﻿using DotNetBlog.Core.Data.Mappings;
 using DotNetBlog.Core.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace DotNetBlog.Core.Data
 {
-    public class BlogContext : DbContext
+    public class BlogContext : IdentityDbContext<User, UserRole, long>
     {
         public virtual DbSet<Setting> Settings { get; set; }
 
@@ -20,10 +21,6 @@ namespace DotNetBlog.Core.Data
         public virtual DbSet<TagTopic> TagTopics { get; set; }
 
         public virtual DbSet<Comment> Comments { get; set; }
-
-        public virtual DbSet<User> Users { get; set; }
-
-        public virtual DbSet<UserToken> UserTokens { get; set; }
 
         public virtual DbSet<Page> Pages { get; set; }
 
@@ -48,8 +45,6 @@ namespace DotNetBlog.Core.Data
             modelBuilder.Entity<Tag>(TagMapping.Map);
             modelBuilder.Entity<TagTopic>(TagTopicMapping.Map);
             modelBuilder.Entity<Comment>(CommentMapping.Map);
-            modelBuilder.Entity<User>(UserMapping.Map);
-            modelBuilder.Entity<UserToken>(UserTokenMapping.Map);
             modelBuilder.Entity<Page>(PageMapping.Map);
             modelBuilder.Entity<Widget>(WidgetMapping.Map);
         }

@@ -6,6 +6,7 @@ using DotNetBlog.Core.Model.Install;
 using DotNetBlog.Core.Model.Setting;
 using DotNetBlog.Core.Model.Widget;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
@@ -13,6 +14,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DotNetBlog.Core.Service
 {
@@ -25,6 +27,7 @@ namespace DotNetBlog.Core.Service
         private TopicService TopicService { get; set; }
         public CommentService CommentService { get; }
         public ClientManager ClientManager { get; }
+        private UserManager<User> UserManager { get; }
         private IServiceProvider ServiceProvider { get; set; }
         private IStringLocalizer<WidgetConfigModelBase> WidgetLocalizer { get; set; }
         private IStringLocalizer<InstallService> InstallLocalizer { get; set; }
@@ -35,6 +38,7 @@ namespace DotNetBlog.Core.Service
             TopicService topicService,
             CommentService commentService,
             ClientManager clientManager,
+            UserManager<User> userManager,
             IStringLocalizer<WidgetConfigModelBase> widgetLocalizer,
             IServiceProvider serviceProvider,
             IOptions<RequestLocalizationOptions> requestLocalizationOptions,
@@ -45,6 +49,7 @@ namespace DotNetBlog.Core.Service
             TopicService = topicService;
             CommentService = commentService;
             ClientManager = clientManager;
+            UserManager = userManager;
             WidgetLocalizer = widgetLocalizer;
             ServiceProvider = serviceProvider;
             RequestLocalizationOptions = requestLocalizationOptions;
@@ -73,7 +78,7 @@ namespace DotNetBlog.Core.Service
                 else
                 {
                     //1. Add admin user
-                    AddAdminUser(model);
+                    AddAdminUser(model).Wait();
 
                     //2. Setup default settings
                     AddSettings(model);
@@ -112,17 +117,20 @@ namespace DotNetBlog.Core.Service
         /// Add admin user
         /// </summary>
         /// <param name="model"></param>
-        private void AddAdminUser(InstallModel model)
+        private async Task<bool> AddAdminUser(InstallModel model)
         {
-            var user = new User
+            var result = await UserManager.CreateAsync(new User
             {
                 UserName = model.UserName,
-                Password = Utilities.EncryptHelper.MD5(model.Password),
+                Email = model.Email,
                 Nickname = model.Nickname,
-                Email = model.Email
-            };
-            BlogContext.Users.Add(user);
-            ClientManager.CurrentUser = user;
+                EmailConfirmed = true
+            }, model.Password);
+
+            if (result.Succeeded)
+                await ClientManager.InitUser(model.UserName);
+
+            return result.Succeeded;
         }
 
         /// <summary>
@@ -199,7 +207,7 @@ namespace DotNetBlog.Core.Service
             {
                 Config = JsonConvert.SerializeObject(t.Config),
                 Type = t.Type,
-                ID = widgetList.IndexOf(t) + 1
+                Id = widgetList.IndexOf(t) + 1
             });
             this.BlogContext.AddRange(widgetEntityList);
         }
@@ -219,12 +227,12 @@ namespace DotNetBlog.Core.Service
 
             var commentResult = CommentService.Add(new Model.Comment.AddCommentModel
             {
-                TopicID = result.Data.ID,
+                TopicId = result.Data.Id,
                 Email = model.Email,
                 Name = model.UserName,
                 Content = InstallLocalizer["Welcome comment"].Value
             }).Result;
-            CommentService.ApproveComment(commentResult.Data.ID).Wait();
+            CommentService.ApproveComment(commentResult.Data.Id).Wait();
 
             return result.Success && commentResult.Success;
         }

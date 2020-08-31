@@ -48,7 +48,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return InvalidRequest();
             }
 
-            model.ID = id;
+            model.Id = id;
 
             var result = await TopicService.Edit(model);
             if (result.Success)

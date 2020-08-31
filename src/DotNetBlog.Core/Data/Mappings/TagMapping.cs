@@ -12,8 +12,8 @@ namespace DotNetBlog.Core.Data.Mappings
 
             builder.HasIndex(t => t.Keyword).IsUnique();
 
-            builder.HasKey(t => t.ID);
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
             builder.Property(t => t.Keyword).IsRequired().HasMaxLength(100);
         }
     }

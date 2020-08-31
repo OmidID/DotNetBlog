@@ -10,11 +10,11 @@ namespace DotNetBlog.Core.Data.Mappings
         {
             builder.ToTable("Page");
 
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
             builder.HasIndex(t => t.Alias).IsUnique();
 
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
             builder.Property(t => t.Title).IsRequired().HasMaxLength(100);
             builder.Property(t => t.Alias).HasMaxLength(100);
             builder.Property(t => t.Keywords).HasMaxLength(100);

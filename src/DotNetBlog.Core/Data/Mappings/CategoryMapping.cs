@@ -9,9 +9,9 @@ namespace DotNetBlog.Core.Data.Mappings
         public static void Map(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Category");
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
             builder.Property(t => t.Name).IsRequired().HasMaxLength(50);
             builder.Property(t => t.Description).HasMaxLength(200);
         }

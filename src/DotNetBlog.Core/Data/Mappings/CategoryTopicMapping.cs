@@ -10,7 +10,7 @@ namespace DotNetBlog.Core.Data.Mappings
         {
             builder.ToTable("CategoryTopic");
 
-            builder.HasKey(t => new { t.CategoryID, t.TopicID });
+            builder.HasKey(t => new { t.CategoryId, t.TopicId });
             builder.HasOne(t => t.Category).WithMany();
             builder.HasOne(t => t.Topic).WithMany();
         }

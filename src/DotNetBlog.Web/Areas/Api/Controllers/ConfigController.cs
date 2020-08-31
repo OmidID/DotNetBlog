@@ -5,7 +5,7 @@ using DotNetBlog.Web.Areas.Api.Models.Config;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkId=397860
 
 namespace DotNetBlog.Web.Areas.Api.Controllers
 {

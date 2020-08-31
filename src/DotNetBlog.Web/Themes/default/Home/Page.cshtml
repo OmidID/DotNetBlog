@@ -8,6 +8,6 @@
         <markdown content="@Model.Content"></markdown>
     </div>
     <div id="admin" condition="@clientManager.IsLogin">
-        <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/page/" + Model.ID.ToString())">@L["Edit"]</a>
+        <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/page/" + Model.Id.ToString())">@L["Edit"]</a>
     </div>
 </div>

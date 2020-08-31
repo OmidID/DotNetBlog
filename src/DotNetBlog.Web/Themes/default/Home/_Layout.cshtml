@@ -37,8 +37,8 @@
                         @await Component.InvokeAsync("PageListNav")
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a asp-action="LogOff" asp-controller="Account" condition="clientManager.IsLogin">@L["Logout"]</a></li>
-                        <li><a asp-action="Login" asp-controller="Account" condition="!clientManager.IsLogin">@L["Login"]</a></li>
+                        <li><a asp-area="Identity" asp-action="Logout" asp-controller="Account" condition="clientManager.IsLogin">@L["Logout"]</a></li>
+                        <li><a asp-area="Identity" asp-action="Login" asp-controller="Account" condition="!clientManager.IsLogin">@L["Login"]</a></li>
                     </ul>
                 </div>
             </div>

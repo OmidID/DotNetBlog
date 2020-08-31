@@ -5,9 +5,9 @@ namespace DotNetBlog.Core.Entity
 {
     public class Page
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public int? ParentID { get; set; }
+        public int? ParentId { get; set; }
 
         public string Title { get; set; }
 

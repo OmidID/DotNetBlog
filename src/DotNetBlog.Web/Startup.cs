@@ -1,5 +1,6 @@
 ﻿using DotNetBlog.Core;
 using DotNetBlog.Core.Data;
+using DotNetBlog.Core.Entity;
 using DotNetBlog.Web.Middlewares;
 using DotNetBlog.Web.ViewEngines;
 using Microsoft.AspNetCore.Builder;
@@ -67,6 +68,40 @@ namespace DotNetBlog.Web
                         });
                     });
             }
+
+            var authContext = services.AddAuthentication();
+            if (!string.IsNullOrEmpty(Configuration["Authentication:Microsoft:ClientId"]))
+                authContext.AddMicrosoftAccount(microsoftOptions =>
+                {
+                    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
+                    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+                });
+
+            if (!string.IsNullOrEmpty(Configuration["Authentication:Google:ClientId"]))
+                authContext.AddGoogle(options =>
+                {
+                    IConfigurationSection googleAuthNSection =
+                        Configuration.GetSection("Authentication:Google");
+
+                    options.ClientId = googleAuthNSection["ClientId"];
+                    options.ClientSecret = googleAuthNSection["ClientSecret"];
+                });
+
+            if (!string.IsNullOrEmpty(Configuration["Authentication:Google:ClientId"]))
+                authContext.AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                    facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                });
+
+            services
+                .AddDefaultIdentity<User>(options => {
+                    options.SignIn.RequireConfirmedAccount = true;
+                })
+                .AddEntityFrameworkStores<BlogContext>();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddBlogService();
             services.AddAutoMapper();
@@ -139,6 +174,8 @@ namespace DotNetBlog.Web
             app.UseRequestLocalization(options.Value);
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseClientManager();
 
             blogContext.Database.EnsureCreated();
@@ -147,8 +184,13 @@ namespace DotNetBlog.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "areaRoute",
+                    pattern: "{area:exists}/{controller}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
 

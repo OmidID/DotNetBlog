@@ -4,11 +4,11 @@ namespace DotNetBlog.Core.Entity
 {
     public class Comment
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public int TopicID { get; set; }
+        public int TopicId { get; set; }
 
-        public int? ReplyToID { get; set; }
+        public int? ReplyToId { get; set; }
 
         public Enums.CommentStatus Status { get; set; }
 
@@ -26,6 +26,6 @@ namespace DotNetBlog.Core.Entity
 
         public bool NotifyOnComment { get; set; }
 
-        public int? UserID { get; set; }
+        public long? UserId { get; set; }
     }
 }

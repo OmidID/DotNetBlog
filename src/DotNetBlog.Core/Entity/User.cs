@@ -1,21 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DotNetBlog.Core.Entity
 {
-    public class User
+    public class User : IdentityUser<long>
     {
-        public int ID { get; set; }
-
-        public string UserName { get; set; }
-
-        public string Password { get; set; }
-
-        public string Email { get; set; }
-
+        [MaxLength(20)]
         public string Nickname { get; set; }
 
         public DateTime? LoginDate { get; set; }
 
+        [MaxLength(100)]
         public string Avatar { get; set; }
     }
 }

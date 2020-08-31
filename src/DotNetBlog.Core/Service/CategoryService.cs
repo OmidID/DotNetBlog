@@ -46,17 +46,17 @@ namespace DotNetBlog.Core.Service
 
             BlogContext.RemoveCategoryCache();
 
-            return new OperationResult<int>(entity.ID);
+            return new OperationResult<int>(entity.Id);
         }
 
         public async Task<OperationResult> Edit(int id, string name, string description)
         {
-            if (await BlogContext.Categories.AnyAsync(t => t.Name == name && t.ID != id))
+            if (await BlogContext.Categories.AnyAsync(t => t.Name == name && t.Id != id))
             {
                 return OperationResult.Failure(L["Duplicate category name"].Value);
             }
 
-            Category entity = await BlogContext.Categories.SingleOrDefaultAsync(t => t.ID == id);
+            Category entity = await BlogContext.Categories.SingleOrDefaultAsync(t => t.Id == id);
             if (entity == null)
             {
                 return OperationResult.Failure(L["Category does not exists"].Value);
@@ -73,8 +73,8 @@ namespace DotNetBlog.Core.Service
 
         public async Task Remove(int[] idList)
         {
-            List<CategoryTopic> categoryTopics = await BlogContext.CategoryTopics.Where(t => idList.Contains(t.CategoryID)).ToListAsync();
-            List<Category> categories = await BlogContext.Categories.Where(t => idList.Contains(t.ID)).ToListAsync();
+            List<CategoryTopic> categoryTopics = await BlogContext.CategoryTopics.Where(t => idList.Contains(t.CategoryId)).ToListAsync();
+            List<Category> categories = await BlogContext.Categories.Where(t => idList.Contains(t.Id)).ToListAsync();
 
             BlogContext.RemoveRange(categoryTopics);
             BlogContext.RemoveRange(categories);

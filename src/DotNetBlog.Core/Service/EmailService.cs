@@ -71,13 +71,13 @@ namespace DotNetBlog.Core.Service
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress(this.Settings.SmtpEmailAddress, this.Settings.SmtpEmailAddress));
 
-            var user = await this.BlogContext.Users.SingleOrDefaultAsync(t => t.ID == topic.CreateUserID);
+            var user = await this.BlogContext.Users.SingleOrDefaultAsync(t => t.Id == topic.CreateUserId);
             if (user == null || string.IsNullOrWhiteSpace(user.Email))
             {
                 return OperationResult.Failure(L["No email specified"].Value);
             }
 
-            var topicUrl = $"{this.Settings.Host}/topic/{topic.ID}#comment_{comment.ID}";
+            var topicUrl = $"{this.Settings.Host}/topic/{topic.Id}#comment_{comment.Id}";
             message.To.Add(new MailboxAddress(user.Email, user.Email));
             message.Subject = L["[Blog comment notification] Re: {0}", topic.Title].Value;
             message.Body = new TextPart("html")

@@ -10,7 +10,7 @@ namespace DotNetBlog.Core.Data.Mappings
         {
             builder.ToTable("Widget");
 
-            builder.HasKey(t => new { t.ID });
+            builder.HasKey(t => new { t.Id });
 
             builder.Property(t => t.Config).IsRequired();
         }
