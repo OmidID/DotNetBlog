@@ -4,6 +4,8 @@
   <PropertyGroup>
     <AspNetLibrariesVersion>3.1.6</AspNetLibrariesVersion>
     <EfLibrariesVersion>3.1.6</EfLibrariesVersion>
+    <EfMySqlVersion>8.0.21</EfMySqlVersion>
+    <EfNpgSqlVersion>3.1.4</EfNpgSqlVersion>
     <AutoMapperVersion>10.0.0</AutoMapperVersion>
     <NewtonsoftJsonVersion>12.0.3</NewtonsoftJsonVersion>
     <HumanizerVersion>2.8.26</HumanizerVersion>

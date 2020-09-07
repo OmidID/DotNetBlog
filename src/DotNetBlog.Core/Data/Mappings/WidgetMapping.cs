@@ -8,7 +8,7 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<Widget> builder)
         {
-            builder.ToTable("Widget");
+            builder.ToTable("Widgets");
 
             builder.HasKey(t => new { t.Id });
 

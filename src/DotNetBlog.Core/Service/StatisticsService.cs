@@ -1,5 +1,6 @@
 ﻿using DotNetBlog.Core.Data;
 using DotNetBlog.Core.Model.Statistics;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,18 +24,18 @@ namespace DotNetBlog.Core.Service
                 Topics = new Model.Topic.TopicCountModel()
             };
 
-            var topicQuery = this.BlogContext.Topics
-                .ToArray()
+            var topicQuery = (await this.BlogContext.Topics
+                .ToArrayAsync())
                 .GroupBy(t => t.Status)
                 .ToDictionary(t => t.Key, t => t.Count());
 
-            var pageQuery = this.BlogContext.Pages
-                .ToArray()
+            var pageQuery = (await this.BlogContext.Pages
+                .ToArrayAsync())
                 .GroupBy(t => t.Status)
                 .ToDictionary(t => t.Key, t => t.Count());
 
-            var commentQuery = this.BlogContext.Comments
-                .ToArray()
+            var commentQuery = (await this.BlogContext.Comments
+                .ToArrayAsync())
                 .GroupBy(t => t.Status)
                 .ToDictionary(t => t.Key, t => t.Count());
 

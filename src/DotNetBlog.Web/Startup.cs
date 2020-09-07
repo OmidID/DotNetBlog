@@ -48,36 +48,43 @@ namespace DotNetBlog.Web
 
             services.AddMemoryCache();
 
-            string database = this.Configuration["database"];
-            if ("sqlite".Equals(database, StringComparison.CurrentCultureIgnoreCase))
+            if (Configuration["Provider"] == "SQLite")
             {
-                services.AddEntityFrameworkSqlite()
-                    .AddDbContext<Core.Data.BlogContext>(opt =>
-                    {
-                        opt.UseSqlite(this.Configuration["connectionString"], builder => { builder.MigrationsAssembly("DotNetBlog.Web"); });
-                    });
+                services.AddDbContext<BlogContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("SQLite")));
             }
-            else if ("sqlserver".Equals(database, StringComparison.CurrentCultureIgnoreCase))
+            else if (Configuration["Provider"] == "MySQL")
             {
-                services.AddEntityFrameworkSqlServer()
-                    .AddDbContext<Core.Data.BlogContext>(opt =>
-                    {
-                        opt.UseSqlServer(this.Configuration["connectionString"], builder =>
-                        {
-                            builder.MigrationsAssembly("DotNetBlog.Web");
-                        });
-                    });
+                services.AddDbContext<BlogContext>(options =>
+                    options.UseMySQL(Configuration.GetConnectionString("MySQL")));
+            }
+            else if (Configuration["Provider"] == "MSSQL")
+            {
+                services.AddDbContext<BlogContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MSSQL")));
+            }
+            else if (Configuration["Provider"] == "PostgreSQL")
+            {
+                services.AddDbContext<BlogContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
+            }
+            else
+            {
+                throw new ArgumentException("Not a valid database type");
             }
 
             var authContext = services.AddAuthentication();
             if (!string.IsNullOrEmpty(Configuration["Authentication:Microsoft:ClientId"]))
+            {
                 authContext.AddMicrosoftAccount(microsoftOptions =>
                 {
                     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ClientId"];
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
                 });
+            }
 
             if (!string.IsNullOrEmpty(Configuration["Authentication:Google:ClientId"]))
+            {
                 authContext.AddGoogle(options =>
                 {
                     IConfigurationSection googleAuthNSection =
@@ -86,16 +93,20 @@ namespace DotNetBlog.Web
                     options.ClientId = googleAuthNSection["ClientId"];
                     options.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
+            }
 
             if (!string.IsNullOrEmpty(Configuration["Authentication:Google:ClientId"]))
+            {
                 authContext.AddFacebook(facebookOptions =>
                 {
                     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                     facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 });
+            }
 
             services
-                .AddDefaultIdentity<User>(options => {
+                .AddDefaultIdentity<User>(options =>
+                {
                     options.SignIn.RequireConfirmedAccount = true;
                 })
                 .AddEntityFrameworkStores<BlogContext>();
@@ -178,7 +189,7 @@ namespace DotNetBlog.Web
             app.UseAuthorization();
             app.UseClientManager();
 
-            blogContext.Database.EnsureCreated();
+            //blogContext.Database.EnsureCreated();
             blogContext.Database.Migrate();
 
             app.UseEndpoints(endpoints =>

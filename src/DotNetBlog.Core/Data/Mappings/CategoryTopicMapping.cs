@@ -8,7 +8,7 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<CategoryTopic> builder)
         {
-            builder.ToTable("CategoryTopic");
+            builder.ToTable("CategoryTopics");
 
             builder.HasKey(t => new { t.CategoryId, t.TopicId });
             builder.HasOne(t => t.Category).WithMany();

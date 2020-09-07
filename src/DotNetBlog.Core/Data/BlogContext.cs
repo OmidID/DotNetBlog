@@ -6,6 +6,8 @@ using System;
 
 namespace DotNetBlog.Core.Data
 {
+    public class MysqlBlogContext : BlogContext { }
+
     public class BlogContext : IdentityDbContext<User, UserRole, long>
     {
         public virtual DbSet<Setting> Settings { get; set; }
