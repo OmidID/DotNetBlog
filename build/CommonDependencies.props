@@ -8,6 +8,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(AspNetLibrariesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     
     <PackageReference Include="NLog.Extensions.Logging" Version="$(NLogVersion)" />

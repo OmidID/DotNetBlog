@@ -1,12 +1,44 @@
 ﻿using DotNetBlog.Core.Data.Mappings;
 using DotNetBlog.Core.Entity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace DotNetBlog.Core.Data
 {
-    public class MysqlBlogContext : BlogContext { }
+    public class SqlServerBlogContext : BlogContext
+    {
+        public SqlServerBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class PostgreeSqlBlogContext : BlogContext
+    {
+        public PostgreeSqlBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class MySqlBlogContext : BlogContext
+    {
+        public MySqlBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class SqliteBlogContext : BlogContext
+    {
+        public SqliteBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
 
     public class BlogContext : IdentityDbContext<User, UserRole, long>
     {
@@ -30,7 +62,7 @@ namespace DotNetBlog.Core.Data
 
         public IServiceProvider ServiceProvider { get; private set; }
 
-        public BlogContext(DbContextOptions<BlogContext> options, IServiceProvider serviceProvider)
+        public BlogContext(DbContextOptions options, IServiceProvider serviceProvider)
             : base(options)
         {
             ServiceProvider = serviceProvider;
@@ -39,6 +71,16 @@ namespace DotNetBlog.Core.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .Property(p=>p.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
+            modelBuilder.Entity<UserRole>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
 
             modelBuilder.Entity<Setting>(SettingMapping.Map);
             modelBuilder.Entity<Category>(CategoryMapping.Map);

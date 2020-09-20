@@ -48,30 +48,9 @@ namespace DotNetBlog.Web
 
             services.AddMemoryCache();
 
-            if (Configuration["Provider"] == "SQLite")
-            {
-                services.AddDbContext<BlogContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("SQLite")));
-            }
-            else if (Configuration["Provider"] == "MySQL")
-            {
-                services.AddDbContext<BlogContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("MySQL")));
-            }
-            else if (Configuration["Provider"] == "MSSQL")
-            {
-                services.AddDbContext<BlogContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MSSQL")));
-            }
-            else if (Configuration["Provider"] == "PostgreSQL")
-            {
-                services.AddDbContext<BlogContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
-            }
-            else
-            {
-                throw new ArgumentException("Not a valid database type");
-            }
+            services.AddBlogDataContext(Configuration);
+            services.AddBlogService();
+            services.AddAutoMapper();
 
             var authContext = services.AddAuthentication();
             if (!string.IsNullOrEmpty(Configuration["Authentication:Microsoft:ClientId"]))
@@ -113,9 +92,6 @@ namespace DotNetBlog.Web
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-
-            services.AddBlogService();
-            services.AddAutoMapper();
 
             services.Configure<RequestLocalizationOptions>(
                 opts =>

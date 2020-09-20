@@ -1,5 +1,9 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Core.Data;
+using DotNetBlog.Core.Service;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -27,6 +31,37 @@ namespace DotNetBlog.Core
             });
 
             services.AddScoped<ClientManager>();
+        }
+
+        public static void AddBlogDataContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            DbContextOptionsBuilder contextOptions;
+
+            switch (configuration["Provider"])
+            {
+                case "MSSQL":
+                    services.AddDbContext<BlogContext, SqlServerBlogContext>(options =>
+                        contextOptions = options
+                            .UseSqlServer(configuration.GetConnectionString("MSSQL")));
+                    break;
+                case "PostgreSQL":
+                    services.AddDbContext<BlogContext, PostgreeSqlBlogContext>(options =>
+                        contextOptions = options
+                            .UseNpgsql(configuration.GetConnectionString("PostgreSQL")));
+                    break;
+                case "MySQL":
+                    services.AddDbContext<BlogContext, MySqlBlogContext>(options =>
+                        contextOptions = options
+                            .UseMySQL(configuration.GetConnectionString("MySQL")));
+                    break;
+                case "SQLite":
+                    services.AddDbContext<BlogContext, SqliteBlogContext>(options =>
+                        contextOptions = options
+                            .UseSqlite(configuration.GetConnectionString("SQLite")));
+                    break;
+                default:
+                    throw new ArgumentException("Not a valid database type");
+            }
         }
     }
 }
