@@ -88,9 +88,26 @@ namespace DotNetBlog.Core.Service
             return await this.SendEmail(message);
         }
 
-        public async Task<OperationResult> SendReplyEmail(Topic topic, Comment comment, Comment replyTo)
+        public Task<OperationResult> SendReplyEmail(Topic topic, Comment comment, Comment replyTo)
         {
-            return null;
+            return Task.FromResult(new OperationResult());
+        }
+
+        public Task<OperationResult> SendAsync(string to, string subject, string body)
+        {
+            var message = new MimeMessage()
+            {
+                Subject = subject,
+                Body = new TextPart("html")
+                {
+                    Text = body
+                }
+            };
+
+            message.From.Add(new MailboxAddress(this.Settings.SmtpEmailAddress, this.Settings.SmtpEmailAddress));
+            message.To.Add(new MailboxAddress(to, to));
+
+            return SendEmail(message);
         }
 
         private async Task<OperationResult> SendEmail(MimeMessage message)

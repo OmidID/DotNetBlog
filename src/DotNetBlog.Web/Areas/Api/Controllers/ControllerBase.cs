@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 
 namespace DotNetBlog.Web.Areas.Api.Controllers
 {

@@ -14,7 +14,7 @@ namespace DotNetBlog.Web.ViewEngines
         {
             //Cache the Theme and the key for the current session
             var settingService = context.ActionContext.HttpContext.RequestServices.GetService<Core.Service.SettingService>();
-            context.Values[ThemeKey] = settingService.Get().Theme;
+            context.Values[ThemeKey] = settingService.GetAsync().Result.Theme;
         }
 
         public IEnumerable<string> ExpandViewLocations(

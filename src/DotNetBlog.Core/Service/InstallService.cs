@@ -143,6 +143,7 @@ namespace DotNetBlog.Core.Service
             settingModel.Title = model.BlogTitle;
             settingModel.Host = model.BlogHost;
             settingModel.Language = model.Language;
+            settingModel.Registration = false;
 
             var settingList = settingModel.Settings.Select(t => new Setting
             {

@@ -22,7 +22,7 @@ namespace DotNetBlog.Core
 
             services.AddScoped(provider =>
             {
-                return provider.GetService<SettingService>().Get();
+                return provider.GetService<SettingService>().GetAsync().Result;
             });
 
             services.AddScoped(provider =>

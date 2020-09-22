@@ -17,11 +17,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace DotNetBlog.Web
 {
@@ -109,11 +107,12 @@ namespace DotNetBlog.Web
                     opts.SupportedUICultures = supportedCultures;
 
                     //Uncomment for change language by user
-                    opts.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(context =>
+                    opts.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
                     {
                         var settingService = context.RequestServices.GetService<Core.Service.SettingService>();
+                        var setting = await settingService.GetAsync();
                         // My custom request culture logic
-                        return Task.Run(() => new ProviderCultureResult(settingService.Get().Language));
+                        return new ProviderCultureResult(setting.Language);
                     }));
                 });
 

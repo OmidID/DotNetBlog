@@ -1,7 +1,6 @@
 ﻿using DotNetBlog.Core.Data.Mappings;
 using DotNetBlog.Core.Entity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -73,7 +72,7 @@ namespace DotNetBlog.Core.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>()
-                .Property(p=>p.Id)
+                .Property(p => p.Id)
                 .ValueGeneratedOnAdd()
                 .UseIdentityColumn();
 

@@ -1,11 +1,7 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Extensions;
+﻿using DotNetBlog.Core.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DotNetBlog.Core
@@ -18,12 +14,12 @@ namespace DotNetBlog.Core
 
         private string _clientIP;
         public string ClientIP =>
-            _clientIP ?? (_clientIP =
+            _clientIP ??=
                 this.HttpContext
                     .Features
                     .Get<IHttpConnectionFeature>()
                     .RemoteIpAddress
-                    .ToString());
+                    .ToString();
 
         public bool IsLogin =>
             this.CurrentUser != null;

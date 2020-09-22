@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Mvc.ViewEngines
 @inject IWebHostEnvironment Environment
 @inject ICompositeViewEngine Engine
+@inject DotNetBlog.Core.Model.Setting.SettingModel SettingModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" href="~/">DotNetBlog.Web</a>
+                <a class="navbar-brand" href="~/">@SettingModel.Title</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,7 +48,7 @@
     </div>
     <footer class="footer border-top text-muted">
         <div class="container">
-            &copy; 2020 - DotNetBlog.Web - <a asp-area="" asp-page="Privacy">Privacy</a>
+            Copyright © @DateTime.Now.Year <a asp-action="Index" asp-controller="Home">@SettingModel.Title</a> - Powered by <a href="https://github.com/OmidID/DotNetBlog" target="_blank">DotNetBlog</a> @SettingModel.ApplicationVersion
         </div>
     </footer>
     <script src="~/Identity/lib/jquery/dist/jquery.min.js"></script>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Localization;
+using System;
 using System.Collections.Generic;
 
 namespace DotNetBlog.Core.Model.Setting
@@ -29,10 +30,13 @@ namespace DotNetBlog.Core.Model.Setting
         public const string DefaultErrorPageContent = "Request page is wrong please try again later";
         public const string DefaultHeaderScript = "";
         public const string DefaultFooterScript = "";
+        public const bool DefaultRegistration = false;
 
         #endregion
 
-        #region Properties and Constractor
+        #region Properties and Contractor
+
+        private Version _currentVersion;
 
         internal Dictionary<string, string> Settings { get; set; }
 
@@ -44,8 +48,11 @@ namespace DotNetBlog.Core.Model.Setting
             L = localizer;
         }
 
+        public Version ApplicationVersion =>
+            _currentVersion ??= GetType().Assembly.GetName().Version;
+
         /// <summary>
-        /// 博客的URL地址
+        /// URL address of the blog
         /// </summary>
         public string Host
         {
@@ -60,7 +67,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 站点名称
+        /// Site name
         /// </summary>
         public string Title
         {
@@ -75,7 +82,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 站点摘要
+        /// Site summary
         /// </summary>
         public string Description
         {
@@ -118,7 +125,7 @@ namespace DotNetBlog.Core.Model.Setting
             }
         }
         /// <summary>
-        /// 每页文章数
+        /// Articles per page
         /// </summary>
         public int TopicsPerPage
         {
@@ -133,7 +140,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 仅仅显示文章摘要
+        /// Show article summary only
         /// </summary>
         public bool OnlyShowSummary
         {
@@ -148,7 +155,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 发送邮件的Email地址
+        /// Email address for sending mail
         /// </summary>
         public string SmtpEmailAddress
         {
@@ -163,7 +170,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// SMTP服务器
+        /// SMTP server
         /// </summary>
         public string SmtpServer
         {
@@ -178,7 +185,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// SMTP服务器用户名
+        /// SMTP server user name
         /// </summary>
         public string SmtpUser
         {
@@ -193,7 +200,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// SMTP服务器密码
+        /// SMTP server password
         /// </summary>
         public string SmtpPassword
         {
@@ -208,7 +215,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// SMTP服务器端口
+        /// SMTP server port
         /// </summary>
         public int SmtpPort
         {
@@ -223,7 +230,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// SMTP服务器是否使用SSL
+        /// Whether the SMTP server uses SSL
         /// </summary>
         public bool SmtpEnableSSL
         {
@@ -238,7 +245,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 发送评论邮件
+        /// Send comment email
         /// </summary>
         public bool SendEmailWhenComment
         {
@@ -253,7 +260,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 是否允许评论
+        /// Whether to allow comments
         /// </summary>
         public bool AllowComment
         {
@@ -268,7 +275,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 是否审核评论
+        /// Whether to review comments
         /// </summary>
         public bool VerifyComment
         {
@@ -283,7 +290,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 信任通过审核的评论用户
+        /// Trust review users who passed the review
         /// </summary>
         public bool TrustAuthenticatedCommentUser
         {
@@ -298,7 +305,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 在评论中启用网站
+        /// Enable website in comments
         /// </summary>
         public bool EnableCommentWebSite
         {
@@ -313,7 +320,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 自动关闭评论
+        /// Automatically close comments
         /// </summary>
         public int CloseCommentDays
         {
@@ -328,7 +335,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 错误页面标题
+        /// Error page title
         /// </summary>
         public string ErrorPageTitle
         {
@@ -343,7 +350,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 错误页面内容
+        /// Error page content
         /// </summary>
         public string ErrorPageContent
         {
@@ -358,7 +365,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 顶部区域脚本
+        /// Top area script
         /// </summary>
         public string HeaderScript
         {
@@ -373,7 +380,7 @@ namespace DotNetBlog.Core.Model.Setting
         }
 
         /// <summary>
-        /// 底部区域脚本
+        /// Bottom area script
         /// </summary>
         public string FooterScript
         {
@@ -384,6 +391,21 @@ namespace DotNetBlog.Core.Model.Setting
             set
             {
                 SetValue(nameof(FooterScript), value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Enable registration
+        /// </summary>
+        public bool Registration
+        {
+            get
+            {
+                return GetBooleanValue(nameof(Registration), DefaultRegistration);
+            }
+            set
+            {
+                SetValue(nameof(Registration), value.ToString());
             }
         }
 

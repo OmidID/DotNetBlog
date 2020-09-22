@@ -41,33 +41,33 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
         }
 
         [HttpGet("basic")]
-        public IActionResult GetBasicConfig()
+        public async Task<IActionResult> GetBasicConfig()
         {
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             var model = _mapper.Map<BasicConfigModel>(config);
 
             return Success(model);
         }
 
         [HttpPost("basic")]
-        public async Task<IActionResult> SaveBasicConfig([FromBody] BasicConfigModel model)
+        public Task<IActionResult> SaveBasicConfig([FromBody] BasicConfigModel model)
         {
-            return await this.SaveConfig(model);
+            return this.SaveConfigAsync(model);
         }
 
         [HttpGet("email")]
-        public IActionResult GetEmailConfig()
+        public async Task<IActionResult> GetEmailConfig()
         {
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             var model = _mapper.Map<EmailConfigModel>(config);
 
             return Success(model);
         }
 
         [HttpPost("email")]
-        public async Task<IActionResult> SaveEmailConfig([FromBody] EmailConfigModel model)
+        public Task<IActionResult> SaveEmailConfig([FromBody] EmailConfigModel model)
         {
-            return await this.SaveConfig(model);
+            return this.SaveConfigAsync(model);
         }
 
         [HttpPost("email/test")]
@@ -101,44 +101,44 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
         }
 
         [HttpGet("comment")]
-        public IActionResult GetCommentConfig()
+        public async Task<IActionResult> GetCommentConfig()
         {
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             var model = _mapper.Map<CommentConfigModel>(config);
 
             return Success(model);
         }
 
         [HttpPost("comment")]
-        public async Task<IActionResult> SaveCommentConfig([FromBody] CommentConfigModel model)
+        public Task<IActionResult> SaveCommentConfig([FromBody] CommentConfigModel model)
         {
-            return await this.SaveConfig(model);
+            return this.SaveConfigAsync(model);
         }
 
         [HttpGet("advance")]
-        public IActionResult GetAdvanceConfig()
+        public async Task<IActionResult> GetAdvanceConfig()
         {
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             var model = _mapper.Map<AdvanceConfigModel>(config);
 
             return Success(model);
         }
 
         [HttpPost("advance")]
-        public async Task<IActionResult> SaveAdvanceConfig([FromBody] AdvanceConfigModel model)
+        public Task<IActionResult> SaveAdvanceConfig([FromBody] AdvanceConfigModel model)
         {
-            return await this.SaveConfig(model);
+            return this.SaveConfigAsync(model);
         }
 
         [NonAction]
-        private async Task<IActionResult> SaveConfig(object model)
+        private async Task<IActionResult> SaveConfigAsync(object model)
         {
             if (model == null)
             {
                 return InvalidRequest();
             }
 
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             _mapper.Map(model, config);
 
             await SettingService.Save(config);
