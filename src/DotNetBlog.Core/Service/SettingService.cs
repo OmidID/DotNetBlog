@@ -57,11 +57,14 @@ namespace DotNetBlog.Core.Service
                 BlogContext.RemoveRange(settings);
                 await BlogContext.SaveChangesAsync();
 
-                var entityList = model.Settings.Select(t => new Setting
-                {
-                    Key = t.Key,
-                    Value = t.Value
-                });
+                var entityList = model
+                    .Settings
+                    .Where(w => w.Value != null)
+                    .Select(t => new Setting
+                    {
+                        Key = t.Key,
+                        Value = t.Value
+                    });
                 BlogContext.AddRange(entityList);
 
                 await BlogContext.SaveChangesAsync();

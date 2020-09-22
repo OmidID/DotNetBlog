@@ -121,6 +121,7 @@ const Localization = new LocalizedStrings({
         blogAddress: "Blog address",
         numberOfArticlesPerPage: "Number of articles per page",
         showOnlyArticleSummary: "Show only article summary",
+        registration: "Registration",
         never: "Never",
         numericDay: {
             1: "a day",
@@ -284,6 +285,7 @@ const Localization = new LocalizedStrings({
         blogAddress: "博客地址",
         numberOfArticlesPerPage: "每页文章数",
         showOnlyArticleSummary: "仅显示文章摘要",
+        registration: "注册",
         never: "从不",
         numericDay: {
             default: "{0}天"
