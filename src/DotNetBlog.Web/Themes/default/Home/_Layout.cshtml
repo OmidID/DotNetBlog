@@ -1,5 +1,7 @@
-﻿@inject SettingModel settingModel
+﻿@using Microsoft.AspNetCore.Authorization
+@inject SettingModel settingModel
 @inject ClientManager clientManager
+@inject IAuthorizationService AuthorizationService
 @inject IViewLocalizer L
 
 <!DOCTYPE html>
@@ -31,12 +33,11 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav ">
                         <li><a asp-action="Index" asp-controller="Home">@L["Home"]</a></li>
-                        @*<li><a href="http://localhost:10002/archive">@L["Archive"]</a></li>
-                            <li><a href="http://localhost:10002/contact">@L["Contacts"]</a></li>*@
-
                         @await Component.InvokeAsync("PageListNav")
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/admin#/dashboard" condition="clientManager.IsLogin && (await AuthorizationService.AuthorizeAsync(User, Policies.AdminAccess)).Succeeded">@L["Dashboard"]</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" condition="clientManager.IsLogin">@User.Identity.Name</a></li>
                         <li><a asp-area="Identity" asp-action="Logout" asp-controller="Account" condition="clientManager.IsLogin">@L["Logout"]</a></li>
                         <li><a asp-area="Identity" asp-action="Register" asp-controller="Account" condition="(!clientManager.IsLogin && settingModel.Registration)">@L["Register"]</a></li>
                         <li><a asp-area="Identity" asp-action="Login" asp-controller="Account" condition="!clientManager.IsLogin">@L["Login"]</a></li>

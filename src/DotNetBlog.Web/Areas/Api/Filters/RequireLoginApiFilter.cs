@@ -5,11 +5,11 @@ using System.Net;
 
 namespace DotNetBlog.Web.Areas.Api.Filters
 {
-    public class RequireLoginApiFilter : DotNetBlog.Web.Filters.RequireLoginFilter
+    public class RequireLoginApiFilterAttribute : Web.Filters.RequireLoginFilterAttribute
     {
         protected override void HandleUnauthorizedRequest(ActionExecutingContext context)
         {
-            var L = context.HttpContext.RequestServices.GetService<IHtmlLocalizer<RequireLoginApiFilter>>();
+            var L = context.HttpContext.RequestServices.GetService<IHtmlLocalizer<RequireLoginApiFilterAttribute>>();
             var controller = context.Controller as Controllers.ControllerBase;
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             context.Result = controller.Error(L["Please sign in"].Value);

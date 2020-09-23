@@ -6,7 +6,7 @@ using System.Net;
 
 namespace DotNetBlog.Web.Filters
 {
-    public class RequireLoginFilter : ActionFilterAttribute
+    public class RequireLoginFilterAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {

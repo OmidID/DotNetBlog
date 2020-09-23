@@ -10,7 +10,7 @@ namespace DotNetBlog.Web
 {
     public static class AutoMapperConfig
     {
-        public static void AddAutoMapper(this IServiceCollection services)
+        public static IServiceCollection AddAutoMapper(this IServiceCollection services)
         {
             var mapperConfig = new MapperConfiguration(config =>
             {
@@ -32,6 +32,8 @@ namespace DotNetBlog.Web
 
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton<IMapper>(mapper);
+
+            return services;
         }
     }
 }

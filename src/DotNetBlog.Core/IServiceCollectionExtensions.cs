@@ -11,7 +11,7 @@ namespace DotNetBlog.Core
 {
     public static class IServiceCollectionExtensions
     {
-        public static void AddBlogService(this IServiceCollection services)
+        public static IServiceCollection AddBlogService(this IServiceCollection services)
         {
             var assembly = typeof(IServiceCollectionExtensions).GetTypeInfo().Assembly;
             var serviceList = assembly.DefinedTypes.Where(t => t.Name.EndsWith("Service") && t.Namespace == "DotNetBlog.Core.Service").ToList();
@@ -31,9 +31,11 @@ namespace DotNetBlog.Core
             });
 
             services.AddScoped<ClientManager>();
+
+            return services;
         }
 
-        public static void AddBlogDataContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddBlogDataContext(this IServiceCollection services, IConfiguration configuration)
         {
             DbContextOptionsBuilder contextOptions;
 
@@ -62,6 +64,8 @@ namespace DotNetBlog.Core
                 default:
                     throw new ArgumentException("Not a valid database type");
             }
+
+            return services;
         }
     }
 }

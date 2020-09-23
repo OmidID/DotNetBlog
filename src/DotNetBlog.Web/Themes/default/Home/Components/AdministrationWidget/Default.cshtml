@@ -1,10 +1,12 @@
-﻿@inject ClientManager clientManager
+﻿@using Microsoft.AspNetCore.Authorization
+@inject ClientManager clientManager
 @inject IViewLocalizer L
-@{ 
+@inject IAuthorizationService AuthorizationService
+@{
     var config = ViewBag.Config as AdministrationWidgetConfigModel;
 }
 
-<visible condition="clientManager.IsLogin">
+<visible condition="clientManager.IsLogin && (await AuthorizationService.AuthorizeAsync(User, Policies.AdminAccess)).Succeeded">
     <div class="Widget widget administration">
         <h4 class="WidgetHeader widget-header">@config.Title</h4>
         <div class="WidgetContent widget-content">
