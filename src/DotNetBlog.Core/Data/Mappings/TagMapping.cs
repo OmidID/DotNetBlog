@@ -8,12 +8,12 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<Tag> builder)
         {
-            builder.ToTable("Tag");
+            builder.ToTable("Tags");
 
             builder.HasIndex(t => t.Keyword).IsUnique();
 
-            builder.HasKey(t => t.ID);
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.HasKey(t => t.Id);
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseIdentityColumn();
             builder.Property(t => t.Keyword).IsRequired().HasMaxLength(100);
         }
     }

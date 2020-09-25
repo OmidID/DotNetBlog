@@ -8,7 +8,7 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<Setting> builder)
         {
-            builder.ToTable("Setting");
+            builder.ToTable("Settings");
 
             builder.HasKey(t => t.Key);
 

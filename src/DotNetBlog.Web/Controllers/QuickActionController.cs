@@ -27,34 +27,34 @@ namespace DotNetBlog.Web.Controllers
                 return this.NotFound();
             }
 
-            return this.RedirectToAction("Topic", "Home", new { id = commentModel.TopicID });
+            return this.RedirectToAction("Topic", "Home", new { id = commentModel.TopicId });
         }
 
-        [HttpGet("topic/{topicID:int}/approvecomments")]
-        public async Task<IActionResult> ApproveComments(int topicID)
+        [HttpGet("topic/{topicId:int}/approvecomments")]
+        public async Task<IActionResult> ApproveComments(int topicId)
         {
-            await this.CommentService.ApprovePendingComments(topicID);
+            await this.CommentService.ApprovePendingComments(topicId);
 
-            return this.RedirectToAction("Topic", "Home", new { id = topicID });
+            return this.RedirectToAction("Topic", "Home", new { id = topicId });
         }
 
-        [HttpGet("comment/{commentID:int}/approve")]
-        public async Task<IActionResult> ApproveComment(int commentID)
+        [HttpGet("comment/{commentId:int}/approve")]
+        public async Task<IActionResult> ApproveComment(int commentId)
         {
-            var comment = await this.CommentService.ApproveComment(commentID);
+            var comment = await this.CommentService.ApproveComment(commentId);
 
             if (comment == null)
             {
                 return NotFound();
             }
 
-            return this.RedirectToAction("Topic", "Home", new { id = comment.TopicID });
+            return this.RedirectToAction("Topic", "Home", new { id = comment.TopicId });
         }
 
-        [HttpGet("topic/{topicID:int}/delete")]
-        public async Task<IActionResult> DeleteTopic(int topicID)
+        [HttpGet("topic/{topicId:int}/delete")]
+        public async Task<IActionResult> DeleteTopic(int topicId)
         {
-            await this.TopicService.BatchUpdateStatus(new int[] { topicID }, Core.Enums.TopicStatus.Trash);
+            await this.TopicService.BatchUpdateStatus(new int[] { topicId }, Core.Enums.TopicStatus.Trash);
 
             return this.RedirectToAction("Index", "Home");
         }

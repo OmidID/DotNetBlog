@@ -65,7 +65,7 @@ namespace DotNetBlog.Web.Controllers
         [HttpGet("category/{id:int}/{page:int?}")]
         public async Task<IActionResult> Category([FromServices] CategoryService categoryService, int id, int page = 1)
         {
-            var category = (await categoryService.All()).SingleOrDefault(t => t.ID == id);
+            var category = (await categoryService.All()).SingleOrDefault(t => t.Id == id);
 
             if (category == null)
             {
@@ -75,7 +75,7 @@ namespace DotNetBlog.Web.Controllers
             ViewBag.Title = L["Category: {0}", category.Name];
 
             int pageSize = SettingModel.TopicsPerPage;
-            var topicList = await TopicService.QueryByCategory(page, pageSize, category.ID);
+            var topicList = await TopicService.QueryByCategory(page, pageSize, category.Id);
 
             var vm = new CategoryPageViewModel
             {
@@ -230,7 +230,7 @@ namespace DotNetBlog.Web.Controllers
             var prevTopic = await TopicService.GetPrev(topic);
             var nextTopic = await TopicService.GetNext(topic);
             var relatedTopicList = await TopicService.QueryRelated(topic);
-            var commentList = await commentService.QueryByTopic(topic.ID);
+            var commentList = await commentService.QueryByTopic(topic.Id);
 
             var vm = new TopicPageViewModel
             {
@@ -275,7 +275,7 @@ namespace DotNetBlog.Web.Controllers
                 return this.Notice(new NoticePageViewModel
                 {
                     Message = L["Invalid request, please try again later"].Value,
-                    RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicID }),
+                    RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicId }),
                     MessageType = NoticePageViewModel.NoticeMessageType.Error
                 });
             }
@@ -292,7 +292,7 @@ namespace DotNetBlog.Web.Controllers
                     return this.Notice(new NoticePageViewModel
                     {
                         Message = L["Your comment has been added successfully and requires an administrator to approve it before it can be displayed"].Value,
-                        RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicID }),
+                        RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicId }),
                         MessageType = NoticePageViewModel.NoticeMessageType.Success
                     });
                 }
@@ -302,12 +302,12 @@ namespace DotNetBlog.Web.Controllers
                 return this.Notice(new NoticePageViewModel
                 {
                     Message = result.ErrorMessage,
-                    RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicID }),
+                    RedirectUrl = Url.Action("Topic", "Home", new { id = model.TopicId }),
                     MessageType = NoticePageViewModel.NoticeMessageType.Error
                 });
             }
 
-            return this.RedirectToAction("Topic", "Home", new { id = result.Data.TopicID });
+            return this.RedirectToAction("Topic", "Home", new { id = result.Data.TopicId });
         }
 
         [NonAction]

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
+using System.Threading.Tasks;
 
 namespace DotNetBlog.Web.Controllers
 {
@@ -39,7 +40,7 @@ namespace DotNetBlog.Web.Controllers
 
         [HttpPost("install")]
         [ValidateAntiForgeryToken]
-        public IActionResult Index([FromForm] InstallModel model)
+        public async Task<IActionResult> Index([FromForm] InstallModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +49,7 @@ namespace DotNetBlog.Web.Controllers
                 return this.View(vm);
             }
 
-            var result = this.InstallService.TryInstall(model);
+            var result = await InstallService.TryInstallAsync(model);
             if (result.Success)
             {
                 return RedirectToAction("Index", "Home");

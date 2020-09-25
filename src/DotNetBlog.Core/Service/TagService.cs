@@ -52,7 +52,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task Delete(int[] idList)
         {
-            var entityList = await this.BlogContext.Tags.Where(t => idList.Contains(t.ID)).ToListAsync();
+            var entityList = await this.BlogContext.Tags.Where(t => idList.Contains(t.Id)).ToListAsync();
             this.BlogContext.RemoveRange(entityList);
             await this.BlogContext.SaveChangesAsync();
 
@@ -62,12 +62,12 @@ namespace DotNetBlog.Core.Service
         public async Task<OperationResult> Edit(int id, string keyword)
         {
             var all = await this.All();
-            if (all.Any(t => t.Keyword == keyword && t.ID != id))
+            if (all.Any(t => t.Keyword == keyword && t.Id != id))
             {
                 return OperationResult.Failure(L["The label name is duplicated"].Value);
             }
 
-            var entity = await this.BlogContext.Tags.SingleOrDefaultAsync(t => t.ID == id);
+            var entity = await this.BlogContext.Tags.SingleOrDefaultAsync(t => t.Id == id);
 
             if (entity == null)
             {

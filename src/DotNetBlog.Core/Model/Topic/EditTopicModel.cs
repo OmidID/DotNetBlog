@@ -2,6 +2,6 @@
 {
     public class EditTopicModel : AddTopicModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
 }

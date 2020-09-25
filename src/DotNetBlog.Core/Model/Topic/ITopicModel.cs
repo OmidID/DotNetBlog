@@ -2,7 +2,7 @@
 {
     public interface ITopicModel
     {
-        int ID { get; }
+        int Id { get; }
 
         string Title { get; }
 

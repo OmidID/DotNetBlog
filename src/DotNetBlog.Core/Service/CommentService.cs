@@ -51,7 +51,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<OperationResult<CommentModel>> Add(AddCommentModel model)
         {
-            var topic = await BlogContext.Topics.SingleOrDefaultAsync(t => t.ID == model.TopicID);
+            var topic = await BlogContext.Topics.SingleOrDefaultAsync(t => t.Id == model.TopicId);
             if (topic == null || topic.Status != Enums.TopicStatus.Published)
             {
                 return OperationResult<CommentModel>.Failure(L["Article does not exists"].Value);
@@ -66,14 +66,14 @@ namespace DotNetBlog.Core.Service
             Comment replyEntity = null;
             if (model.ReplyTo.HasValue)
             {
-                replyEntity = await BlogContext.Comments.SingleOrDefaultAsync(t => t.ID == model.ReplyTo.Value);
+                replyEntity = await BlogContext.Comments.SingleOrDefaultAsync(t => t.Id == model.ReplyTo.Value);
 
                 if (replyEntity == null || replyEntity.Status != Enums.CommentStatus.Approved)
                 {
                     return OperationResult<CommentModel>.Failure(L["Reply to comment not available"].Value);
                 }
 
-                if (replyEntity.TopicID != model.TopicID)
+                if (replyEntity.TopicId != model.TopicId)
                 {
                     return OperationResult<CommentModel>.Failure(L["Wrong reply object"].Value);
                 }
@@ -105,10 +105,10 @@ namespace DotNetBlog.Core.Service
                 Email = model.Email,
                 Name = model.Name,
                 NotifyOnComment = model.NotifyOnComment,
-                ReplyToID = model.ReplyTo,
-                TopicID = model.TopicID.Value,
+                ReplyToId = model.ReplyTo,
+                TopicId = model.TopicId.Value,
                 Status = status,
-                UserID = this.ClientManager.CurrentUser?.ID,
+                UserId = this.ClientManager.CurrentUser?.Id,
                 WebSite = model.WebSite
             };
 
@@ -124,7 +124,7 @@ namespace DotNetBlog.Core.Service
         private async void SendEmail(Topic topic, Comment replyEntity, Comment entity)
         {
             await this.EmailService.SendCommentEmail(topic, entity);
-            if (entity.Status == Enums.CommentStatus.Approved && entity.ReplyToID.HasValue && replyEntity.NotifyOnComment)
+            if (entity.Status == Enums.CommentStatus.Approved && entity.ReplyToId.HasValue && replyEntity.NotifyOnComment)
             {
                 await this.EmailService.SendReplyEmail(topic, entity, replyEntity);
             }
@@ -132,7 +132,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<OperationResult<CommentModel>> DirectlyReply(int replyTo, string content)
         {
-            Comment comment = await BlogContext.Comments.SingleOrDefaultAsync(t => t.ID == replyTo);
+            Comment comment = await BlogContext.Comments.SingleOrDefaultAsync(t => t.Id == replyTo);
 
             if (comment == null)
             {
@@ -146,10 +146,10 @@ namespace DotNetBlog.Core.Service
                 CreateIP = this.ClientManager.ClientIP,
                 Email = this.ClientManager.CurrentUser.Email,
                 Name = this.ClientManager.CurrentUser.Nickname,
-                ReplyToID = replyTo,
+                ReplyToId = replyTo,
                 Status = Enums.CommentStatus.Approved,
-                TopicID = comment.TopicID,
-                UserID = this.ClientManager.CurrentUser.ID
+                TopicId = comment.TopicId,
+                UserId = this.ClientManager.CurrentUser.Id
             };
 
             this.BlogContext.Add(entity);
@@ -159,9 +159,9 @@ namespace DotNetBlog.Core.Service
             return new OperationResult<CommentModel>(commentModel);
         }
 
-        public async Task<List<CommentModel>> QueryByTopic(int topicID)
+        public async Task<List<CommentModel>> QueryByTopic(int topicId)
         {
-            var query = BlogContext.Comments.AsNoTracking().Where(t => t.TopicID == topicID);
+            var query = BlogContext.Comments.AsNoTracking().Where(t => t.TopicId == topicId);
             if (ClientManager.IsLogin)
             {
                 query = query.Where(t => t.Status == Enums.CommentStatus.Pending || t.Status == Enums.CommentStatus.Approved);
@@ -190,7 +190,7 @@ namespace DotNetBlog.Core.Service
 
             int total = await query.CountAsync();
 
-            query = query.OrderByDescending(t => t.ID)
+            query = query.OrderByDescending(t => t.Id)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize);
 
@@ -203,7 +203,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task BathUpdateStatus(int[] idList, Enums.CommentStatus status)
         {
-            var entityList = await this.BlogContext.Comments.Where(t => idList.Contains(t.ID)).ToListAsync();
+            var entityList = await this.BlogContext.Comments.Where(t => idList.Contains(t.Id)).ToListAsync();
             foreach (var entity in entityList)
             {
                 entity.Status = status;
@@ -214,18 +214,18 @@ namespace DotNetBlog.Core.Service
 
         public async Task BatchDelete(int[] idList)
         {
-            int?[] deleteIDList = idList.Cast<int?>().ToArray();
+            int?[] deleteIdList = idList.Cast<int?>().ToArray();
 
             using (var tran = this.BlogContext.Database.BeginTransaction())
             {
-                var entityList = await this.BlogContext.Comments.Where(t => deleteIDList.Contains(t.ID)).ToListAsync();
+                var entityList = await this.BlogContext.Comments.Where(t => deleteIdList.Contains(t.Id)).ToListAsync();
                 this.BlogContext.RemoveRange(entityList);
                 await this.BlogContext.SaveChangesAsync();
 
-                var childReplyList = await this.BlogContext.Comments.Where(t => deleteIDList.Contains(t.ReplyToID)).ToListAsync();
+                var childReplyList = await this.BlogContext.Comments.Where(t => deleteIdList.Contains(t.ReplyToId)).ToListAsync();
                 foreach (var entity in childReplyList)
                 {
-                    entity.ReplyToID = null;
+                    entity.ReplyToId = null;
                 }
                 await this.BlogContext.SaveChangesAsync();
 
@@ -235,7 +235,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<CommentModel> Delete(int id, bool deleteChild)
         {
-            var entity = await this.BlogContext.Comments.SingleOrDefaultAsync(t => t.ID == id);
+            var entity = await this.BlogContext.Comments.SingleOrDefaultAsync(t => t.Id == id);
             if (entity == null)
             {
                 return null;
@@ -247,18 +247,18 @@ namespace DotNetBlog.Core.Service
 
             if (deleteChild)
             {
-                var allCommentList = await this.BlogContext.Comments.Where(t => t.TopicID == entity.TopicID).ToListAsync();
-                var idList = this.GetChildCommentIDList(allCommentList, entity.ID);
+                var allCommentList = await this.BlogContext.Comments.Where(t => t.TopicId == entity.TopicId).ToListAsync();
+                var idList = this.GetChildCommentIdList(allCommentList, entity.Id);
 
-                var deleteEntityList = allCommentList.Where(t => idList.Contains(t.ID)).ToList();
+                var deleteEntityList = allCommentList.Where(t => idList.Contains(t.Id)).ToList();
                 this.BlogContext.Comments.RemoveRange(deleteEntityList);
             }
             else
             {
-                var replyEntityList = await this.BlogContext.Comments.Where(t => t.ReplyToID == entity.ID).ToListAsync();
+                var replyEntityList = await this.BlogContext.Comments.Where(t => t.ReplyToId == entity.Id).ToListAsync();
                 foreach (var replyEntity in replyEntityList)
                 {
-                    replyEntity.ReplyToID = null;
+                    replyEntity.ReplyToId = null;
                 }
             }
 
@@ -267,9 +267,9 @@ namespace DotNetBlog.Core.Service
             return result;
         }
 
-        public async Task ApprovePendingComments(int topicID)
+        public async Task ApprovePendingComments(int topicId)
         {
-            var entityList = await this.BlogContext.Comments.Where(t => t.TopicID == topicID && t.Status == Enums.CommentStatus.Pending).ToListAsync();
+            var entityList = await this.BlogContext.Comments.Where(t => t.TopicId == topicId && t.Status == Enums.CommentStatus.Pending).ToListAsync();
 
             foreach (var entity in entityList)
             {
@@ -281,7 +281,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<CommentModel> ApproveComment(int id)
         {
-            var entity = await this.BlogContext.Comments.SingleOrDefaultAsync(t => t.ID == id && t.Status == Enums.CommentStatus.Pending);
+            var entity = await this.BlogContext.Comments.SingleOrDefaultAsync(t => t.Id == id && t.Status == Enums.CommentStatus.Pending);
 
             if (entity == null)
             {
@@ -300,7 +300,7 @@ namespace DotNetBlog.Core.Service
             var result = await this.Cache.RetriveCacheAsync(cacheKey, async () =>
             {
                 var entityList = await this.BlogContext.Comments.AsNoTracking().Where(t => t.Status == Enums.CommentStatus.Approved)
-                .OrderByDescending(t => t.ID)
+                .OrderByDescending(t => t.Id)
                 .Take(count)
                 .ToListAsync();
 
@@ -309,20 +309,20 @@ namespace DotNetBlog.Core.Service
                     return new List<CommentItemModel>();
                 }
 
-                var topicIDList = entityList.Select(t => t.TopicID).ToArray();
+                var topicIdList = entityList.Select(t => t.TopicId).ToArray();
                 var topicList = await this.BlogContext.Topics
-                    .Where(t => topicIDList.Contains(t.ID))
+                    .Where(t => topicIdList.Contains(t.Id))
                     .Select(t => new TopicBasicModel
                     {
-                        ID = t.ID,
+                        Id = t.Id,
                         Title = t.Title,
                         Alias = t.Alias
                     }).ToListAsync();
-                var topicComments = await this.BlogContext.Comments.AsNoTracking().Where(t => topicIDList.Contains(t.TopicID))
-                    .GroupBy(t => t.TopicID)
+                var topicComments = await this.BlogContext.Comments.AsNoTracking().Where(t => topicIdList.Contains(t.TopicId))
+                    .GroupBy(t => t.TopicId)
                     .Select(g => new
                     {
-                        TopicID = g.Key,
+                        TopicId = g.Key,
                         Total = g.Count(),
                         Approved = BlogContext.Comments.Where(t => t.Status == Enums.CommentStatus.Approved).Count(),
                         Pending = BlogContext.Comments.Where(t => t.Status == Enums.CommentStatus.Pending).Count(),
@@ -333,21 +333,21 @@ namespace DotNetBlog.Core.Service
                 {
                     var commentModel = new CommentItemModel
                     {
-                        ID = entity.ID,
+                        Id = entity.Id,
                         Name = entity.Name,
                         Content = entity.Content
                     };
 
-                    var topic = topicList.SingleOrDefault(t => t.ID == entity.TopicID);
+                    var topic = topicList.SingleOrDefault(t => t.Id == entity.TopicId);
                     commentModel.Topic = new TopicBasicModel
                     {
-                        ID = topic.ID,
+                        Id = topic.Id,
                         Title = topic.Title,
                         Alias = topic.Alias,
                         Comments = new CommentCountModel()
                     };
 
-                    var commentCount = topicComments.SingleOrDefault(t => t.TopicID == entity.TopicID);
+                    var commentCount = topicComments.SingleOrDefault(t => t.TopicId == entity.TopicId);
                     if (commentCount != null)
                     {
                         commentModel.Topic.Comments.Approved = commentCount.Approved;
@@ -367,11 +367,11 @@ namespace DotNetBlog.Core.Service
 
         private List<CommentModel> Transform(params Comment[] entityList)
         {
-            var userIDList = entityList.Where(t => t.UserID.HasValue).Select(t => t.UserID.Value).ToList();
-            var userList = this.BlogContext.QueryUserFromCache().Where(t => userIDList.Contains(t.ID)).ToList();
+            var userIdList = entityList.Where(t => t.UserId.HasValue).Select(t => t.UserId.Value).ToList();
+            var userList = this.BlogContext.QueryUserFromCache().Where(t => userIdList.Contains(t.Id)).ToList();
 
             var result = from comment in entityList
-                         join user in userList on comment.UserID equals user.ID into u
+                         join user in userList on comment.UserId equals user.Id into u
                          from user in u.DefaultIfEmpty()
                          select new CommentModel
                          {
@@ -379,17 +379,17 @@ namespace DotNetBlog.Core.Service
                              CreateDate = comment.CreateDate,
                              CreateIP = comment.CreateIP,
                              Email = comment.Email,
-                             ID = comment.ID,
+                             Id = comment.Id,
                              Name = comment.Name,
-                             ReplyToID = comment.ReplyToID,
+                             ReplyToId = comment.ReplyToId,
                              Status = comment.Status,
-                             TopicID = comment.TopicID,
+                             TopicId = comment.TopicId,
                              WebSite = comment.WebSite,
                              User = user != null ? new CommentModel.UserModel
                              {
                                  Nickname = user.Nickname,
                                  Email = user.Email,
-                                 ID = user.ID,
+                                 Id = user.Id,
                                  UserName = user.UserName
                              } : null
                          };
@@ -397,15 +397,15 @@ namespace DotNetBlog.Core.Service
             return result.ToList();
         }
 
-        private List<int> GetChildCommentIDList(List<Comment> entityList, int parent)
+        private List<int> GetChildCommentIdList(List<Comment> entityList, int parent)
         {
             List<int> result = new List<int>();
             result.Add(parent);
 
-            var children = entityList.Where(t => t.ReplyToID == parent).ToList();
+            var children = entityList.Where(t => t.ReplyToId == parent).ToList();
             foreach (var child in children)
             {
-                result.AddRange(this.GetChildCommentIDList(entityList, child.ID));
+                result.AddRange(this.GetChildCommentIdList(entityList, child.Id));
             }
 
             return result;

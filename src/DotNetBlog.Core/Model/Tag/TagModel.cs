@@ -4,7 +4,7 @@ namespace DotNetBlog.Core.Model.Tag
 {
     public class TagModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string Keyword { get; set; }
 

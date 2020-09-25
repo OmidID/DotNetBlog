@@ -6,6 +6,7 @@ using DotNetBlog.Core.Model.Install;
 using DotNetBlog.Core.Model.Setting;
 using DotNetBlog.Core.Model.Widget;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
@@ -13,18 +14,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBlog.Core.Service
 {
     public class InstallService
     {
-        private static object _sync = new object();
+        private static SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
         private static bool? _cacheOfNeedToInstall;
 
         private BlogContext BlogContext { get; set; }
         private TopicService TopicService { get; set; }
         public CommentService CommentService { get; }
         public ClientManager ClientManager { get; }
+        private UserManager<User> UserManager { get; }
+        public RoleManager<UserRole> RoleManager { get; }
         private IServiceProvider ServiceProvider { get; set; }
         private IStringLocalizer<WidgetConfigModelBase> WidgetLocalizer { get; set; }
         private IStringLocalizer<InstallService> InstallLocalizer { get; set; }
@@ -35,6 +40,8 @@ namespace DotNetBlog.Core.Service
             TopicService topicService,
             CommentService commentService,
             ClientManager clientManager,
+            UserManager<User> userManager,
+            RoleManager<UserRole> roleManager,
             IStringLocalizer<WidgetConfigModelBase> widgetLocalizer,
             IServiceProvider serviceProvider,
             IOptions<RequestLocalizationOptions> requestLocalizationOptions,
@@ -45,6 +52,8 @@ namespace DotNetBlog.Core.Service
             TopicService = topicService;
             CommentService = commentService;
             ClientManager = clientManager;
+            UserManager = userManager;
+            RoleManager = roleManager;
             WidgetLocalizer = widgetLocalizer;
             ServiceProvider = serviceProvider;
             RequestLocalizationOptions = requestLocalizationOptions;
@@ -57,31 +66,41 @@ namespace DotNetBlog.Core.Service
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public OperationResult TryInstall(InstallModel model)
+        public async Task<OperationResult> TryInstallAsync(InstallModel model)
         {
-            if (!RequestLocalizationOptions.Value.SupportedCultures.Any(t => t.Name.Equals(model.Language)))
-            {
-                return OperationResult.Failure(InstallLocalizer["Not supported language"]);
-            }
+            await _lock.WaitAsync();
 
-            lock (_sync)
+            try
             {
+                if (!RequestLocalizationOptions.Value.SupportedCultures.Any(t => t.Name.Equals(model.Language)))
+                {
+                    return OperationResult.Failure(InstallLocalizer["Not supported language"]);
+                }
+
                 if (!NeedToInstall())
                 {
                     return OperationResult.Failure(InstallLocalizer["Blog has been already installed"]);
                 }
                 else
                 {
+                    using var transaction = BlogContext.Database.BeginTransaction();
+
                     //1. Add admin user
-                    AddAdminUser(model);
+                    var result = await AddAdminUserAsync(model);
+                    if (!result.Success)
+                        return result;
 
                     //2. Setup default settings
-                    AddSettings(model);
+                    result = await AddSettingsAsync(model);
+                    if (!result.Success)
+                        return result;
 
                     //3. Setup widgets
-                    AddWidgets(model);
+                    result = await AddWidgetsAsync(model);
+                    if (!result.Success)
+                        return result;
 
-                    this.BlogContext.SaveChanges();
+                    await BlogContext.SaveChangesAsync();
 
                     //Clear settings cache
                     SettingService settingService = ServiceProvider.GetService<SettingService>();
@@ -92,12 +111,20 @@ namespace DotNetBlog.Core.Service
                     widgetService.RemoveCache();
 
                     //4. Add topic
-                    AddSampleTopic(model);
+                    result = await AddSampleTopicAsync(model);
+                    if (!result.Success)
+                        return result;
 
                     _cacheOfNeedToInstall = false;
 
+                    await transaction.CommitAsync();
+
                     return new OperationResult();
                 }
+            }
+            finally
+            {
+                _lock.Release();
             }
         }
 
@@ -112,29 +139,51 @@ namespace DotNetBlog.Core.Service
         /// Add admin user
         /// </summary>
         /// <param name="model"></param>
-        private void AddAdminUser(InstallModel model)
+        private async Task<OperationResult> AddAdminUserAsync(InstallModel model)
         {
-            var user = new User
+            var result = await RoleManager.CreateAsync(new UserRole { Name = Policies.AdministratorsRole });
+            if (!result.Succeeded)
+            {
+                return OperationResult.Failure(
+                    result.Errors
+                        .Select(s => s.Description)
+                        .Aggregate((o, n) => $"{o}\n{n}"));
+            }
+
+            result = await UserManager.CreateAsync(new User
             {
                 UserName = model.UserName,
-                Password = Utilities.EncryptHelper.MD5(model.Password),
+                Email = model.Email,
                 Nickname = model.Nickname,
-                Email = model.Email
-            };
-            BlogContext.Users.Add(user);
-            ClientManager.CurrentUser = user;
+                EmailConfirmed = true
+            }, model.Password);
+
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByNameAsync(model.UserName);
+
+                await ClientManager.InitUser(model.UserName);
+                await UserManager.AddToRoleAsync(user, Policies.AdministratorsRole);
+                return OperationResult.SuccessResult;
+            }
+
+            return OperationResult.Failure(
+                result.Errors
+                    .Select(s => s.Description)
+                    .Aggregate((o, n) => $"{o}\n{n}"));
         }
 
         /// <summary>
         /// Add settings
         /// </summary>
         /// <param name="model"></param>
-        private void AddSettings(InstallModel model)
+        private async Task<OperationResult> AddSettingsAsync(InstallModel model)
         {
-            SettingModel settingModel = new SettingModel(new Dictionary<string, string>(), SettingModelLocalizer);
+            var settingModel = new SettingModel(new Dictionary<string, string>(), SettingModelLocalizer);
             settingModel.Title = model.BlogTitle;
             settingModel.Host = model.BlogHost;
             settingModel.Language = model.Language;
+            settingModel.Registration = false;
 
             var settingList = settingModel.Settings.Select(t => new Setting
             {
@@ -142,14 +191,16 @@ namespace DotNetBlog.Core.Service
                 Value = t.Value
             });
 
-            BlogContext.AddRange(settingList);
+            await BlogContext.AddRangeAsync(settingList);
+
+            return OperationResult.SuccessResult;
         }
 
         /// <summary>
         /// Add widgets
         /// </summary>
         /// <param name="model"></param>
-        private void AddWidgets(InstallModel model)
+        private async Task<OperationResult> AddWidgetsAsync(InstallModel model)
         {
             IStringLocalizer localizer = WidgetLocalizer.WithCulture(new System.Globalization.CultureInfo(model.Language));
 
@@ -199,34 +250,39 @@ namespace DotNetBlog.Core.Service
             {
                 Config = JsonConvert.SerializeObject(t.Config),
                 Type = t.Type,
-                ID = widgetList.IndexOf(t) + 1
+                Id = widgetList.IndexOf(t) + 1
             });
-            this.BlogContext.AddRange(widgetEntityList);
+
+            await this.BlogContext.AddRangeAsync(widgetEntityList);
+
+            return OperationResult.SuccessResult;
         }
 
-        private bool AddSampleTopic(InstallModel model)
+        private async Task<OperationResult> AddSampleTopicAsync(InstallModel model)
         {
-            if (!model.AddWelcomeTopic) return false;
+            if (!model.AddWelcomeTopic) return OperationResult.SuccessResult;
 
-            var result = TopicService.Add(new Model.Topic.AddTopicModel
+            var result = await TopicService.Add(new Model.Topic.AddTopicModel
             {
                 Title = InstallLocalizer["Welcome to DotNetBlog"].Value,
                 Content = InstallLocalizer["Welcome topic content"].Value,
                 TagList = new string[] { "DotNetBlog" },
                 AllowComment = true,
                 Status = TopicStatus.Published
-            }).Result;
+            });
+            if (!result.Success)
+                return result;
 
-            var commentResult = CommentService.Add(new Model.Comment.AddCommentModel
+            var commentResult = await CommentService.Add(new Model.Comment.AddCommentModel
             {
-                TopicID = result.Data.ID,
+                TopicId = result.Data.Id,
                 Email = model.Email,
                 Name = model.UserName,
                 Content = InstallLocalizer["Welcome comment"].Value
-            }).Result;
-            CommentService.ApproveComment(commentResult.Data.ID).Wait();
+            });
+            await CommentService.ApproveComment(commentResult.Data.Id);
 
-            return result.Success && commentResult.Success;
+            return commentResult;
         }
     }
 }

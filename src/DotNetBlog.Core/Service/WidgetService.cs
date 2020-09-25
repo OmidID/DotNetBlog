@@ -98,7 +98,7 @@ namespace DotNetBlog.Core.Service
         {
             var entityList = await this.All();
 
-            var result = entityList.OrderBy(t => t.ID).Select(t => new WidgetModel
+            var result = entityList.OrderBy(t => t.Id).Select(t => new WidgetModel
             {
                 Type = t.Type,
                 Config = JsonConvert.DeserializeObject(t.Config, DefaultWidgetConfigTypes[t.Type]) as WidgetConfigModelBase
@@ -118,7 +118,7 @@ namespace DotNetBlog.Core.Service
                 entityList = widgetList.Select(t => new Widget
                 {
                     Type = t.Type,
-                    ID = widgetList.IndexOf(t) + 1,
+                    Id = widgetList.IndexOf(t) + 1,
                     Config = JsonConvert.SerializeObject(t.Config)
                 }).ToList();
                 this.BlogContext.AddRange(entityList);

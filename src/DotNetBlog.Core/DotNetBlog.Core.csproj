@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../build/Library.props"/>
+  <Import Project="../../build/Library.props" />
 
 </Project>

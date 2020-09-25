@@ -1,11 +1,45 @@
 ﻿using DotNetBlog.Core.Data.Mappings;
 using DotNetBlog.Core.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace DotNetBlog.Core.Data
 {
-    public class BlogContext : DbContext
+    public class SqlServerBlogContext : BlogContext
+    {
+        public SqlServerBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class PostgreeSqlBlogContext : BlogContext
+    {
+        public PostgreeSqlBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class MySqlBlogContext : BlogContext
+    {
+        public MySqlBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+    public class SqliteBlogContext : BlogContext
+    {
+        public SqliteBlogContext(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options, serviceProvider)
+        {
+
+        }
+    }
+
+    public class BlogContext : IdentityDbContext<User, UserRole, long>
     {
         public virtual DbSet<Setting> Settings { get; set; }
 
@@ -21,17 +55,13 @@ namespace DotNetBlog.Core.Data
 
         public virtual DbSet<Comment> Comments { get; set; }
 
-        public virtual DbSet<User> Users { get; set; }
-
-        public virtual DbSet<UserToken> UserTokens { get; set; }
-
         public virtual DbSet<Page> Pages { get; set; }
 
         public virtual DbSet<Widget> Widgets { get; set; }
 
         public IServiceProvider ServiceProvider { get; private set; }
 
-        public BlogContext(DbContextOptions<BlogContext> options, IServiceProvider serviceProvider)
+        public BlogContext(DbContextOptions options, IServiceProvider serviceProvider)
             : base(options)
         {
             ServiceProvider = serviceProvider;
@@ -41,6 +71,16 @@ namespace DotNetBlog.Core.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
+            modelBuilder.Entity<UserRole>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
             modelBuilder.Entity<Setting>(SettingMapping.Map);
             modelBuilder.Entity<Category>(CategoryMapping.Map);
             modelBuilder.Entity<CategoryTopic>(CategoryTopicMapping.Map);
@@ -48,8 +88,6 @@ namespace DotNetBlog.Core.Data
             modelBuilder.Entity<Tag>(TagMapping.Map);
             modelBuilder.Entity<TagTopic>(TagTopicMapping.Map);
             modelBuilder.Entity<Comment>(CommentMapping.Map);
-            modelBuilder.Entity<User>(UserMapping.Map);
-            modelBuilder.Entity<UserToken>(UserTokenMapping.Map);
             modelBuilder.Entity<Page>(PageMapping.Map);
             modelBuilder.Entity<Widget>(WidgetMapping.Map);
         }

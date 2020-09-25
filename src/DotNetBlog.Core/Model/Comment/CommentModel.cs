@@ -4,11 +4,11 @@ namespace DotNetBlog.Core.Model.Comment
 {
     public class CommentModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public int TopicID { get; set; }
+        public int TopicId { get; set; }
 
-        public int? ReplyToID { get; set; }
+        public int? ReplyToId { get; set; }
 
         public string Name { get; set; }
 
@@ -28,7 +28,7 @@ namespace DotNetBlog.Core.Model.Comment
 
         public class UserModel
         {
-            public int ID { get; set; }
+            public long Id { get; set; }
 
             public string UserName { get; set; }
 

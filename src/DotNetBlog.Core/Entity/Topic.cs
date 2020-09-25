@@ -5,7 +5,7 @@ namespace DotNetBlog.Core.Entity
 {
     public class Topic
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string Title { get; set; }
 
@@ -19,11 +19,11 @@ namespace DotNetBlog.Core.Entity
 
         public TopicStatus Status { get; set; }
 
-        public int CreateUserID { get; set; }
+        public long CreateUserId { get; set; }
 
         public DateTime CreateDate { get; set; }
 
-        public int EditUserID { get; set; }
+        public long EditUserId { get; set; }
 
         public DateTime EditDate { get; set; }
     }

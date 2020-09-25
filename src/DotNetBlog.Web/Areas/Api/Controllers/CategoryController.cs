@@ -73,7 +73,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return InvalidRequest();
             }
 
-            await CategoryService.Remove(model.IDList);
+            await CategoryService.Remove(model.IdList);
 
             return Success();
         }

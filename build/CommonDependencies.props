@@ -5,7 +5,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="$(AspNetLibrariesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="$(AspNetLibrariesVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     
     <PackageReference Include="NLog.Extensions.Logging" Version="$(NLogVersion)" />
@@ -22,10 +25,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EfLibrariesVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EfLibrariesVersion)" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="$(EfMySqlVersion)" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(EfNpgSqlVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfLibrariesVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+
   </ItemGroup>
 
 </Project>

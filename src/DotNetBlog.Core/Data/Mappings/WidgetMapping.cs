@@ -8,9 +8,11 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<Widget> builder)
         {
-            builder.ToTable("Widget");
+            builder.ToTable("Widgets");
 
-            builder.HasKey(t => new { t.ID });
+            builder.HasKey(t => t.Id);
+
+            builder.Property(t => t.Id).ValueGeneratedNever();
 
             builder.Property(t => t.Config).IsRequired();
         }

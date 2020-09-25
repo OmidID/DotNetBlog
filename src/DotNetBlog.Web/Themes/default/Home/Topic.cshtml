@@ -6,7 +6,7 @@
     var commentListViewModel = new CommentListViewModel
     {
         AllCommentList = Model.CommentList,
-        CommentList = Model.CommentList.Where(t => t.ReplyToID == null).ToList(),
+        CommentList = Model.CommentList.Where(t => t.ReplyToId == null).ToList(),
         AllowComment = Model.AllowComment
     };
 }
@@ -42,7 +42,7 @@
                 <i class="fa fa-folder"></i>
                 @foreach(var category in Model.Topic.Categories)
                 {
-                    <a asp-action="Category" asp-controller="Home" asp-route-id="@category.ID">@category.Name</a>
+                    <a asp-action="Category" asp-controller="Home" asp-route-id="@category.Id">@category.Name</a>
                 }
             </span>
             <a rel="nofollow" class="pull-right post-comment-link" blog-topic="Model.Topic" blog-topic-fragment="comments">
@@ -67,11 +67,11 @@
 
     <visible condition="clientManager.IsLogin">
         <visible condition="Model.Topic.Comments.Pending > 0">
-            <a asp-action="Topic" asp-controller="Home" asp-route-id="@Model.Topic.ID" asp-fragment="comments">@L["Unaudited comments ({0})", Model.Topic.Comments.Pending]</a> |
-            <a asp-action="ApproveComments" asp-controller="QuickAction" asp-route-topicID="@Model.Topic.ID">@L["Approve comments"]</a> |
+            <a asp-action="Topic" asp-controller="Home" asp-route-id="@Model.Topic.Id" asp-fragment="comments">@L["Unaudited comments ({0})", Model.Topic.Comments.Pending]</a> |
+            <a asp-action="ApproveComments" asp-controller="QuickAction" asp-route-topicId="@Model.Topic.Id">@L["Approve comments"]</a> |
         </visible>
-        <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/topic/" + Model.Topic.ID.ToString())">@L["Edit"]</a> |
-        <a asp-action="DeleteTopic" asp-controller="QuickAction" asp-route-topicID="@Model.Topic.ID" onclick="if (!confirm('@L["Are you sure you want to delete the article?"]')) return false">@L["Delete"]</a>
+        <a asp-action="Index" asp-controller="Admin" asp-fragment="@("/content/topic/" + Model.Topic.Id.ToString())">@L["Edit"]</a> |
+        <a asp-action="DeleteTopic" asp-controller="QuickAction" asp-route-topicId="@Model.Topic.Id" onclick="if (!confirm('@L["Are you sure you want to delete the article?"]')) return false">@L["Delete"]</a>
     </visible>
 </article>
 
@@ -81,7 +81,7 @@
         @foreach (var topic in Model.RelatedTopicList)
         {
         <li>
-            <a asp-action="Topic" asp-controller="Home" asp-route-id="@topic.ID">@topic.Title</a>
+            <a asp-action="Topic" asp-controller="Home" asp-route-id="@topic.Id">@topic.Title</a>
             <div><small class="text-muted">This is a post two. The variables searchTerm and selectCommand are initialized at the top. You're go</small></div>
         </li>
         }
@@ -103,7 +103,7 @@
 <div id="comment-form-container" condition="Model.AllowComment">
     <div id="comment-form">
         <form method="post" asp-action="AddComment" asp-controller="Home">
-            <input type="hidden" name="TopicID" value="@Model.Topic.ID" />
+            <input type="hidden" name="TopicId" value="@Model.Topic.Id" />
             <input type="hidden" name="ReplyTo" id="hdnReplyTo" value="" />
             <div class="comment-form well-global">
                 <div class="well-global-title clearfix">

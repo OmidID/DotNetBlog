@@ -62,7 +62,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return this.InvalidRequest();
             }
 
-            model.ID = id;
+            model.Id = id;
 
             var result = await this.PageService.Edit(model);
 

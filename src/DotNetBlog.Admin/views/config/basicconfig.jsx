@@ -34,8 +34,8 @@ class BasicConfigForm extends React.Component{
         this.languageOptions = Localization.getAvailableLanguages();
     }
 
-    render(){
-        const {fields: {host, title, description, language, theme, topicsPerPage, onlyShowSummary}, handleSubmit, themes} = this.props
+    render() {
+        const { fields: { host, title, description, language, theme, topicsPerPage, onlyShowSummary, registration }, handleSubmit, themes } = this.props
         return (
             <form noValidate onSubmit={handleSubmit}>
                 <FormGroup label={"blogAddress".L()} validation={host}>
@@ -77,6 +77,14 @@ class BasicConfigForm extends React.Component{
                     </div>
                 </FormGroup>
                 <FormGroup>
+                    <div className="checkbox">
+                        <label>
+                            <input type="checkbox" {...registration} />
+                            {"registration".L()}
+                        </label>
+                    </div>
+                </FormGroup>
+                <FormGroup>
                     <button type="submit" className="btn btn-primary">
                         {"save".L()}
                     </button>
@@ -89,7 +97,7 @@ class BasicConfigForm extends React.Component{
 
 BasicConfigForm = reduxForm({
     form: "basicConfigForm",
-    fields: ["host", "title", "description", "language", "topicsPerPage", "onlyShowSummary"],
+    fields: ["host", "title", "description", "language", "topicsPerPage", "onlyShowSummary", "registration"],
     validate
 })(BasicConfigForm)
 

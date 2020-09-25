@@ -41,7 +41,7 @@ namespace DotNetBlog.Core.Service
         {
             var entityList = await this.Cache.RetriveCacheAsync(CACHE_KEY, async () =>
             {
-                return await this.BlogContext.Pages.OrderByDescending(t => t.Order).ThenBy(t => t.ID).ToListAsync();
+                return await this.BlogContext.Pages.OrderByDescending(t => t.Order).ThenBy(t => t.Id).ToListAsync();
             });
 
             return entityList;
@@ -51,9 +51,9 @@ namespace DotNetBlog.Core.Service
         {
             if (model.Parent.HasValue)
             {
-                var parent = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.ID == model.Parent.Value);
+                var parent = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.Id == model.Parent.Value);
 
-                if (parent == null || parent.ParentID.HasValue)
+                if (parent == null || parent.ParentId.HasValue)
                 {
                     return OperationResult<PageModel>.Failure(L["Selected parent does not exists"].Value);
                 }
@@ -78,7 +78,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<OperationResult<PageModel>> Edit(EditPageModel model)
         {
-            var entity = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.ID == model.ID);
+            var entity = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.Id == model.Id);
 
             if (entity == null)
             {
@@ -87,24 +87,24 @@ namespace DotNetBlog.Core.Service
 
             if (model.Parent.HasValue)
             {
-                if (model.Parent.Value == entity.ID)
+                if (model.Parent.Value == entity.Id)
                 {
                     return OperationResult<PageModel>.Failure(L["You cannot set as parent"].Value);
                 }
 
-                var parent = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.ID == model.Parent.Value);
+                var parent = await this.BlogContext.Pages.SingleOrDefaultAsync(t => t.Id == model.Parent.Value);
 
-                if (parent == null || parent.ParentID.HasValue)
+                if (parent == null || parent.ParentId.HasValue)
                 {
                     return OperationResult<PageModel>.Failure(L["Parent does not exists"].Value);
                 }
             }
 
-            model.Alias = await this.GenerateAlias(model.ID, model.Alias, model.Title);
+            model.Alias = await this.GenerateAlias(model.Id, model.Alias, model.Title);
 
             _mapper.Map(model, entity);
             entity.EditDate = model.Date ?? DateTime.Now;
-            entity.ParentID = model.Parent;
+            entity.ParentId = model.Parent;
 
             await this.BlogContext.SaveChangesAsync();
 
@@ -123,9 +123,9 @@ namespace DotNetBlog.Core.Service
             {
                 var pageModel = _mapper.Map<PageBasicModel>(entity);
 
-                if (entity.ParentID.HasValue)
+                if (entity.ParentId.HasValue)
                 {
-                    var parent = entityList.SingleOrDefault(t => t.ID == entity.ParentID.Value);
+                    var parent = entityList.SingleOrDefault(t => t.Id == entity.ParentId.Value);
                     pageModel.Parent = _mapper.Map<PageBasicModel>(parent);
                 }
 
@@ -143,9 +143,9 @@ namespace DotNetBlog.Core.Service
             {
                 var pageModel = _mapper.Map<PageBasicModel>(entity);
 
-                if (entity.ParentID.HasValue)
+                if (entity.ParentId.HasValue)
                 {
-                    var parent = entityList.SingleOrDefault(t => t.ID == entity.ParentID.Value);
+                    var parent = entityList.SingleOrDefault(t => t.Id == entity.ParentId.Value);
                     pageModel.Parent = _mapper.Map<PageBasicModel>(parent);
                 }
 
@@ -157,7 +157,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task<PageModel> Get(int id)
         {
-            var entity = (await this.All()).SingleOrDefault(t => t.ID == id);
+            var entity = (await this.All()).SingleOrDefault(t => t.Id == id);
             if (entity == null)
             {
                 return null;
@@ -183,7 +183,7 @@ namespace DotNetBlog.Core.Service
 
         public async Task BatchUpdateStatus(int[] idList, Enums.PageStatus status)
         {
-            var pageList = await BlogContext.Pages.Where(t => idList.Contains(t.ID)).ToListAsync();
+            var pageList = await BlogContext.Pages.Where(t => idList.Contains(t.Id)).ToListAsync();
 
             pageList.ForEach(page =>
             {
@@ -206,7 +206,7 @@ namespace DotNetBlog.Core.Service
             var query = this.BlogContext.Pages.Where(t => t.Alias == alias);
             if (id.HasValue)
             {
-                query = query.Where(t => t.ID != id.Value);
+                query = query.Where(t => t.Id != id.Value);
             }
 
             if (await query.AnyAsync())
@@ -224,9 +224,9 @@ namespace DotNetBlog.Core.Service
             var result = entityList.Select(entity =>
             {
                 var pageModel = _mapper.Map<PageModel>(entity);
-                if (entity.ParentID.HasValue)
+                if (entity.ParentId.HasValue)
                 {
-                    var parent = allEntityList.SingleOrDefault(t => t.ID == entity.ParentID.Value);
+                    var parent = allEntityList.SingleOrDefault(t => t.Id == entity.ParentId.Value);
                     pageModel.Parent = _mapper.Map<PageBasicModel>(parent);
                 }
 

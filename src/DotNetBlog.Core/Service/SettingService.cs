@@ -29,29 +29,22 @@ namespace DotNetBlog.Core.Service
             SettingModelLocalizer = settingModelLocalizer;
         }
 
-        private List<Setting> All()
+        private async Task<List<Setting>> AllAsync()
         {
             var settings = Cache.Get<List<Setting>>(CacheKey);
 
             if (settings == null)
             {
-                try
-                {
-                    settings = BlogContext.Settings.ToList();
-                }
-                catch
-                {
-                    settings = new List<Entity.Setting>();
-                }
+                settings = await BlogContext.Settings.ToListAsync();
                 Cache.Set(CacheKey, settings);
             }
 
             return settings;
         }
 
-        public SettingModel Get()
+        public async Task<SettingModel> GetAsync()
         {
-            var settings = All();
+            var settings = await AllAsync();
             var dict = settings.ToDictionary(t => t.Key, t => t.Value);
             return new SettingModel(dict, SettingModelLocalizer);
         }
@@ -64,11 +57,14 @@ namespace DotNetBlog.Core.Service
                 BlogContext.RemoveRange(settings);
                 await BlogContext.SaveChangesAsync();
 
-                var entityList = model.Settings.Select(t => new Setting
-                {
-                    Key = t.Key,
-                    Value = t.Value
-                });
+                var entityList = model
+                    .Settings
+                    .Where(w => w.Value != null)
+                    .Select(t => new Setting
+                    {
+                        Key = t.Key,
+                        Value = t.Value
+                    });
                 BlogContext.AddRange(entityList);
 
                 await BlogContext.SaveChangesAsync();

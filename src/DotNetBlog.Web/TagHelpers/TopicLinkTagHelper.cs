@@ -50,7 +50,7 @@ namespace DotNetBlog.Web.TagHelpers
                 }
                 else
                 {
-                    url = urlHelper.Action("Topic", "Home", new { id = this.Topic.ID });
+                    url = urlHelper.Action("Topic", "Home", new { id = this.Topic.Id });
                 }
 
                 if (!string.IsNullOrWhiteSpace(this.Fragment))

@@ -16,12 +16,12 @@ namespace DotNetBlog.Web.Middlewares
             _next = next;
         }
 
-        public Task Invoke(HttpContext httpContext)
+        public async Task Invoke(HttpContext httpContext)
         {
-            ClientManager clientManager = httpContext.RequestServices.GetService<ClientManager>();
-            clientManager.Init(httpContext);
+            var clientManager = httpContext.RequestServices.GetService<ClientManager>();
+            await clientManager.Init(httpContext);
 
-            return _next(httpContext);
+            await _next(httpContext);
         }
     }
 

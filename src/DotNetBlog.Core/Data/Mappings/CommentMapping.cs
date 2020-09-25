@@ -8,11 +8,11 @@ namespace DotNetBlog.Core.Data.Mappings
     {
         public static void Map(EntityTypeBuilder<Comment> builder)
         {
-            builder.ToTable("Comment");
+            builder.ToTable("Comments");
 
-            builder.HasKey(t => t.ID);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.Property(t => t.Id).ValueGeneratedOnAdd().UseIdentityColumn();
 
             builder.Property(t => t.Content).IsRequired();
             builder.Property(t => t.CreateIP).IsRequired().HasMaxLength(40);

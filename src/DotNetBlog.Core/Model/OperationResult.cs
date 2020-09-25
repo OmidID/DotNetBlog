@@ -4,6 +4,11 @@ namespace DotNetBlog.Core.Model
 {
     public class OperationResult
     {
+        public static readonly OperationResult SuccessResult = new OperationResult
+        {
+            Success = true
+        };
+
         public bool Success { get; set; }
 
         public string ErrorMessage { get; set; }

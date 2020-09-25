@@ -2,6 +2,7 @@
 using DotNetBlog.Web.ViewModels.Exception;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DotNetBlog.Web.Controllers
 {
@@ -16,11 +17,11 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [HttpGet("{code:int}")]
-        public IActionResult Error(int code)
+        public async Task<IActionResult> Error(int code)
         {
             if (code == StatusCodes.Status500InternalServerError)
             {
-                return this.RenderErrorPage();
+                return await this.RenderErrorPage();
             }
             else if (code == StatusCodes.Status404NotFound)
             {
@@ -39,11 +40,11 @@ namespace DotNetBlog.Web.Controllers
         }
 
         [NonAction]
-        private IActionResult RenderErrorPage()
+        private async Task<IActionResult> RenderErrorPage()
         {
             ErrorViewModel vm = new ErrorViewModel();
 
-            var config = SettingService.Get();
+            var config = await SettingService.GetAsync();
             vm.Title = config.ErrorPageTitle;
             vm.Content = config.ErrorPageContent;
 

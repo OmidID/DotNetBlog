@@ -5,7 +5,7 @@ namespace DotNetBlog.Core.Model.Comment
     public class AddCommentModel
     {
         [Required]
-        public int? TopicID { get; set; }
+        public int? TopicId { get; set; }
 
         public int? ReplyTo { get; set; }
 

@@ -1,21 +1,27 @@
-﻿using DotNetBlog.Web.Areas.Api.Filters;
+﻿using DotNetBlog.Core;
+using DotNetBlog.Web.Areas.Api.Filters;
 using DotNetBlog.Web.Areas.Api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 
 namespace DotNetBlog.Web.Areas.Api.Controllers
 {
     [ErrorHandlerFilter]
     [RequireLoginApiFilter]
     [ValidateRequestApiFilter]
+    [Authorize(Policy = Policies.AdminAccess)]
     public class ControllerBase : Controller
     {
-        private static readonly JsonSerializerSettings _DefaultJsonSerializerSettings;
+        private static readonly JsonSerializerSettings _DefaultJsonSerializerSettings = new JsonSerializerSettings
+        {
+            DateFormatString = "yyyy-MM-dd HH:mm:ss",
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
 
         IHtmlLocalizer<ControllerBase> localizer;
         private IHtmlLocalizer<ControllerBase> L
@@ -28,15 +34,6 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 }
                 return localizer;
             }
-        }
-
-        static ControllerBase()
-        {
-            _DefaultJsonSerializerSettings = new JsonSerializerSettings
-            {
-                DateFormatString = "yyyy-MM-dd HH:mm:ss",
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
         }
 
         [NonAction]

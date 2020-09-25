@@ -71,13 +71,13 @@ namespace DotNetBlog.Core.Service
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress(this.Settings.SmtpEmailAddress, this.Settings.SmtpEmailAddress));
 
-            var user = await this.BlogContext.Users.SingleOrDefaultAsync(t => t.ID == topic.CreateUserID);
+            var user = await this.BlogContext.Users.SingleOrDefaultAsync(t => t.Id == topic.CreateUserId);
             if (user == null || string.IsNullOrWhiteSpace(user.Email))
             {
                 return OperationResult.Failure(L["No email specified"].Value);
             }
 
-            var topicUrl = $"{this.Settings.Host}/topic/{topic.ID}#comment_{comment.ID}";
+            var topicUrl = $"{this.Settings.Host}/topic/{topic.Id}#comment_{comment.Id}";
             message.To.Add(new MailboxAddress(user.Email, user.Email));
             message.Subject = L["[Blog comment notification] Re: {0}", topic.Title].Value;
             message.Body = new TextPart("html")
@@ -88,9 +88,26 @@ namespace DotNetBlog.Core.Service
             return await this.SendEmail(message);
         }
 
-        public async Task<OperationResult> SendReplyEmail(Topic topic, Comment comment, Comment replyTo)
+        public Task<OperationResult> SendReplyEmail(Topic topic, Comment comment, Comment replyTo)
         {
-            return null;
+            return Task.FromResult(new OperationResult());
+        }
+
+        public Task<OperationResult> SendAsync(string to, string subject, string body)
+        {
+            var message = new MimeMessage()
+            {
+                Subject = subject,
+                Body = new TextPart("html")
+                {
+                    Text = body
+                }
+            };
+
+            message.From.Add(new MailboxAddress(this.Settings.SmtpEmailAddress, this.Settings.SmtpEmailAddress));
+            message.To.Add(new MailboxAddress(to, to));
+
+            return SendEmail(message);
         }
 
         private async Task<OperationResult> SendEmail(MimeMessage message)
