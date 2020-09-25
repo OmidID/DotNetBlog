@@ -25,8 +25,7 @@ const MenuKeys = {
     Config_Feed: "Menu_Config_Feed",
     Config_Comments: "Menu_Config_Comments",
     Config_Advance: "Menu_Config_Advance",
-    User: "Menu_User",
-    User_Profile: "Menu_User_Profile"    
+    User: "Menu_User"   
 }
 
 const Menus = [
@@ -112,20 +111,6 @@ const Menus = [
                 key: MenuKeys.Config_Advance,
                 text: "advanced".L(),
                 url: "config/advance"
-            }
-        ]
-    },
-    {
-        key: MenuKeys.User,
-        text: "user".L(),
-        url: "user/profile",
-        icon: "fa fa-user",
-        hide: true,
-        children: [
-            {
-                key: MenuKeys.User_Profile,
-                text: "personalInformation".L(),
-                url: "user/profile"                        
             }
         ]
     }

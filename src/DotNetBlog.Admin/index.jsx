@@ -27,7 +27,6 @@ var Views_PageList = require("./views/content/pagelist")
 var Views_ModifyPage = require("./views/content/modifypage")
 var Views_CommentList = require("./views/content/commentlist")
 var Views_CommentConfig = require("./views/config/commentconfig")
-var Views_Profile = require("./views/user/profile")
 var Views_Widgets = require("./views/widget/widgets")
 
 const history = useRouterHistory(createHistory)({
@@ -58,7 +57,6 @@ class Index extends React.Component{
                         <Route path="content/pages" component={Views_PageList} onEnter={enterRoute.bind(this, Consts.MenuKeys.Content, Consts.MenuKeys.Content_Pages)}/>
                         <Route path="content/page(/:id)" component={Views_ModifyPage} onEnter={enterRoute.bind(this, Consts.MenuKeys.Content, Consts.MenuKeys.Content_Pages)}/>
                         <Route path="custom/widgets" component={Views_Widgets} onEnter={enterRoute.bind(this, Consts.MenuKeys.Custom, Consts.MenuKeys.Custom_Widgets)}/>
-                        <Route path="profile" component={Views_Profile} onEnter={enterRoute.bind(this, Consts.MenuKeys.User, Consts.MenuKeys.User_Profile)}/>
                     </Route>
                 </Router>
             </Provider>

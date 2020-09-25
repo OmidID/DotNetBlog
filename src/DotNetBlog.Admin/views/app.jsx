@@ -78,9 +78,9 @@ class App extends React.Component{
                         </a>
                         <div className="navbar-custom-menu">
                             <ul className="nav navbar-nav">
-                                <li><a href="/account/changepassword">{"changePassword".L()}</a></li>
+                                <li><a href="/Identity/Account/Manage/ChangePassword">{"changePassword".L()}</a></li>
                                 <li>
-                                    <a href="/account/logoff">
+                                    <a href="/Identity/Account/Logout">
                                         <i className="fa fa-exit"></i>
                                         {"logoff".L()}
                                     </a>
@@ -99,7 +99,7 @@ class App extends React.Component{
                             </div>
                             <div className="pull-left info">
                                 <p>
-                                    <Link to="profile">{user.nickname}</Link>
+                                    <b>{user.nickname}</b>
                                 </p>
 
                                 <span>
