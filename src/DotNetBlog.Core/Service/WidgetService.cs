@@ -20,19 +20,6 @@ namespace DotNetBlog.Core.Service
     {
         private static readonly string CacheKey = "Cache_Widget";
 
-        //private static readonly Dictionary<WidgetType, string> DefaultNames = new Dictionary<WidgetType, string>
-        //{
-        //    { WidgetType.Administration, "管理" },
-        //    { WidgetType.Category, "分类" },
-        //    { WidgetType.RecentComment, "最新评论" },
-        //    { WidgetType.MonthStatistics, "归档" },
-        //    { WidgetType.Page, "页面" },
-        //    { WidgetType.Search, "搜索" },
-        //    { WidgetType.Tag, "标签" },
-        //    { WidgetType.RecentTopic, "最新文章" },
-        //    { WidgetType.Link, "友情链接" }
-        //};
-
         private static readonly Dictionary<WidgetType, Type> DefaultWidgetConfigTypes = new Dictionary<WidgetType, Type>
         {
             { WidgetType.Administration, typeof(AdministrationWidgetConfigModel) },
@@ -109,27 +96,27 @@ namespace DotNetBlog.Core.Service
 
         public async Task<OperationResult> Save(List<WidgetModel> widgetList)
         {
-            using (var tran = await this.BlogContext.Database.BeginTransactionAsync())
+            using var tran = await BlogContext.Database.BeginTransactionAsync();
+            var entityList = await BlogContext.Widgets.ToListAsync();
+
+            BlogContext.RemoveRange(entityList);
+            await BlogContext.SaveChangesAsync();
+
+            entityList = widgetList.Select(t => new Widget
             {
-                var entityList = await this.BlogContext.Widgets.ToListAsync();
-                this.BlogContext.RemoveRange(entityList);
-                await this.BlogContext.SaveChangesAsync();
+                Type = t.Type,
+                Id = widgetList.IndexOf(t) + 1,
+                Config = JsonConvert.SerializeObject(t.Config)
+            }).ToList();
 
-                entityList = widgetList.Select(t => new Widget
-                {
-                    Type = t.Type,
-                    Id = widgetList.IndexOf(t) + 1,
-                    Config = JsonConvert.SerializeObject(t.Config)
-                }).ToList();
-                this.BlogContext.AddRange(entityList);
-                await this.BlogContext.SaveChangesAsync();
+            await BlogContext.AddRangeAsync(entityList);
+            await BlogContext.SaveChangesAsync();
 
-                tran.Commit();
+            await tran.CommitAsync();
 
-                RemoveCache();
+            RemoveCache();
 
-                return new OperationResult();
-            }
+            return new OperationResult();
         }
 
         public WidgetConfigModelBase Transform(WidgetType type, JObject config)
