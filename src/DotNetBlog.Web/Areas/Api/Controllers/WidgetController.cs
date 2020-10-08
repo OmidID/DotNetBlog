@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Model.Widget;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Model.Widget;
+using DotNetBlog.Service;
 using DotNetBlog.Web.Areas.Api.Models.Widget;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

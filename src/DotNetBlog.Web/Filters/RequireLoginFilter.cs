@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core;
+﻿using DotNetBlog;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;

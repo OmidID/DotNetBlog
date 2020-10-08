@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,14 +7,14 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace DotNetBlog.Core
+namespace DotNetBlog
 {
     public static class IServiceCollectionExtensions
     {
         public static IServiceCollection AddBlogService(this IServiceCollection services)
         {
             var assembly = typeof(IServiceCollectionExtensions).GetTypeInfo().Assembly;
-            var serviceList = assembly.DefinedTypes.Where(t => t.Name.EndsWith("Service") && t.Namespace == "DotNetBlog.Core.Service").ToList();
+            var serviceList = assembly.DefinedTypes.Where(t => t.Name.EndsWith("Service") && t.Namespace == "DotNetBlog.Service").ToList();
             foreach (var service in serviceList)
             {
                 services.AddScoped(service.AsType());

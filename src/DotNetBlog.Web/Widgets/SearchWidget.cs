@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Widget;
+﻿using DotNetBlog.Model.Widget;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetBlog.Web.Widgets

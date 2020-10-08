@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Setting;
+﻿using DotNetBlog.Model.Setting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;

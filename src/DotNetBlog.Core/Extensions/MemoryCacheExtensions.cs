@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Extensions
+namespace DotNetBlog.Extensions
 {
     public static class MemoryCacheExtensions
     {

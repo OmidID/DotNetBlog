@@ -1,5 +1,5 @@
 ﻿
-using DotNetBlog.Core.Service;
+using DotNetBlog.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

@@ -1,6 +1,6 @@
-﻿using DotNetBlog.Core.Enums;
-using DotNetBlog.Core.Model.Page;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Enums;
+using DotNetBlog.Model.Page;
+using DotNetBlog.Service;
 using DotNetBlog.Web.Areas.Api.Models.Page;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

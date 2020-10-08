@@ -1,8 +1,8 @@
-﻿using DotNetBlog.Core.Entity;
+﻿using DotNetBlog.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DotNetBlog.Core.Data.Mappings
+namespace DotNetBlog.Data.Mappings
 {
     public sealed class PageMapping
     {

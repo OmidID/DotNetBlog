@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Entity;
+﻿using DotNetBlog.Entity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

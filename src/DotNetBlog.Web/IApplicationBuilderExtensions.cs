@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Data;
+﻿using DotNetBlog.Data;
 using DotNetBlog.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

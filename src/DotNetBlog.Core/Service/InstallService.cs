@@ -1,10 +1,10 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Enums;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Install;
-using DotNetBlog.Core.Model.Setting;
-using DotNetBlog.Core.Model.Widget;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Enums;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Install;
+using DotNetBlog.Model.Setting;
+using DotNetBlog.Model.Widget;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,11 +13,12 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class InstallService
     {
@@ -202,48 +203,48 @@ namespace DotNetBlog.Core.Service
         /// <param name="model"></param>
         private async Task<OperationResult> AddWidgetsAsync(InstallModel model)
         {
-            IStringLocalizer localizer = WidgetLocalizer.WithCulture(new System.Globalization.CultureInfo(model.Language));
+            CultureInfo.CurrentCulture = new CultureInfo(model.Language, false);
 
             var widgetList = new List<WidgetModel>();
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.Administration,
-                Config = new AdministrationWidgetConfigModel(localizer)
+                Config = new AdministrationWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.Search,
-                Config = new SearchWidgetConfigModel(localizer)
+                Config = new SearchWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.Category,
-                Config = new CategoryWidgetConfigModel(localizer)
+                Config = new CategoryWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.Tag,
-                Config = new TagWidgetConfigModel(localizer)
+                Config = new TagWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.MonthStatistics,
-                Config = new MonthStatisticeWidgetConfigModel(localizer)
+                Config = new MonthStatisticeWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.RecentTopic,
-                Config = new RecentTopicWidgetConfigModel(localizer)
+                Config = new RecentTopicWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.RecentComment,
-                Config = new RecentCommentWidgetConfigModel(localizer)
+                Config = new RecentCommentWidgetConfigModel(WidgetLocalizer)
             });
             widgetList.Add(new WidgetModel
             {
                 Type = WidgetType.Page,
-                Config = new PageWidgetConfigModel(localizer)
+                Config = new PageWidgetConfigModel(WidgetLocalizer)
             });
 
             var widgetEntityList = widgetList.Select(t => new Widget

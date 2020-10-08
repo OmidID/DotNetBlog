@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Model.Topic;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Model.Topic;
+using DotNetBlog.Service;
 using DotNetBlog.Web.Areas.Api.Models.Topic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
@@ -99,7 +99,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return InvalidRequest();
             }
 
-            await this.TopicService.BatchUpdateStatus(model.TopicList, Core.Enums.TopicStatus.Published);
+            await this.TopicService.BatchUpdateStatus(model.TopicList, Enums.TopicStatus.Published);
 
             return Success();
         }
@@ -112,7 +112,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return InvalidRequest();
             }
 
-            await this.TopicService.BatchUpdateStatus(model.TopicList, Core.Enums.TopicStatus.Draft);
+            await this.TopicService.BatchUpdateStatus(model.TopicList, Enums.TopicStatus.Draft);
 
             return Success();
         }
@@ -125,7 +125,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return InvalidRequest();
             }
 
-            await this.TopicService.BatchUpdateStatus(model.TopicList, Core.Enums.TopicStatus.Trash);
+            await this.TopicService.BatchUpdateStatus(model.TopicList, Enums.TopicStatus.Trash);
 
             return Success();
         }
@@ -138,7 +138,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return this.InvalidRequest();
             }
 
-            var result = await this.TopicService.QueryNotTrash(1, count, Core.Enums.TopicStatus.Draft, null);
+            var result = await this.TopicService.QueryNotTrash(1, count, Enums.TopicStatus.Draft, null);
 
             return Success(result.Data);
         }

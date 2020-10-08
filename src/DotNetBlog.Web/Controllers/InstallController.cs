@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Model.Install;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Model.Install;
+using DotNetBlog.Service;
 using DotNetBlog.Web.ViewModels.Install;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;

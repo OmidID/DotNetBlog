@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Install;
+﻿using DotNetBlog.Model.Install;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DotNetBlog.Web.ViewModels.Install

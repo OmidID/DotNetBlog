@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Category;
+﻿using DotNetBlog.Model.Category;
 
 namespace DotNetBlog.Web.ViewModels.Home
 {

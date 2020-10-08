@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Entity;
+using DotNetBlog.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;

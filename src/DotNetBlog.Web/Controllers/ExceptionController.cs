@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Service;
 using DotNetBlog.Web.ViewModels.Exception;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

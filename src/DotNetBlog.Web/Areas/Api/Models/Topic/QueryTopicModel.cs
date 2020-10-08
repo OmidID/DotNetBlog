@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Enums;
+﻿using DotNetBlog.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 

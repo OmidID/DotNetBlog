@@ -1,9 +1,9 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Enums;
-using DotNetBlog.Core.Extensions;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Widget;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Enums;
+using DotNetBlog.Extensions;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Widget;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Localization;
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class WidgetService
     {

@@ -1,8 +1,8 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Model.Category;
-using DotNetBlog.Core.Model.Tag;
-using DotNetBlog.Core.Model.Topic;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Model.Category;
+using DotNetBlog.Model.Tag;
+using DotNetBlog.Model.Topic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DotNetBlog.Core.Extensions
+namespace DotNetBlog.Extensions
 {
     public static class BlogContextExtensions
     {

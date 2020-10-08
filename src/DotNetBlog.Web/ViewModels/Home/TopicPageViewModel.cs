@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Model.Comment;
-using DotNetBlog.Core.Model.Topic;
+﻿using DotNetBlog.Model.Comment;
+using DotNetBlog.Model.Topic;
 using System.Collections.Generic;
 
 namespace DotNetBlog.Web.ViewModels.Home

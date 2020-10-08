@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace DotNetBlog.Core.Migrations.SqliteMigrations
+namespace DotNetBlog.Migrations.SqliteMigrations
 {
     public partial class InitialCreate : Migration
     {

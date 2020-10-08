@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DotNetBlog.Core.Utilities
+namespace DotNetBlog.Utilities
 {
     public sealed class EncryptHelper
     {

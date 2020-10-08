@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Extensions;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Category;
-using DotNetBlog.Core.Model.Setting;
-using DotNetBlog.Core.Model.Topic;
+using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Extensions;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Category;
+using DotNetBlog.Model.Setting;
+using DotNetBlog.Model.Topic;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class TopicService
     {

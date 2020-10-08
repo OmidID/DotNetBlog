@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>DotNetBlog</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="../../build/Library.props" />
+
+</Project>

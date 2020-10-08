@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Comment;
+﻿using DotNetBlog.Model.Comment;
 using System.Collections.Generic;
 
 namespace DotNetBlog.Web.ViewModels.Home

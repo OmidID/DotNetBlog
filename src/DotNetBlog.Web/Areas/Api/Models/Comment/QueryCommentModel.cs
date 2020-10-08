@@ -6,7 +6,7 @@
 
         public int PageSize { get; set; }
 
-        public Core.Enums.CommentStatus? Status { get; set; }
+        public Enums.CommentStatus? Status { get; set; }
 
         public string Keywords { get; set; }
     }

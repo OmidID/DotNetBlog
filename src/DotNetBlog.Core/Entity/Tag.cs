@@ -1,4 +1,4 @@
-﻿namespace DotNetBlog.Core.Entity
+﻿namespace DotNetBlog.Entity
 {
     public class Tag
     {

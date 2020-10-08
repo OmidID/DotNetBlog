@@ -1,10 +1,10 @@
-﻿using DotNetBlog.Core.Data.Mappings;
-using DotNetBlog.Core.Entity;
+﻿using DotNetBlog.Data.Mappings;
+using DotNetBlog.Entity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace DotNetBlog.Core.Data
+namespace DotNetBlog.Data
 {
     public class SqlServerBlogContext : BlogContext
     {

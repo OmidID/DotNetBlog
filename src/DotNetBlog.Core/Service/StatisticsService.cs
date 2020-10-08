@@ -1,10 +1,10 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Model.Statistics;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Model.Statistics;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class StatisticsService
     {

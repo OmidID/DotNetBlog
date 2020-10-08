@@ -1,10 +1,10 @@
-﻿using DotNetBlog.Core.Entity;
+﻿using DotNetBlog.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core
+namespace DotNetBlog
 {
     public class ClientManager
     {

@@ -1,6 +1,6 @@
-﻿using DotNetBlog.Core;
-using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
+﻿using DotNetBlog;
+using DotNetBlog.Data;
+using DotNetBlog.Entity;
 using DotNetBlog.Web.ViewEngines;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
@@ -117,7 +117,7 @@ namespace DotNetBlog.Web
                 //Uncomment for change language by user
                 opts.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
                 {
-                    var settingService = context.RequestServices.GetService<Core.Service.SettingService>();
+                    var settingService = context.RequestServices.GetService<Service.SettingService>();
                     var setting = await settingService.GetAsync();
                     // My custom request culture logic
                     return new ProviderCultureResult(setting.Language);

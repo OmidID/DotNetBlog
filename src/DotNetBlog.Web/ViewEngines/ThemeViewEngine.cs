@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Setting;
+﻿using DotNetBlog.Model.Setting;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace DotNetBlog.Web.ViewEngines
         public void PopulateValues(ViewLocationExpanderContext context)
         {
             //Cache the Theme and the key for the current session
-            var settingService = context.ActionContext.HttpContext.RequestServices.GetService<Core.Service.SettingService>();
+            var settingService = context.ActionContext.HttpContext.RequestServices.GetService<Service.SettingService>();
             context.Values[ThemeKey] = settingService.GetAsync().Result.Theme;
         }
 

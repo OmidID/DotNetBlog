@@ -1,10 +1,10 @@
-﻿using DotNetBlog.Core.Model.Setting;
-using DotNetBlog.Core.Model.Theme;
+﻿using DotNetBlog.Model.Setting;
+using DotNetBlog.Model.Theme;
 using Microsoft.AspNetCore.Hosting;
 using System.Collections.Generic;
 using System.IO;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class ThemeService
     {

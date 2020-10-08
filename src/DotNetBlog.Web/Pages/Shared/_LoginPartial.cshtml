@@ -1,9 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using DotNetBlog.Core.Entity
+@using DotNetBlog.Entity
 
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
-@inject DotNetBlog.Core.Model.Setting.SettingModel SettingModel
+@inject DotNetBlog.Model.Setting.SettingModel SettingModel
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Model.Page;
-using DotNetBlog.Core.Model.Setting;
-using DotNetBlog.Core.Model.Topic;
+using DotNetBlog.Entity;
+using DotNetBlog.Model.Page;
+using DotNetBlog.Model.Setting;
+using DotNetBlog.Model.Topic;
 using DotNetBlog.Web.Areas.Api.Models.Config;
 using Microsoft.Extensions.DependencyInjection;
 

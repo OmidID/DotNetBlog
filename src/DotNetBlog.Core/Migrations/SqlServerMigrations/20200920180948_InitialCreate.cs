@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace DotNetBlog.Core.Migrations.SqlServerMigrations
+namespace DotNetBlog.Migrations.SqlServerMigrations
 {
     public partial class InitialCreate : Migration
     {

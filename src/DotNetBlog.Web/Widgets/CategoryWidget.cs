@@ -1,6 +1,6 @@
-﻿using DotNetBlog.Core.Model.Category;
-using DotNetBlog.Core.Model.Widget;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Model.Category;
+using DotNetBlog.Model.Widget;
+using DotNetBlog.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

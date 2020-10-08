@@ -5,9 +5,9 @@ namespace DotNetBlog.Web.ViewServices
 {
     public class EmailSender : IEmailSender
     {
-        private readonly Core.Service.EmailService _emailService;
+        private readonly Service.EmailService _emailService;
 
-        public EmailSender(Core.Service.EmailService emailService)
+        public EmailSender(Service.EmailService emailService)
         {
             _emailService = emailService;
         }

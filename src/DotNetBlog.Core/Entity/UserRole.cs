@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace DotNetBlog.Core.Entity
+namespace DotNetBlog.Entity
 {
     public class UserRole : IdentityRole<long>
     {

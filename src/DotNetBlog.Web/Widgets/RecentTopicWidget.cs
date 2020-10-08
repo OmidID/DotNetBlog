@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -13,7 +13,7 @@ namespace DotNetBlog.Web.Widgets
             TopicService = topicService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(Core.Model.Widget.RecentTopicWidgetConfigModel config)
+        public async Task<IViewComponentResult> InvokeAsync(Model.Widget.RecentTopicWidgetConfigModel config)
         {
             ViewBag.Config = config;
 

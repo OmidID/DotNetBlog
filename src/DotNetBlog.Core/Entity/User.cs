@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DotNetBlog.Core.Entity
+namespace DotNetBlog.Entity
 {
     public class User : IdentityUser<long>
     {

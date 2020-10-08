@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Page;
+﻿using DotNetBlog.Model.Page;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;

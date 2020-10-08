@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Service;
 using DotNetBlog.Web.Areas.Api.Models.Comment;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return this.InvalidRequest();
             }
 
-            await this.CommentService.BathUpdateStatus(model.CommentList, Core.Enums.CommentStatus.Approved);
+            await this.CommentService.BathUpdateStatus(model.CommentList, Enums.CommentStatus.Approved);
 
             return this.Success();
         }
@@ -45,7 +45,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return this.InvalidRequest();
             }
 
-            await this.CommentService.BathUpdateStatus(model.CommentList, Core.Enums.CommentStatus.Reject);
+            await this.CommentService.BathUpdateStatus(model.CommentList, Enums.CommentStatus.Reject);
 
             return this.Success();
         }
@@ -91,7 +91,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
                 return this.InvalidRequest();
             }
 
-            var result = await this.CommentService.Query(1, count, Core.Enums.CommentStatus.Pending, null);
+            var result = await this.CommentService.Query(1, count, Enums.CommentStatus.Pending, null);
 
             return Success(result.Data);
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace DotNetBlog.Core.Data.Factory
+namespace DotNetBlog.Data.Factory
 {
     public class SqlServerFactory : IDesignTimeDbContextFactory<SqlServerBlogContext>
     {

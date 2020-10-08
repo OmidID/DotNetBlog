@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Model.Topic;
+﻿using DotNetBlog.Model.Topic;
 using System.Collections.Generic;
 
 namespace DotNetBlog.Web.ViewModels.Home

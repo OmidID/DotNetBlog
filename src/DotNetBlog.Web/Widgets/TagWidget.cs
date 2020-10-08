@@ -1,5 +1,5 @@
-﻿using DotNetBlog.Core.Model.Widget;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Model.Widget;
+using DotNetBlog.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;

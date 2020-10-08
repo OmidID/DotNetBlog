@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core;
+﻿using DotNetBlog;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

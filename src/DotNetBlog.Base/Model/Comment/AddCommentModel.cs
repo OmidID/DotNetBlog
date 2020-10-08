@@ -1,0 +1,26 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DotNetBlog.Model.Comment
+{
+    public class AddCommentModel
+    {
+        [Required]
+        public int? TopicId { get; set; }
+
+        public int? ReplyTo { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        public string WebSite { get; set; }
+
+        [Required]
+        public string Content { get; set; }
+
+        public bool NotifyOnComment { get; set; }
+    }
+}

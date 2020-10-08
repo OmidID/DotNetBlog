@@ -1,8 +1,8 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Email;
-using DotNetBlog.Core.Model.Setting;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Email;
+using DotNetBlog.Model.Setting;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using NLog;
 using System;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class EmailService
     {

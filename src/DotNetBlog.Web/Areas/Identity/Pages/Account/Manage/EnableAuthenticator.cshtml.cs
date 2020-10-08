@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Entity;
+﻿using DotNetBlog.Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

@@ -1,9 +1,9 @@
-﻿using DotNetBlog.Core;
-using DotNetBlog.Core.Model.Comment;
-using DotNetBlog.Core.Model.Page;
-using DotNetBlog.Core.Model.Setting;
-using DotNetBlog.Core.Model.Topic;
-using DotNetBlog.Core.Service;
+﻿using DotNetBlog;
+using DotNetBlog.Model.Comment;
+using DotNetBlog.Model.Page;
+using DotNetBlog.Model.Setting;
+using DotNetBlog.Model.Topic;
+using DotNetBlog.Service;
 using DotNetBlog.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
@@ -46,7 +46,7 @@ namespace DotNetBlog.Web.Controllers
                 return RedirectToAction("Index", "Install");
 
             var pageSize = SettingModel.TopicsPerPage;
-            var topicList = await TopicService.QueryNotTrash(page, pageSize, Core.Enums.TopicStatus.Published, null);
+            var topicList = await TopicService.QueryNotTrash(page, pageSize, Enums.TopicStatus.Published, null);
 
             var vm = new IndexPageViewModel
             {
@@ -220,7 +220,7 @@ namespace DotNetBlog.Web.Controllers
             {
                 return NotFound();
             }
-            if (topic.Status != Core.Enums.TopicStatus.Published && !clientManager.IsLogin)
+            if (topic.Status != Enums.TopicStatus.Published && !clientManager.IsLogin)
             {
                 return NotFound();
             }
@@ -256,7 +256,7 @@ namespace DotNetBlog.Web.Controllers
             {
                 return NotFound();
             }
-            if (page.Status != Core.Enums.PageStatus.Published && !clientManager.IsLogin)
+            if (page.Status != Enums.PageStatus.Published && !clientManager.IsLogin)
             {
                 return NotFound();
             }
@@ -287,7 +287,7 @@ namespace DotNetBlog.Web.Controllers
 
             if (result.Success)
             {
-                if (result.Data.Status != Core.Enums.CommentStatus.Approved)
+                if (result.Data.Status != Enums.CommentStatus.Approved)
                 {
                     return this.Notice(new NoticePageViewModel
                     {

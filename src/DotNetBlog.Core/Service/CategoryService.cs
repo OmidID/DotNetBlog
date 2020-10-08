@@ -1,8 +1,8 @@
-﻿using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Extensions;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Category;
+﻿using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Extensions;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Category;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class CategoryService
     {

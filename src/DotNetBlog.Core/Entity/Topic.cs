@@ -1,7 +1,7 @@
-﻿using DotNetBlog.Core.Enums;
+﻿using DotNetBlog.Enums;
 using System;
 
-namespace DotNetBlog.Core.Entity
+namespace DotNetBlog.Entity
 {
     public class Topic
     {

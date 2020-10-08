@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Service;
 using DotNetBlog.Web.Areas.Api.Models.Tag;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

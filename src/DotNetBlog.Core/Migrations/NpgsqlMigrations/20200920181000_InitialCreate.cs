@@ -2,7 +2,7 @@
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using System;
 
-namespace DotNetBlog.Core.Migrations.NpgsqlMigrations
+namespace DotNetBlog.Migrations.NpgsqlMigrations
 {
     public partial class InitialCreate : Migration
     {

@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core;
+﻿using DotNetBlog;
 using DotNetBlog.Web.Areas.Api.Filters;
 using DotNetBlog.Web.Areas.Api.Models;
 using Microsoft.AspNetCore.Authorization;

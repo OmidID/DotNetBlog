@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using DotNetBlog.Core.Data;
-using DotNetBlog.Core.Entity;
-using DotNetBlog.Core.Extensions;
-using DotNetBlog.Core.Model;
-using DotNetBlog.Core.Model.Page;
+using DotNetBlog.Data;
+using DotNetBlog.Entity;
+using DotNetBlog.Extensions;
+using DotNetBlog.Model;
+using DotNetBlog.Model.Page;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetBlog.Core.Service
+namespace DotNetBlog.Service
 {
     public class PageService
     {

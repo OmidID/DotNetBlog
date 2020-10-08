@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNetBlog.Core.Entity
+namespace DotNetBlog.Entity
 {
     public class Comment
     {

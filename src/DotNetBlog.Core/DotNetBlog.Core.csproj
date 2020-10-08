@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../build/Library.props" />
+  <Import Project="../../build/WebLibrary.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetBlog.Base\DotNetBlog.Base.csproj" />
+  </ItemGroup>
 
 </Project>

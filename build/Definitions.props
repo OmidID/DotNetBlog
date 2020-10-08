@@ -2,10 +2,10 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <AspNetLibrariesVersion>3.1.6</AspNetLibrariesVersion>
-    <EfLibrariesVersion>3.1.6</EfLibrariesVersion>
+    <AspNetLibrariesVersion>5.0.0-rc.1.*</AspNetLibrariesVersion>
+    <EfLibrariesVersion>5.0.0-rc.1.*</EfLibrariesVersion>
     <EfMySqlVersion>8.0.21</EfMySqlVersion>
-    <EfNpgSqlVersion>3.1.4</EfNpgSqlVersion>
+    <EfNpgSqlVersion>5.0.0-rc.1.*</EfNpgSqlVersion>
     <AutoMapperVersion>10.0.0</AutoMapperVersion>
     <NewtonsoftJsonVersion>12.0.3</NewtonsoftJsonVersion>
     <HumanizerVersion>2.8.26</HumanizerVersion>
@@ -13,6 +13,8 @@
     <MailKitVersion>2.8.0</MailKitVersion>
     <NLogVersion>1.6.1</NLogVersion>
     <SystemVersion>4.3.0</SystemVersion>
+    <MicrosoftCSharp>4.7.0</MicrosoftCSharp>
+    <MicrosoftAspNetLocalization>2.2.0</MicrosoftAspNetLocalization>
   </PropertyGroup>
   
 </Project>

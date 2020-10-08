@@ -1,4 +1,4 @@
-﻿namespace DotNetBlog.Core.Data.Mappings
+﻿namespace DotNetBlog.Data.Mappings
 {
     public sealed class LinkMapping
     {

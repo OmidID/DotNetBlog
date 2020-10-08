@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Core.Service;
+﻿using DotNetBlog.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -54,7 +54,7 @@ namespace DotNetBlog.Web.Controllers
         [HttpGet("topic/{topicId:int}/delete")]
         public async Task<IActionResult> DeleteTopic(int topicId)
         {
-            await this.TopicService.BatchUpdateStatus(new int[] { topicId }, Core.Enums.TopicStatus.Trash);
+            await this.TopicService.BatchUpdateStatus(new int[] { topicId }, Enums.TopicStatus.Trash);
 
             return this.RedirectToAction("Index", "Home");
         }
