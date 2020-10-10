@@ -3,7 +3,6 @@ using DotNetBlog.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -97,14 +96,14 @@ namespace DotNetBlog.Web
 
         public static IApplicationBuilder UseDotNetBlogSpa(this IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseSpa(spa =>
-                {
-                    spa.Options.SourcePath = "../DotNetBlog.Admin";
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                });
-            }
+            // if (env.IsDevelopment())
+            // {
+            //     app.UseSpa(spa =>
+            //     {
+            //         spa.Options.SourcePath = "../DotNetBlog.Admin";
+            //         spa.UseReactDevelopmentServer(npmScript: "start");
+            //     });
+            // }
 
             return app;
         }

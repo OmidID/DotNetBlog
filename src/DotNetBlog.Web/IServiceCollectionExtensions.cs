@@ -90,10 +90,10 @@ namespace DotNetBlog.Web
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "wwwroot/dist";
-            });
+            // services.AddSpaStaticFiles(configuration =>
+            // {
+            //     configuration.RootPath = "wwwroot/dist";
+            // });
 
             return services;
         }

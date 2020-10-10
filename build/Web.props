@@ -14,8 +14,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspNetLibrariesVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="$(AspNetLibrariesVersion)" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="$(AspNetLibrariesVersion)" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="$(AspNetLibrariesVersion)" />
+    <!-- <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="$(AspNetLibrariesVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="$(AspNetLibrariesVersion)" /> -->
 
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="$(AspNetLibrariesVersion)" />
 
@@ -32,8 +32,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="$(AspNetLibrariesVersion)" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EfLibrariesVersion)" />
-  </ItemGroup>
+  </ItemGroup> -->
 
 </Project>

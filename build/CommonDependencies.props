@@ -19,10 +19,10 @@
     <PackageReference Include="MailKit" Version="$(MailKitVersion)" />
     
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(EfLibrariesVersion)" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(EfLibrariesVersion)">
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(EfLibrariesVersion)">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    </PackageReference> -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(EfLibrariesVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EfLibrariesVersion)" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="$(EfMySqlVersion)" />

@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <Import Project="../../build/Web.props" />
-
+<!-- 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(AspNetLibrariesVersion)" />
-  </ItemGroup>
+  </ItemGroup> -->
 
   <ItemGroup>
     <Content Update="NLog.config">
