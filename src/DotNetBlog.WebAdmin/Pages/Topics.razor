@@ -1,0 +1,41 @@
+﻿@page "/topics"
+@inject TopicService TopicService;
+
+<h1>Topics</h1>
+
+@if (topicResponse == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var topic in topicResponse.Data)
+            {
+                <tr>
+                    <td>@topic.Title</td>
+                    <td>@topic.Status</td>
+                    <td>@topic.Date</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private PagedApiResponse<DotNetBlog.Model.Topic.TopicModel> topicResponse;
+
+    protected override async Task OnInitializedAsync()
+    {
+        topicResponse = await TopicService.GetTopicsAsync(1, 20, null, null);
+    }
+
+}

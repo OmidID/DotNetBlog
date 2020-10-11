@@ -1,6 +1,6 @@
 ﻿using DotNetBlog;
 using DotNetBlog.Web.Areas.Api.Filters;
-using DotNetBlog.Web.Areas.Api.Models;
+using DotNetBlog.Model.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
@@ -19,7 +19,7 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
     {
         private static readonly JsonSerializerSettings _DefaultJsonSerializerSettings = new JsonSerializerSettings
         {
-            DateFormatString = "yyyy-MM-dd HH:mm:ss",
+            DateFormatString = "s",
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 

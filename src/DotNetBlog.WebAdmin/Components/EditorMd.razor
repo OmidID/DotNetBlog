@@ -1,0 +1,50 @@
+﻿@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<div id="@InternalId" data-placeholder="@Placeholder">
+    <textarea style="display:none;">@EditorContent</textarea>
+</div>
+
+@code {
+
+    internal string InternalId { get; set; } = $"BlazorEditorMd";
+
+    [Parameter]
+    public string EditorContent { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; }
+
+    [Parameter]
+    public EventCallback<EditorMdUpdateEventArgs> EditorContentChanged { get; set; }
+
+    internal async Task EditorUpdated(string editorText)
+    {
+        EditorContent = editorText;
+        if (EditorContentChanged.HasDelegate)
+            await EditorContentChanged.InvokeAsync(
+                new EditorMdUpdateEventArgs { Content = editorText });
+    }
+
+    protected override void OnInitialized()
+    {
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        EditorMdInterop.Initialize(this);
+        if (firstRender)
+            await JSRuntime.InvokeVoidAsync("initEditorMd", InternalId);
+    }
+
+    public void Dispose()
+    {
+        EditorMdInterop.Close(this);
+    }
+
+    public string GetEditorText()
+    {
+        return EditorContent;
+    }
+
+}

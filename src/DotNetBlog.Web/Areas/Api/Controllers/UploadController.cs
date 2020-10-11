@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Web.Areas.Api.Models.Upload;
+﻿using DotNetBlog.Model.Api.Upload;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;

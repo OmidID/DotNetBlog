@@ -89,6 +89,7 @@ namespace DotNetBlog.Web
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             // services.AddSpaStaticFiles(configuration =>
             // {

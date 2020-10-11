@@ -1,5 +1,5 @@
 ﻿using DotNetBlog.Service;
-using DotNetBlog.Web.Areas.Api.Models.Comment;
+using DotNetBlog.Model.Api.Comment;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

@@ -1,6 +1,6 @@
 ﻿using DotNetBlog.Model.Topic;
 using DotNetBlog.Service;
-using DotNetBlog.Web.Areas.Api.Models.Topic;
+using DotNetBlog.Model.Api.Topic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using System.Threading.Tasks;

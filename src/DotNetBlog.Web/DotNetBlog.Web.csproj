@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNetBlog.Core\DotNetBlog.Core.csproj" />
+    <ProjectReference Include="..\DotNetBlog.WebAdmin\DotNetBlog.WebAdmin.csproj" />
   </ItemGroup>
   
 </Project>

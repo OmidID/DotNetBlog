@@ -1,6 +1,6 @@
 ﻿//using DotNetBlog;
 //using DotNetBlog.Service;
-//using DotNetBlog.Web.Areas.Api.Models.My;
+//using DotNetBlog.Model.Api.My;
 //using Microsoft.AspNetCore.Mvc;
 //using System.Threading.Tasks;
 

@@ -91,6 +91,19 @@ namespace DotNetBlog.Web
                 endpoints.MapRazorPages();
             });
 
+            app.Map("/manager", child =>
+            {
+                child.UseBlazorFrameworkFiles();
+                child.UseStaticFiles();
+                child.UseRouting();
+                child.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapFallbackToController("Index", "Manager");
+                    endpoints.MapBlazorHub();
+                });
+                // app.UseBlazorClientSideFiles<WebAdmin.Program>();
+            });
+
             return app;
         }
 

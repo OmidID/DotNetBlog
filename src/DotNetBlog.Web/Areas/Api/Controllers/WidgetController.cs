@@ -1,6 +1,6 @@
 ﻿using DotNetBlog.Model.Widget;
 using DotNetBlog.Service;
-using DotNetBlog.Web.Areas.Api.Models.Widget;
+using DotNetBlog.Model.Api.Widget;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;

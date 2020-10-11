@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{23C6DF76
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBlog.Base", "src\DotNetBlog.Base\DotNetBlog.Base.csproj", "{CA9F7911-65B0-4F5C-BA30-D248FB58799A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBlog.WebAdmin", "src\DotNetBlog.WebAdmin\DotNetBlog.WebAdmin.csproj", "{254C84C6-BBF1-4924-8768-EF76A4821237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{CA9F7911-65B0-4F5C-BA30-D248FB58799A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA9F7911-65B0-4F5C-BA30-D248FB58799A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA9F7911-65B0-4F5C-BA30-D248FB58799A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254C84C6-BBF1-4924-8768-EF76A4821237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254C84C6-BBF1-4924-8768-EF76A4821237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254C84C6-BBF1-4924-8768-EF76A4821237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254C84C6-BBF1-4924-8768-EF76A4821237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{89F9B8C8-2F34-41CF-B39E-C23935AFADC8} = {9728357A-237B-4337-A648-6F56FE479A6F}
 		{89065586-C5EF-4EF4-BCD5-63D47E6E3816} = {9728357A-237B-4337-A648-6F56FE479A6F}
 		{CA9F7911-65B0-4F5C-BA30-D248FB58799A} = {9728357A-237B-4337-A648-6F56FE479A6F}
+		{254C84C6-BBF1-4924-8768-EF76A4821237} = {9728357A-237B-4337-A648-6F56FE479A6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8BDBED8-2603-4771-8572-3EBAA91BF2E5}

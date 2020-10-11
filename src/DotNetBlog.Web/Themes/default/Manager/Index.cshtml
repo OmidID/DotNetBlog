@@ -1,0 +1,42 @@
+﻿@using DotNetBlog.WebAdmin
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClientSideBlazorWithPrerendering</title>
+    <base href="/manager/" />
+
+    <link href="/manager/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/manager/css/app.css" rel="stylesheet" />
+    <link href="/manager/_framework/scoped.styles.css" rel="stylesheet" />
+
+    <link href="/lib/editor.md/css/editormd.min.css" rel="stylesheet" />
+    <link href="/lib/tagify/dist/tagify.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script>function getBaseUrl() { return "@(Url.Action("Index", "Manager", null, this.Context.Request.Scheme))" }</script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/_content/BlazorInputFile/inputfile.js"></script>
+    <script src="/manager/_framework/blazor.webassembly.js"></script>
+    <script src="/lib/editor.md/editormd.js"></script>
+    <script src="/lib/tagify/dist/tagify.min.js"></script>
+    <script src="/lib/tagify/dist/jQuery.tagify.min.js"></script>
+    <script src="/manager/js/tools.js"></script>
+</body>
+</html>

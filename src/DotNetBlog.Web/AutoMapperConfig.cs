@@ -3,7 +3,7 @@ using DotNetBlog.Entity;
 using DotNetBlog.Model.Page;
 using DotNetBlog.Model.Setting;
 using DotNetBlog.Model.Topic;
-using DotNetBlog.Web.Areas.Api.Models.Config;
+using DotNetBlog.Model.Api.Config;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBlog.Web

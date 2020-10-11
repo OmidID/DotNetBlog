@@ -1,0 +1,57 @@
+﻿@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<input id="@InternalId" data-placeholder="@Placeholder" value="@(string.Join(",", Tags.ToArray()))">
+
+@code {
+
+    internal string InternalId { get; set; } = $"BlazorTagify";
+
+    [Parameter]
+    public List<string> Tags { get; set; } = new List<string>();
+
+    [Parameter]
+    public string Placeholder { get; set; }
+
+    [Parameter]
+    public EventCallback<TagifyEventArgs> TagsUpdated { get; set; }
+    [Parameter]
+    public EventCallback<List<string>> TagsChanged { get; set; }
+
+    internal async Task AddItem(string tag)
+    {
+        Tags.Add(tag);
+        if (TagsUpdated.HasDelegate)
+            await TagsUpdated.InvokeAsync(
+                new TagifyEventArgs { Tags = Tags.AsReadOnly() });
+        if (TagsChanged.HasDelegate)
+            await TagsChanged.InvokeAsync(Tags);
+    }
+    
+    internal async Task RemoveItem(string tag)
+    {
+        Tags.Remove(tag);
+        if (TagsUpdated.HasDelegate)
+            await TagsUpdated.InvokeAsync(
+                new TagifyEventArgs { Tags = Tags.AsReadOnly() });
+        if (TagsChanged.HasDelegate)
+            await TagsChanged.InvokeAsync(Tags);
+    }
+
+    protected override void OnInitialized()
+    {
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        TagifyInterop.Initialize(this);
+        if (firstRender)
+            await JSRuntime.InvokeVoidAsync("initTagify", InternalId);
+    }
+
+    public void Dispose()
+    {
+        TagifyInterop.Close(this);
+    }
+
+}

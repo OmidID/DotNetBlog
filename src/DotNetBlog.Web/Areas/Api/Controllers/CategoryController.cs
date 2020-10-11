@@ -1,6 +1,6 @@
 ﻿using DotNetBlog.Model;
 using DotNetBlog.Service;
-using DotNetBlog.Web.Areas.Api.Models.Category;
+using DotNetBlog.Model.Api.Category;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

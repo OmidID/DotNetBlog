@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using DotNetBlog.Model.Email;
 using DotNetBlog.Service;
-using DotNetBlog.Web.Areas.Api.Models.Config;
+using DotNetBlog.Model.Api.Config;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 

@@ -1,4 +1,4 @@
-﻿using DotNetBlog.Web.Areas.Api.Models;
+﻿using DotNetBlog.Model.Api;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
