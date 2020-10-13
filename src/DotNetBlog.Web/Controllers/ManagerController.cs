@@ -9,6 +9,7 @@ namespace DotNetBlog.Web.Controllers
     [Route("manager")]
     [Filters.RequireLoginFilter]
     [Filters.ErrorHandleFilter]
+    [Authorize(Policy = Policies.AdminAccess)]
     public class ManagerController : Controller
     {
         [Route("{*path}")]

@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Successful operation" xml:space="preserve">
+    <value>Opération réussie</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>Changer le mot de passe</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenu</value>
+  </data>
+  <data name="Customize" xml:space="preserve">
+    <value>Personnaliser</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Tableau de bord</value>
+  </data>
+  <data name="Personal information" xml:space="preserve">
+    <value>Informations personnelles</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>Installer</value>
+  </data>
+  <data name="Wrong username or password" xml:space="preserve">
+    <value>Identifiant ou mot de passe incorrect</value>
+  </data>
+  <data name="Category does not exists" xml:space="preserve">
+    <value>La catégorie n'existe pas</value>
+  </data>
+  <data name="Duplicate category name" xml:space="preserve">
+    <value>Nom de catégorie en double</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="Confirm new password" xml:space="preserve">
+    <value>Confirmer le nouveau mot de passe</value>
+  </data>
+  <data name="Make sure the password is not inconsistent" xml:space="preserve">
+    <value>Assurez-vous que le mot de passe n'est pas incohérent</value>
+  </data>
+  <data name="New password" xml:space="preserve">
+    <value>Nouveau mot de passe</value>
+  </data>
+  <data name="New password should be between {0} - {1}" xml:space="preserve">
+    <value>Le nouveau mot de passe doit être compris entre {0} et {1}</value>
+  </data>
+  <data name="Old password" xml:space="preserve">
+    <value>Ancien mot de passe</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Soumettre</value>
+  </data>
+  <data name="Article does not exists" xml:space="preserve">
+    <value>L'article n'existe pas</value>
+  </data>
+  <data name="Comment not exists" xml:space="preserve">
+    <value>Le commentaire n'existe pas</value>
+  </data>
+  <data name="Comments not allow for this articles" xml:space="preserve">
+    <value>Les commentaires ne permettent pas ces articles</value>
+  </data>
+  <data name="Reply to comment not available" xml:space="preserve">
+    <value>Réponse au commentaire non disponible</value>
+  </data>
+  <data name="Wrong reply object" xml:space="preserve">
+    <value>Objet de réponse incorrect</value>
+  </data>
+  <data name="Bad request" xml:space="preserve">
+    <value>Demande incorrecte</value>
+  </data>
+  <data name="Email_NewComment" xml:space="preserve">
+    <value>#Re: {0}
+&lt;br/&gt; &lt;br/&gt;
+{1}
+&lt;h /&gt;
+Commentaire de: &lt;a href=""mailto://{2}"" target=""_blank""&gt; {3} &lt;/a&gt;
+&lt;br/&gt;
+URL: &lt;a href=""{4}"" target=""_blank""&gt; {4} &lt;/a&gt;</value>
+  </data>
+  <data name="Hello world" xml:space="preserve">
+    <value>Bonjour tout le monde</value>
+  </data>
+  <data name="No email specified" xml:space="preserve">
+    <value>Aucune adresse électronique n'a été spécifiée</value>
+  </data>
+  <data name="Test Email" xml:space="preserve">
+    <value>Tester l'Email</value>
+  </data>
+  <data name="[Blog comment notification] Re: {0}" xml:space="preserve">
+    <value>[Blog comment notification] Re: {0}</value>
+  </data>
+  <data name="or search for other resources" xml:space="preserve">
+    <value>ou recherchez d'autres ressources</value>
+  </data>
+  <data name="return to home page" xml:space="preserve">
+    <value>Retour à la page d’accueil</value>
+  </data>
+  <data name="You can" xml:space="preserve">
+    <value>Vous pouvez</value>
+  </data>
+  <data name="The server has encountered an error" xml:space="preserve">
+    <value>Le serveur a rencontré une erreur</value>
+  </data>
+  <data name="Category: {0}" xml:space="preserve">
+    <value>Catégorie: {0}</value>
+  </data>
+  <data name="Invalid request, please try again later" xml:space="preserve">
+    <value>Demande non valide. Veuillez recommencer</value>
+  </data>
+  <data name="Search result: {0}" xml:space="preserve">
+    <value>Résultat de la recherche: {0}</value>
+  </data>
+  <data name="Tag: {0}" xml:space="preserve">
+    <value>Balise: {0}</value>
+  </data>
+  <data name="Your comment has been added successfully and requires an administrator to approve it before it can be displayed" xml:space="preserve">
+    <value>Votre commentaire a été ajouté avec succès et doit être approuvé par un administrateur avant de pouvoir être affiché</value>
+  </data>
+  <data name="{0} year(s) and {1} month(s)" xml:space="preserve">
+    <value>{0} an (s) et {1} mois</value>
+  </data>
+  <data name="Add welcome topic" xml:space="preserve">
+    <value>Ajoutez un sujet de bienvenue</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Blog Host" xml:space="preserve">
+    <value>Actualités</value>
+  </data>
+  <data name="Blog Title" xml:space="preserve">
+    <value>Titre du blog</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>Confirmez le mot de passe</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Nickname" xml:space="preserve">
+    <value>Surnom</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Please check your password" xml:space="preserve">
+    <value>Veuillez vérifier le mot de passe</value>
+  </data>
+  <data name="Please enter a valid email" xml:space="preserve">
+    <value>Veuillez entrer une adresse de messagerie valide</value>
+  </data>
+  <data name="Please enter the blog host" xml:space="preserve">
+    <value>Veuillez entrer l'hôte du blog</value>
+  </data>
+  <data name="Please enter the blog title" xml:space="preserve">
+    <value>Veuillez entrer le titre du blog</value>
+  </data>
+  <data name="Please enter your nickname" xml:space="preserve">
+    <value>S'il vous plait, entrez ton surnom</value>
+  </data>
+  <data name="Please select the default language" xml:space="preserve">
+    <value>Veuillez sélectionner la langue par défaut</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="Invalid request" xml:space="preserve">
+    <value>Requête non valide</value>
+  </data>
+  <data name="System Administrator" xml:space="preserve">
+    <value>Administrateur système</value>
+  </data>
+  <data name="Blog has been already installed" xml:space="preserve">
+    <value>Le blog a déjà été installé</value>
+  </data>
+  <data name="Not supported language" xml:space="preserve">
+    <value>Langue non prise en charge</value>
+  </data>
+  <data name="Welcome comment" xml:space="preserve">
+    <value>Exemple</value>
+  </data>
+  <data name="Welcome to DotNetBlog" xml:space="preserve">
+    <value>Bienvenue sur DotNetBlog</value>
+  </data>
+  <data name="Welcome topic content" xml:space="preserve">
+    <value>Merci d'installer DotNetBlog 😊. Pour modifier ce contenu et gérer votre blog, vous pouvez ouvrir la page &lt;a href="/admin"&gt; Admin &lt;/a&gt; et vous connecter avec votre nom d'utilisateur et votre mot de passe.</value>
+  </data>
+  <data name="did you forget your password?" xml:space="preserve">
+    <value>Vous avez oublié votre mot de passe?</value>
+  </data>
+  <data name="Keep me logged in" xml:space="preserve">
+    <value>Me laisser connecté</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>S’identifier</value>
+  </data>
+  <data name="Login blog" xml:space="preserve">
+    <value>Blog de connexion</value>
+  </data>
+  <data name="please enter username" xml:space="preserve">
+    <value>S'il vous plaît entrez nom d'utilisateur</value>
+  </data>
+  <data name="please enter your password" xml:space="preserve">
+    <value>Veuillez saisir votre mot de passe</value>
+  </data>
+  <data name="please enter your username" xml:space="preserve">
+    <value>Veuillez saisir votre identifiant</value>
+  </data>
+  <data name="MM" xml:space="preserve">
+    <value>{0:MMMM}</value>
+  </data>
+  <data name="Access to the page does not exist, you can" xml:space="preserve">
+    <value>L'accès à la page n'existe pas, vous pouvez</value>
+  </data>
+  <data name="return to the home page" xml:space="preserve">
+    <value>retourner à la page d'accueil</value>
+  </data>
+  <data name="Go back to the last page" xml:space="preserve">
+    <value>Revenir à la page précédente</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="After the article" xml:space="preserve">
+    <value>Après l'article</value>
+  </data>
+  <data name="Before the article" xml:space="preserve">
+    <value>Avant l'article</value>
+  </data>
+  <data name="Wrong paging parameters" xml:space="preserve">
+    <value>Mauvais paramètres de pagination</value>
+  </data>
+  <data name="Parent does not exists" xml:space="preserve">
+    <value>Le parent n'existe pas</value>
+  </data>
+  <data name="Selected parent does not exists" xml:space="preserve">
+    <value>Le parent sélectionné n'existe pas</value>
+  </data>
+  <data name="The page does not exists anymore" xml:space="preserve">
+    <value>La page n'existe plus</value>
+  </data>
+  <data name="You cannot set as parent" xml:space="preserve">
+    <value>Vous ne pouvez pas définir comme parent</value>
+  </data>
+  <data name="Wrote" xml:space="preserve">
+    <value>A écrit</value>
+  </data>
+  <data name="Please sign in" xml:space="preserve">
+    <value>Veuillez vous connecter</value>
+  </data>
+  <data name="Enter the keyword for search" xml:space="preserve">
+    <value>Entrez le mot-clé pour la recherche</value>
+  </data>
+  <data name="search for" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+  <data name="Search result" xml:space="preserve">
+    <value>Résultat de la recherche</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Balise</value>
+  </data>
+  <data name="Enter the keyword search" xml:space="preserve">
+    <value>Entrer le mot-clé</value>
+  </data>
+  <data name="Request page is wrong please try again later" xml:space="preserve">
+    <value>La page de demande est erronée, veuillez réessayer plus tard...</value>
+  </data>
+  <data name="Sorry the system has made an error" xml:space="preserve">
+    <value>Désolé, le système a fait une erreur</value>
+  </data>
+  <data name="The label does not exists" xml:space="preserve">
+    <value>L'étiquette n'existe pas</value>
+  </data>
+  <data name="The label name is duplicated" xml:space="preserve">
+    <value>Le nom de l'étiquette est dupliqué</value>
+  </data>
+  <data name="add comment" xml:space="preserve">
+    <value>Ajouter un commentaire</value>
+  </data>
+  <data name="Approve comments" xml:space="preserve">
+    <value>Approuvez les commentaires</value>
+  </data>
+  <data name="Are you sure you want to delete the article?" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer l'article?</value>
+  </data>
+  <data name="Cancel the reply to the message" xml:space="preserve">
+    <value>Annulez la réponse au message</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="comments ({0})" xml:space="preserve">
+    <value>Commentaires ({0})</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="E-mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="First name" xml:space="preserve">
+    <value>Prenom</value>
+  </data>
+  <data name="Notify me when there is a comment" xml:space="preserve">
+    <value>il y a un commentaire</value>
+  </data>
+  <data name="Please enter your email" xml:space="preserve">
+    <value>Entrez votre adresse e-mail</value>
+  </data>
+  <data name="Please fill in the comments" xml:space="preserve">
+    <value>Veuillez remplir les commentaires</value>
+  </data>
+  <data name="Please fill in the name" xml:space="preserve">
+    <value>Veuillez renseigner le nom</value>
+  </data>
+  <data name="related articles" xml:space="preserve">
+    <value>Articles connexes</value>
+  </data>
+  <data name="Save comment" xml:space="preserve">
+    <value>Enregistrer le commentaire</value>
+  </data>
+  <data name="Unaudited comments ({0})" xml:space="preserve">
+    <value>Commentaires non audités ({0})</value>
+  </data>
+  <data name="Article does not exist" xml:space="preserve">
+    <value>Cet article n'existe pas</value>
+  </data>
+  <data name="The article does not exists" xml:space="preserve">
+    <value>L'article n'existe pas</value>
+  </data>
+  <data name="Please upload the correct format image file" xml:space="preserve">
+    <value>Veuillez télécharger le fichier image au format correct</value>
+  </data>
+  <data name="Duplicated email address" xml:space="preserve">
+    <value>Adresse e-mail dupliquée</value>
+  </data>
+  <data name="User does not exists" xml:space="preserve">
+    <value>L'utilisateur n'existe pas</value>
+  </data>
+  <data name="Wrong password" xml:space="preserve">
+    <value>Mot de passe incorrect</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archiver</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>catégories</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>liens</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="Recent articles" xml:space="preserve">
+    <value>Articles récents</value>
+  </data>
+  <data name="Recent comments" xml:space="preserve">
+    <value>Commentaires récents</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Étiquettes</value>
+  </data>
+  <data name="Are you sure you want to delete comments?" xml:space="preserve">
+    <value>Voulez-vous vraiment supprimer les commentaires?</value>
+  </data>
+  <data name="Delete the message and reply" xml:space="preserve">
+    <value>Supprimez le message et répondez</value>
+  </data>
+  <data name="Delete the message, but leave the reply" xml:space="preserve">
+    <value>Supprimez le message, mais laissez la réponse</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Répondre</value>
+  </data>
+  <data name="You are sure you want to delete comments?" xml:space="preserve">
+    <value>Vous êtes sûr de vouloir supprimer les commentaires?</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Domicile</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Plus</value>
+  </data>
+  <data name="Unaudited comments({0})" xml:space="preserve">
+    <value>Commentaires non audités ({0})</value>
+  </data>
+</root>

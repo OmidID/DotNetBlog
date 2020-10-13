@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1">this is my long string</data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        [base64 mime encoded serialized .NET Framework object]
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Successful operation" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Customize" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>控制台</value>
+  </data>
+  <data name="Personal information" xml:space="preserve">
+    <value>个人资料</value>
+  </data>
+  <data name="Setup" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Wrong username or password" xml:space="preserve">
+    <value>用户名或密码错误</value>
+  </data>
+  <data name="Category does not exists" xml:space="preserve">
+    <value>分类不存在</value>
+  </data>
+  <data name="Duplicate category name" xml:space="preserve">
+    <value>重复的分类名称</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Confirm new password" xml:space="preserve">
+    <value>确认新密码</value>
+  </data>
+  <data name="Make sure the password is not inconsistent" xml:space="preserve">
+    <value>确认密码不一致</value>
+  </data>
+  <data name="New password" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="New password should be between {0} - {1}" xml:space="preserve">
+    <value>请输入{0}-{1}位的新密码</value>
+  </data>
+  <data name="Old password" xml:space="preserve">
+    <value>原密码</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="Article does not exists" xml:space="preserve">
+    <value>文章不存在</value>
+  </data>
+  <data name="Comment not exists" xml:space="preserve">
+    <value>评论不存在</value>
+  </data>
+  <data name="Comments not allow for this articles" xml:space="preserve">
+    <value>文章不允许评论</value>
+  </data>
+  <data name="Reply to comment not available" xml:space="preserve">
+    <value>回复的评论不存在</value>
+  </data>
+  <data name="Wrong reply object" xml:space="preserve">
+    <value>错误的回复对象</value>
+  </data>
+  <data name="Bad request" xml:space="preserve">
+    <value>错误的请求</value>
+  </data>
+  <data name="Email_NewComment" xml:space="preserve">
+    <value>#Re:{0}
+&lt;br/&gt;&lt;br/&gt;
+{1}
+&lt;hr/&gt;
+评论者: &lt;a href=""mailto://{2}"" target=""_blank""&gt;{3}&lt;/a&gt;
+&lt;br/&gt;
+URL: &lt;a href=""{4}"" target=""_blank""&gt;{4}&lt;/a&gt;</value>
+  </data>
+  <data name="Hello world" xml:space="preserve">
+    <value>Hello world</value>
+  </data>
+  <data name="No email specified" xml:space="preserve">
+    <value>No email specified</value>
+  </data>
+  <data name="Test Email" xml:space="preserve">
+    <value>Test Email</value>
+  </data>
+  <data name="[Blog comment notification] Re: {0}" xml:space="preserve">
+    <value>[博客评论通知]Re:{0}</value>
+  </data>
+  <data name="or search for other resources" xml:space="preserve">
+    <value>或搜索其他资源</value>
+  </data>
+  <data name="return to home page" xml:space="preserve">
+    <value>返回首页</value>
+  </data>
+  <data name="You can" xml:space="preserve">
+    <value>你可以</value>
+  </data>
+  <data name="The server has encountered an error" xml:space="preserve">
+    <value>服务器发生错误</value>
+  </data>
+  <data name="Category: {0}" xml:space="preserve">
+    <value>分类:{0}</value>
+  </data>
+  <data name="Invalid request, please try again later" xml:space="preserve">
+    <value>错误的请求,请稍后再试</value>
+  </data>
+  <data name="Search result: {0}" xml:space="preserve">
+    <value>搜索结果:{0}</value>
+  </data>
+  <data name="Tag: {0}" xml:space="preserve">
+    <value>标签:{0}</value>
+  </data>
+  <data name="Your comment has been added successfully and requires an administrator to approve it before it can be displayed" xml:space="preserve">
+    <value>您的评论已经添加成功,需要管理员审核通过后才能显示</value>
+  </data>
+  <data name="{0} year(s) and {1} month(s)" xml:space="preserve">
+    <value>{0}年{1}月</value>
+  </data>
+  <data name="Add welcome topic" xml:space="preserve">
+    <value>添加欢迎主题</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>博客信息</value>
+  </data>
+  <data name="Blog Host" xml:space="preserve">
+    <value>博客地址</value>
+  </data>
+  <data name="Blog Title" xml:space="preserve">
+    <value>博客标题</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>邮箱地址</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Nickname" xml:space="preserve">
+    <value>昵称</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="Please check your password" xml:space="preserve">
+    <value>请确认密码</value>
+  </data>
+  <data name="Please enter a valid email" xml:space="preserve">
+    <value>请输入合法的邮箱地址</value>
+  </data>
+  <data name="Please enter the blog host" xml:space="preserve">
+    <value>请输入博客地址</value>
+  </data>
+  <data name="Please enter the blog title" xml:space="preserve">
+    <value>请输入博客标题</value>
+  </data>
+  <data name="Please enter your nickname" xml:space="preserve">
+    <value>请输入昵称</value>
+  </data>
+  <data name="Please select the default language" xml:space="preserve">
+    <value>请选择默认语言</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="Invalid request" xml:space="preserve">
+    <value>错误的请求</value>
+  </data>
+  <data name="System Administrator" xml:space="preserve">
+    <value>系统管理员</value>
+  </data>
+  <data name="Blog has been already installed" xml:space="preserve">
+    <value>博客已经被安装</value>
+  </data>
+  <data name="Not supported language" xml:space="preserve">
+    <value>不支持的语言</value>
+  </data>
+  <data name="Welcome comment" xml:space="preserve">
+    <value>这是一个示例注释</value>
+  </data>
+  <data name="Welcome to DotNetBlog" xml:space="preserve">
+    <value>欢迎使用DotNetBlog</value>
+  </data>
+  <data name="Welcome topic content" xml:space="preserve">
+    <value>感谢安装DotNetBlog😊。 要修改此内容并管理您的博客，您可以打开&lt;a href="/admin"&gt; Admin &lt;/a&gt;页面并使用您的用户名和密码登录。</value>
+  </data>
+  <data name="did you forget your password?" xml:space="preserve">
+    <value>忘记密码?</value>
+  </data>
+  <data name="Keep me logged in" xml:space="preserve">
+    <value>保持登录状态</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="Login blog" xml:space="preserve">
+    <value>登录博客</value>
+  </data>
+  <data name="please enter username" xml:space="preserve">
+    <value>请输入用户名</value>
+  </data>
+  <data name="please enter your password" xml:space="preserve">
+    <value>请输入密码</value>
+  </data>
+  <data name="please enter your username" xml:space="preserve">
+    <value>请输入用户名</value>
+  </data>
+  <data name="MM" xml:space="preserve">
+    <value>{0:MM} 月</value>
+  </data>
+  <data name="Access to the page does not exist, you can" xml:space="preserve">
+    <value>访问的页面不存在,你可以</value>
+  </data>
+  <data name="return to the home page" xml:space="preserve">
+    <value>返回首页</value>
+  </data>
+  <data name="Go back to the last page" xml:space="preserve">
+    <value>返回上一页</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="After the article" xml:space="preserve">
+    <value>之后的文章</value>
+  </data>
+  <data name="Before the article" xml:space="preserve">
+    <value>之前的文章</value>
+  </data>
+  <data name="Wrong paging parameters" xml:space="preserve">
+    <value>错误的分页参数</value>
+  </data>
+  <data name="Parent does not exists" xml:space="preserve">
+    <value>不存在的上级页面</value>
+  </data>
+  <data name="Selected parent does not exists" xml:space="preserve">
+    <value>不存在的上级页面</value>
+  </data>
+  <data name="The page does not exists anymore" xml:space="preserve">
+    <value>页面不存在</value>
+  </data>
+  <data name="You cannot set as parent" xml:space="preserve">
+    <value>不存在的上级页面</value>
+  </data>
+  <data name="Wrote" xml:space="preserve">
+    <value>写道</value>
+  </data>
+  <data name="Please sign in" xml:space="preserve">
+    <value>请登录</value>
+  </data>
+  <data name="Enter the keyword for search" xml:space="preserve">
+    <value>输入关键字进行搜索</value>
+  </data>
+  <data name="search for" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Search result" xml:space="preserve">
+    <value>搜索结果</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Enter the keyword search" xml:space="preserve">
+    <value>输入关键字搜索</value>
+  </data>
+  <data name="Request page is wrong please try again later" xml:space="preserve">
+    <value>请求的页面发生错误,请稍后再试...</value>
+  </data>
+  <data name="Sorry the system has made an error" xml:space="preserve">
+    <value>很抱歉,系统发生错误</value>
+  </data>
+  <data name="The label does not exists" xml:space="preserve">
+    <value>标签不存在</value>
+  </data>
+  <data name="The label name is duplicated" xml:space="preserve">
+    <value>标签名称重复</value>
+  </data>
+  <data name="add comment" xml:space="preserve">
+    <value>添加评论</value>
+  </data>
+  <data name="Approve comments" xml:space="preserve">
+    <value>通过所有评论</value>
+  </data>
+  <data name="Are you sure you want to delete the article?" xml:space="preserve">
+    <value>您确定要 删除 文章?</value>
+  </data>
+  <data name="Cancel the reply to the message" xml:space="preserve">
+    <value>取消对该留言的回复</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="comments ({0})" xml:space="preserve">
+    <value>评论({0})</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="E-mail" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="First name" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="Notify me when there is a comment" xml:space="preserve">
+    <value>有评论的时候通知我</value>
+  </data>
+  <data name="Please enter your email" xml:space="preserve">
+    <value>请填写邮箱</value>
+  </data>
+  <data name="Please fill in the comments" xml:space="preserve">
+    <value>请填写评论内容</value>
+  </data>
+  <data name="Please fill in the name" xml:space="preserve">
+    <value>请填写名字</value>
+  </data>
+  <data name="related articles" xml:space="preserve">
+    <value>相关文章</value>
+  </data>
+  <data name="Save comment" xml:space="preserve">
+    <value>保存评论</value>
+  </data>
+  <data name="Unaudited comments ({0})" xml:space="preserve">
+    <value>未审核的评论（{0})</value>
+  </data>
+  <data name="Article does not exist" xml:space="preserve">
+    <value>文章不存在</value>
+  </data>
+  <data name="The article does not exists" xml:space="preserve">
+    <value>文章不存在</value>
+  </data>
+  <data name="Please upload the correct format image file" xml:space="preserve">
+    <value>请上传正确格式的图片文件</value>
+  </data>
+  <data name="Duplicated email address" xml:space="preserve">
+    <value>邮箱地址重复</value>
+  </data>
+  <data name="User does not exists" xml:space="preserve">
+    <value>用户不存在</value>
+  </data>
+  <data name="Wrong password" xml:space="preserve">
+    <value>密码错误</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>归档</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>友情链接</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>页面</value>
+  </data>
+  <data name="Recent articles" xml:space="preserve">
+    <value>最新文章</value>
+  </data>
+  <data name="Recent comments" xml:space="preserve">
+    <value>最新评论</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Are you sure you want to delete comments?" xml:space="preserve">
+    <value>您确定要 删除 评论?</value>
+  </data>
+  <data name="Delete the message and reply" xml:space="preserve">
+    <value>删除该留言和回复</value>
+  </data>
+  <data name="Delete the message, but leave the reply" xml:space="preserve">
+    <value>删除该留言，但保留回复</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>回复</value>
+  </data>
+  <data name="You are sure you want to delete comments?" xml:space="preserve">
+    <value>您确定要 删除 评论?</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>联系</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>注销</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Unaudited comments({0})" xml:space="preserve">
+    <value>未审核的评论({0})</value>
+  </data>
+</root>
