@@ -4,6 +4,7 @@ using DotNetBlog.Model;
 using DotNetBlog.Model.Tag;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace DotNetBlog.Service
     {
         private BlogContext BlogContext { get; set; }
 
-        private IHtmlLocalizer<TagService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
-        public TagService(BlogContext blogContext, IHtmlLocalizer<TagService> localizer)
+        public TagService(BlogContext blogContext, IStringLocalizer<Shared> localizer)
         {
             BlogContext = blogContext;
             L = localizer;

@@ -32,9 +32,9 @@ namespace DotNetBlog.Service
         private UserManager<User> UserManager { get; }
         public RoleManager<UserRole> RoleManager { get; }
         private IServiceProvider ServiceProvider { get; set; }
-        private IStringLocalizer<WidgetConfigModelBase> WidgetLocalizer { get; set; }
-        private IStringLocalizer<InstallService> InstallLocalizer { get; set; }
-        private IStringLocalizer<SettingModel> SettingModelLocalizer { get; set; }
+        private IStringLocalizer<Shared> WidgetLocalizer { get; set; }
+        private IStringLocalizer<Shared> InstallLocalizer { get; set; }
+        private IStringLocalizer<Shared> SettingModelLocalizer { get; set; }
         private IOptions<RequestLocalizationOptions> RequestLocalizationOptions { get; set; }
 
         public InstallService(BlogContext blogContext,
@@ -43,11 +43,11 @@ namespace DotNetBlog.Service
             ClientManager clientManager,
             UserManager<User> userManager,
             RoleManager<UserRole> roleManager,
-            IStringLocalizer<WidgetConfigModelBase> widgetLocalizer,
+            IStringLocalizer<Shared> widgetLocalizer,
             IServiceProvider serviceProvider,
             IOptions<RequestLocalizationOptions> requestLocalizationOptions,
-            IStringLocalizer<InstallService> installLocalizer,
-            IStringLocalizer<SettingModel> settingModelLocalizer)
+            IStringLocalizer<Shared> installLocalizer,
+            IStringLocalizer<Shared> settingModelLocalizer)
         {
             BlogContext = blogContext;
             TopicService = topicService;

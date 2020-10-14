@@ -37,9 +37,9 @@ namespace DotNetBlog.Service
 
         private IMemoryCache Cache { get; set; }
 
-        private IStringLocalizer<WidgetConfigModelBase> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
-        public WidgetService(BlogContext blogContext, IMemoryCache cache, IStringLocalizer<WidgetConfigModelBase> localizer)
+        public WidgetService(BlogContext blogContext, IMemoryCache cache, IStringLocalizer<Shared> localizer)
         {
             this.BlogContext = blogContext;
             this.Cache = cache;

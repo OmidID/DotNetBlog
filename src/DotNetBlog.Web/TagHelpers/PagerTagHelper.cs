@@ -176,13 +176,7 @@ namespace DotNetBlog.Web.TagHelpers
 
         private IHtmlLocalizer GetViewLocalizer()
         {
-            /* In this way we can connect localization to loaded view */
-
-            //var localizer = ViewContext.HttpContext.RequestServices.GetService(typeof(IViewLocalizer)) as IViewLocalizer;
-            //(localizer as IViewContextAware)?.Contextualize(ViewContext);
-            //return localizer;
-
-            return ViewContext.HttpContext.RequestServices.GetService(typeof(IHtmlLocalizer<PagerTagHelper>)) as IHtmlLocalizer<PagerTagHelper>;
+            return ViewContext.HttpContext.RequestServices.GetService(typeof(IHtmlLocalizer<Shared>)) as IHtmlLocalizer<Shared>;
         }
     }
 }

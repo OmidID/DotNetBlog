@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using NLog;
 
 namespace DotNetBlog.Web.Areas.Api.Filters
@@ -14,7 +15,7 @@ namespace DotNetBlog.Web.Areas.Api.Filters
 
         public override void OnException(ExceptionContext context)
         {
-            var L = context.HttpContext.RequestServices.GetService<IHtmlLocalizer<ErrorHandlerFilter>>();
+            var L = context.HttpContext.RequestServices.GetService<IStringLocalizer<Shared>>();
             Logger.Error(context.Exception, context.Exception.Message);
 
             var apiResponse = new ApiResponse

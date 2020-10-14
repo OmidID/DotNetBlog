@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace DotNetBlog.Service
 
         private EmailService EmailService { get; set; }
 
-        private IHtmlLocalizer<CommentService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
         public CommentService(BlogContext blogContext,
             ClientManager clientManager,
@@ -38,7 +39,7 @@ namespace DotNetBlog.Service
             IServiceProvider serviceProvider,
             SettingModel settings,
             EmailService emailService,
-            IHtmlLocalizer<CommentService> localizer)
+            IStringLocalizer<Shared> localizer)
         {
             this.BlogContext = blogContext;
             this.ClientManager = clientManager;

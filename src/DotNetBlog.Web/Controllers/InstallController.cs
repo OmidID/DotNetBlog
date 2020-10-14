@@ -18,12 +18,12 @@ namespace DotNetBlog.Web.Controllers
 
         private IOptions<RequestLocalizationOptions> RequestLocalizationOptions { get; set; }
 
-        private IStringLocalizer<InstallController> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
         public InstallController(
             InstallService installService,
             IOptions<RequestLocalizationOptions> requestLocalizationOptions,
-            IStringLocalizer<InstallController> l)
+            IStringLocalizer<Shared> l)
         {
             InstallService = installService;
             RequestLocalizationOptions = requestLocalizationOptions;

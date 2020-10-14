@@ -14,7 +14,7 @@ namespace DotNetBlog.Service
     {
         private BlogContext BlogContext { get; set; }
 
-        private IStringLocalizer<SettingModel> SettingModelLocalizer { get; set; }
+        private IStringLocalizer<Shared> SettingModelLocalizer { get; set; }
 
         private IMemoryCache Cache { get; set; }
 
@@ -22,7 +22,7 @@ namespace DotNetBlog.Service
 
         private static object _sync = new object();
 
-        public SettingService(BlogContext blogContext, IMemoryCache cache, IStringLocalizer<SettingModel> settingModelLocalizer)
+        public SettingService(BlogContext blogContext, IMemoryCache cache, IStringLocalizer<Shared> settingModelLocalizer)
         {
             BlogContext = blogContext;
             Cache = cache;

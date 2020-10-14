@@ -7,6 +7,7 @@ using DotNetBlog.Service;
 using DotNetBlog.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace DotNetBlog.Web.Controllers
 
         private TopicService TopicService { get; set; }
         private SettingModel SettingModel { get; set; }
-        private IHtmlLocalizer<HomeController> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
         public HomeController(
             TopicService topicService,
@@ -32,7 +33,7 @@ namespace DotNetBlog.Web.Controllers
             CommentService commentService,
             PageService pageService,
             ClientManager clientManager,
-            IHtmlLocalizer<HomeController> localizer)
+            IStringLocalizer<Shared> localizer)
         {
             TopicService = topicService;
             SettingModel = settingModel;

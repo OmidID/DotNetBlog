@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
 using System;
 using System.IO;
 using System.Linq;
@@ -14,11 +15,11 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
     {
         private IWebHostEnvironment Enviroment { get; set; }
 
-        private IHtmlLocalizer<UploadController> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
         private static readonly string[] AvailableImageExtensionList = new string[] { ".jpg", ".png", ".gif", ".bmp", "" };
 
-        public UploadController(IWebHostEnvironment enviroment, IHtmlLocalizer<UploadController> localizer)
+        public UploadController(IWebHostEnvironment enviroment, IStringLocalizer<Shared> localizer)
         {
             this.Enviroment = enviroment;
             this.L = localizer;

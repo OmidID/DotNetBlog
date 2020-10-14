@@ -9,6 +9,7 @@ using DotNetBlog.Model.Topic;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +29,13 @@ namespace DotNetBlog.Service
 
         private ClientManager ClientManager { get; set; }
 
-        private IHtmlLocalizer<TopicService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
         public TopicService(BlogContext blogContext,
             IMemoryCache cache,
             SettingModel settings,
             ClientManager clientManager,
-            IHtmlLocalizer<TopicService> localizer,
+            IStringLocalizer<Shared> localizer,
             IMapper mapper)
         {
             BlogContext = blogContext;

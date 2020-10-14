@@ -1,5 +1,5 @@
 ﻿@model SearchPageViewModel
-@inject IViewLocalizer L
+@inject IHtmlLocalizer<Shared> L
 <div class="searchpage post search-page page-global">
     <h2 condition="!string.IsNullOrWhiteSpace(Model.Keywords)" class="page-global-title">@L["Search result"]： '@Model.Keywords'</h2>
     <h2 condition="string.IsNullOrWhiteSpace(Model.Keywords)" class="page-global-title">@L["Enter the keyword for search"]</h2>

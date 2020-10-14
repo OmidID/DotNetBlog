@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Authorization
 @inject ClientManager clientManager
-@inject IViewLocalizer L
+@inject IHtmlLocalizer<Shared> L
 @inject IAuthorizationService AuthorizationService
 @{
     var config = ViewBag.Config as AdministrationWidgetConfigModel;

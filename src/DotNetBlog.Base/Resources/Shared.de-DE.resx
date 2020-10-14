@@ -17,13 +17,14 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1">this is my long string</data>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
     <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
     <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        [base64 mime encoded serialized .NET Framework object]
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
     </data>
     <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        [base64 mime encoded string representing a byte array form of the .NET Framework object]
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
     </data>
                 
     There are any number of "resheader" rows that contain simple 
@@ -45,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -59,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -67,9 +69,16 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
@@ -78,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -108,795 +118,795 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="[Blog comment notification] Re: {0}" xml:space="preserve">
-    <value>[博客评论通知]Re:{0}</value>
+    <value>[Blog Kommentar Benachrichtigung] Re: {0}</value>
   </data>
   <data name="{0} days" xml:space="preserve">
-    <value>{0}天</value>
+    <value>{0} Tage</value>
   </data>
   <data name="{0} year(s) and {1} month(s)" xml:space="preserve">
-    <value>{0}年{1}月</value>
+    <value>{0} Jahre (n) und {1} Monate (n)</value>
   </data>
   <data name="a day" xml:space="preserve">
-    <value>一天</value>
+    <value>ein Tag</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>通过</value>
+    <value>Akzeptieren</value>
   </data>
   <data name="Accepted" xml:space="preserve">
-    <value>已通过</value>
+    <value>Akzeptiert</value>
   </data>
   <data name="Access to the page does not exist, you can" xml:space="preserve">
-    <value>访问的页面不存在,你可以</value>
+    <value>Der Zugriff auf die Seite nicht existiert, können Sie</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>新增</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="Add category" xml:space="preserve">
-    <value>添加分类</value>
+    <value>Kategorie hinzufügen</value>
   </data>
   <data name="add comment" xml:space="preserve">
-    <value>添加评论</value>
+    <value>einen Kommentar hinzufügen</value>
   </data>
   <data name="Add to" xml:space="preserve">
-    <value>增加</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="Add welcome topic" xml:space="preserve">
-    <value>添加欢迎主题</value>
+    <value>In willkommen Thema</value>
   </data>
   <data name="Administration" xml:space="preserve">
-    <value>管理</value>
+    <value>Verwaltung</value>
   </data>
   <data name="Advanced" xml:space="preserve">
-    <value>高级</value>
+    <value>fortgeschritten</value>
   </data>
   <data name="After all the operations have been completed, the Save button will take effect" xml:space="preserve">
-    <value>所有操作完毕后，点保存按钮才会生效</value>
+    <value>Nachdem alle Vorgänge abgeschlossen sind, wird die Schaltfläche Speichern wirksam</value>
   </data>
   <data name="After the article" xml:space="preserve">
-    <value>之后的文章</value>
+    <value>Nach dem Artikel</value>
   </data>
   <data name="Alias(optional)" xml:space="preserve">
-    <value>别名(可选)</value>
+    <value>Alias ​​(optional)</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>全部</value>
+    <value>Alle</value>
   </data>
   <data name="Allow comment" xml:space="preserve">
-    <value>允许评论</value>
+    <value>erlauben Kommentar</value>
   </data>
   <data name="Approve comments" xml:space="preserve">
-    <value>通过所有评论</value>
+    <value>genehmigen Kommentare</value>
   </data>
   <data name="Approved comments" xml:space="preserve">
-    <value>已通过的评论</value>
+    <value>genehmigt Kommentare</value>
   </data>
   <data name="Archive" xml:space="preserve">
-    <value>归档</value>
+    <value>Archiv</value>
   </data>
   <data name="Are you sure you want to delete comments?" xml:space="preserve">
-    <value>您确定要 删除 评论?</value>
+    <value>Sind Sie sicher, dass Sie Kommentare löschen?</value>
   </data>
   <data name="Are you sure you want to delete the article?" xml:space="preserve">
-    <value>您确定要 删除 文章?</value>
+    <value>Sind Sie sicher, dass Sie den Artikel löschen?</value>
   </data>
   <data name="Article" xml:space="preserve">
-    <value>文章</value>
+    <value>Artikel</value>
   </data>
   <data name="Article does not exist" xml:space="preserve">
-    <value>文章不存在</value>
+    <value>Artikel existiert nicht</value>
   </data>
   <data name="Article does not exists" xml:space="preserve">
-    <value>文章不存在</value>
+    <value>Artikel existiert nicht</value>
   </data>
   <data name="author" xml:space="preserve">
-    <value>作者</value>
+    <value>Autor</value>
   </data>
   <data name="Available widgets" xml:space="preserve">
-    <value>可用组件</value>
+    <value>Verfügbare Widgets</value>
   </data>
   <data name="Bad request" xml:space="preserve">
-    <value>错误的请求</value>
+    <value>Ungültige Anforderung</value>
   </data>
   <data name="Basic" xml:space="preserve">
-    <value>基础</value>
+    <value>Basic</value>
   </data>
   <data name="Before the article" xml:space="preserve">
-    <value>之前的文章</value>
+    <value>Vor dem Artikel</value>
   </data>
   <data name="Blog" xml:space="preserve">
-    <value>博客信息</value>
+    <value>Blog</value>
   </data>
   <data name="Blog address" xml:space="preserve">
-    <value>博客地址</value>
+    <value>Blog Adresse</value>
   </data>
   <data name="Blog has been already installed" xml:space="preserve">
-    <value>博客已经被安装</value>
+    <value>Blog wurde bereits installiert</value>
   </data>
   <data name="Blog Host" xml:space="preserve">
-    <value>博客地址</value>
+    <value>Blog-Host</value>
   </data>
   <data name="Blog Title" xml:space="preserve">
-    <value>博客标题</value>
+    <value>Blog Titel</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Stornieren</value>
   </data>
   <data name="Cancel the publish" xml:space="preserve">
-    <value>取消发布</value>
+    <value>Abbrechen der veröffentlichen</value>
   </data>
   <data name="Cancel the reply to the message" xml:space="preserve">
-    <value>取消对该留言的回复</value>
+    <value>Abbrechen, um die Antwort auf die Nachricht</value>
   </data>
   <data name="Categories" xml:space="preserve">
-    <value>分类</value>
+    <value>Kategorien</value>
   </data>
   <data name="Category" xml:space="preserve">
-    <value>分类</value>
+    <value>Kategorie</value>
   </data>
   <data name="Category does not exists" xml:space="preserve">
-    <value>分类不存在</value>
+    <value>Kategorie existiert nicht</value>
   </data>
   <data name="Category: {0}" xml:space="preserve">
-    <value>分类:{0}</value>
+    <value>Kategorie: {0}</value>
   </data>
   <data name="Change password" xml:space="preserve">
-    <value>修改密码</value>
+    <value>Passwort ändern</value>
   </data>
   <data name="Choose category" xml:space="preserve">
-    <value>选择分类</value>
+    <value>Kategorie auswählen</value>
   </data>
   <data name="Close comment after" xml:space="preserve">
-    <value>之后关闭评论</value>
+    <value>Schließen Kommentar nach</value>
   </data>
   <data name="Comment" xml:space="preserve">
-    <value>评论</value>
+    <value>Kommentar</value>
   </data>
   <data name="Comment not exists" xml:space="preserve">
-    <value>评论不存在</value>
+    <value>Kommentar nicht vorhanden</value>
   </data>
   <data name="comments ({0})" xml:space="preserve">
-    <value>评论({0})</value>
+    <value>Kommentare ({0})</value>
   </data>
   <data name="Comments not allow for this articles" xml:space="preserve">
-    <value>文章不允许评论</value>
+    <value>Kommentare erlauben nicht zu diesem Artikel</value>
   </data>
   <data name="Component" xml:space="preserve">
-    <value>组件</value>
+    <value>Komponente</value>
   </data>
   <data name="Confirm new password" xml:space="preserve">
-    <value>确认新密码</value>
+    <value>Bestätige neues Passwort</value>
   </data>
   <data name="Confirm Password" xml:space="preserve">
-    <value>确认密码</value>
+    <value>Passwort bestätigen</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>联系</value>
+    <value>Impressum</value>
   </data>
   <data name="Content" xml:space="preserve">
-    <value>内容</value>
+    <value>Inhalt</value>
   </data>
   <data name="Content of the error page" xml:space="preserve">
-    <value>错误页面的内容</value>
+    <value>Inhalt der Fehlerseite</value>
   </data>
   <data name="Custom code" xml:space="preserve">
-    <value>自定义代码</value>
+    <value>Benutzerdefinierter Code</value>
   </data>
   <data name="Customize" xml:space="preserve">
-    <value>自定义</value>
+    <value>Anpassen</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>控制台</value>
+    <value>Instrumententafel</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>日期</value>
+    <value>Datum</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>删除</value>
+    <value>Löschen</value>
   </data>
   <data name="Delete the message and reply" xml:space="preserve">
-    <value>删除该留言和回复</value>
+    <value>Löschen Sie die Nachricht und antworten</value>
   </data>
   <data name="Delete the message, but leave the reply" xml:space="preserve">
-    <value>删除该留言，但保留回复</value>
+    <value>Löschen Sie die Nachricht, aber lassen Sie die Antwort</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>描述</value>
+    <value>Beschreibung</value>
   </data>
   <data name="did you forget your password?" xml:space="preserve">
-    <value>忘记密码?</value>
+    <value>Haben Sie Ihr Passwort vergessen?</value>
   </data>
   <data name="DotNetBlog" xml:space="preserve">
     <value>DotNetBlog</value>
   </data>
   <data name="Draft" xml:space="preserve">
-    <value>草稿</value>
+    <value>Entwurf</value>
   </data>
   <data name="Draft was saved successfully" xml:space="preserve">
-    <value>保存草稿成功</value>
+    <value>Entwurf wurde erfolgreich gespeichert</value>
   </data>
   <data name="Duplicate category name" xml:space="preserve">
-    <value>重复的分类名称</value>
+    <value>Doppelte Kategorienamen</value>
   </data>
   <data name="Duplicated email address" xml:space="preserve">
-    <value>邮箱地址重复</value>
+    <value>Duplizierte E-Mail-Adresse</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>编辑</value>
+    <value>Bearbeiten</value>
   </data>
   <data name="Edit category" xml:space="preserve">
-    <value>编辑分类</value>
+    <value>Kategorie bearbeiten</value>
   </data>
   <data name="Edit the tag" xml:space="preserve">
-    <value>编辑标签</value>
+    <value>Bearbeiten Sie den Tag</value>
   </data>
   <data name="Editor_Language_Key" xml:space="preserve">
-    <value>zh-CN</value>
+    <value>de</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="E-mail" xml:space="preserve">
-    <value>E-mail</value>
+    <value>Email</value>
   </data>
   <data name="Email address" xml:space="preserve">
-    <value>Email地址</value>
+    <value>E-Mail-Addresse</value>
   </data>
   <data name="Email_NewComment" xml:space="preserve">
-    <value>#Re:{0}
-&lt;br/&gt;&lt;br/&gt;
-{1}
-&lt;hr/&gt;
-评论者: &lt;a href=""mailto://{2}"" target=""_blank""&gt;{3}&lt;/a&gt;
+    <value>#Re: {0}
 &lt;br/&gt;
-URL: &lt;a href=""{4}"" target=""_blank""&gt;{4}&lt;/a&gt;</value>
+{1}
+&lt;Hr /&gt;
+Kommentar von: &lt;a href=""mailto://{2}"" target=""_blank""&gt; {3} &lt;/a&gt;
+&lt;br/&gt;
+URL: &lt;a href=""{4}"" target=""_blank""&gt; {4} &lt;/a&gt;</value>
   </data>
   <data name="Empty" xml:space="preserve">
-    <value>无</value>
+    <value>Leer</value>
   </data>
   <data name="Enable SSL" xml:space="preserve">
-    <value>启用SSL</value>
+    <value>Aktivieren Sie SSL</value>
   </data>
   <data name="Enable website comment" xml:space="preserve">
-    <value>在评论中启用网站</value>
+    <value>Aktivieren Webseite Kommentar</value>
   </data>
   <data name="Enter the blog address(URL)" xml:space="preserve">
-    <value>请输入博客地址</value>
+    <value>Geben Sie die Blog-Adresse (URL)</value>
   </data>
   <data name="Enter the content here" xml:space="preserve">
-    <value>在此输入内容</value>
+    <value>Geben Sie den Inhalt hier</value>
   </data>
   <data name="Enter the keyword for search" xml:space="preserve">
-    <value>输入关键字进行搜索</value>
+    <value>Geben Sie das Stichwort für die Suche</value>
   </data>
   <data name="Enter the keyword search" xml:space="preserve">
-    <value>输入关键字搜索</value>
+    <value>Geben Sie die Keyword-Suche</value>
   </data>
   <data name="Error page" xml:space="preserve">
-    <value>错误页面</value>
+    <value>Fehlerseite</value>
   </data>
   <data name="Error page title" xml:space="preserve">
-    <value>错误页面的标题</value>
+    <value>Fehlerseite Titel</value>
   </data>
   <data name="First name" xml:space="preserve">
-    <value>名字</value>
+    <value>Vorname</value>
   </data>
   <data name="footer script" xml:space="preserve">
-    <value>底部区域</value>
+    <value>footer-Skript</value>
   </data>
   <data name="Go back to the last page" xml:space="preserve">
-    <value>返回上一页</value>
+    <value>Zurück zur letzten Seite</value>
   </data>
   <data name="Go to article" xml:space="preserve">
-    <value>转到文章</value>
+    <value>Zum Artikel</value>
   </data>
   <data name="Go to the page" xml:space="preserve">
-    <value>转到页面</value>
+    <value>Gehen Sie auf die Seite</value>
   </data>
   <data name="Header script" xml:space="preserve">
-    <value>头部区域</value>
+    <value>Header-Skript</value>
   </data>
   <data name="Hello world" xml:space="preserve">
-    <value>Hello world</value>
+    <value>Hallo Welt</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>首页</value>
+    <value>Zuhause</value>
   </data>
   <data name="In use" xml:space="preserve">
-    <value>正在使用</value>
+    <value>In Benutzung</value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value>信息</value>
+    <value>Die Info</value>
   </data>
   <data name="Invalid page content, please enter valid content" xml:space="preserve">
-    <value>请输入错误页面内容</value>
+    <value>Ungültige Seiteninhalt, geben Sie bitte einen gültigen Inhalt</value>
   </data>
   <data name="Invalid page title" xml:space="preserve">
-    <value>请输入错误页面标题</value>
+    <value>Ungültige Seitentitel</value>
   </data>
   <data name="Invalid request" xml:space="preserve">
-    <value>错误的请求</value>
+    <value>Ungültige Anfrage</value>
   </data>
   <data name="Invalid request, please try again later" xml:space="preserve">
-    <value>错误的请求,请稍后再试</value>
+    <value>Ungültige Anforderung, bitte versuchen Sie es später noch einmal</value>
   </data>
   <data name="Is displayed in the list" xml:space="preserve">
-    <value>在列表中显示</value>
+    <value>Wird in der Liste angezeigt</value>
   </data>
   <data name="Junk comments" xml:space="preserve">
-    <value>垃圾评论</value>
+    <value>Junk Kommentare</value>
   </data>
   <data name="Keep me logged in" xml:space="preserve">
-    <value>保持登录状态</value>
+    <value>Angemeldet bleiben</value>
   </data>
   <data name="Keywords" xml:space="preserve">
-    <value>关键词</value>
+    <value>Schlüsselwörter</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>语言</value>
+    <value>Sprache</value>
   </data>
   <data name="Latest comments" xml:space="preserve">
-    <value>最新评论</value>
+    <value>Neueste Kommentare</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>友情链接</value>
+    <value>Links</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>登录</value>
+    <value>Einloggen</value>
   </data>
   <data name="Login blog" xml:space="preserve">
-    <value>登录博客</value>
+    <value>Login Blog</value>
   </data>
   <data name="Logoff" xml:space="preserve">
-    <value>注销</value>
+    <value>Abmelden</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>注销</value>
+    <value>Ausloggen</value>
   </data>
   <data name="Make sure the password is not inconsistent" xml:space="preserve">
-    <value>确认密码不一致</value>
+    <value>Stellen Sie sicher, dass das Passwort nicht im Widerspruch</value>
   </data>
   <data name="Managment categories" xml:space="preserve">
-    <value>管理分类</value>
+    <value>Managment Kategorien</value>
   </data>
   <data name="Maximum number of tag in clouds" xml:space="preserve">
-    <value>标签云的最大数量</value>
+    <value>Maximale Anzahl von Tag in den Wolken</value>
   </data>
   <data name="Minimum number of articles per tag" xml:space="preserve">
-    <value>每个标签的最小文章数量</value>
+    <value>Mindestanzahl von Artikeln pro Tag</value>
   </data>
   <data name="MM" xml:space="preserve">
-    <value>{0:MM} 月</value>
+    <value>{0:MMMM}</value>
   </data>
   <data name="Modify the configuration" xml:space="preserve">
-    <value>修改配置</value>
+    <value>Ändern Sie die Konfiguration</value>
   </data>
   <data name="More" xml:space="preserve">
-    <value>更多</value>
+    <value>Mehr</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>名称</value>
+    <value>Name</value>
   </data>
   <data name="Never" xml:space="preserve">
-    <value>从不</value>
+    <value>noch nie</value>
   </data>
   <data name="New password" xml:space="preserve">
-    <value>新密码</value>
+    <value>Neues Kennwort</value>
   </data>
   <data name="New password should be between {0} - {1}" xml:space="preserve">
-    <value>请输入{0}-{1}位的新密码</value>
+    <value>Neues Passwort sollte zwischen {0} - {1}</value>
   </data>
   <data name="Nickname" xml:space="preserve">
-    <value>昵称</value>
+    <value>Spitzname</value>
   </data>
   <data name="No email specified" xml:space="preserve">
-    <value>No email specified</value>
+    <value>Keine E-Mail angegeben</value>
   </data>
   <data name="No limitation" xml:space="preserve">
-    <value>不限制</value>
+    <value>Keine Einschränkungen</value>
   </data>
   <data name="Not supported language" xml:space="preserve">
-    <value>不支持的语言</value>
+    <value>Nicht unterstützte Sprache</value>
   </data>
   <data name="Notify me when there is a comment" xml:space="preserve">
-    <value>有评论的时候通知我</value>
+    <value>Benachrichtigen Sie mich, wenn ein Kommentar ist</value>
   </data>
   <data name="Number of articles per page" xml:space="preserve">
-    <value>每页文章数</value>
+    <value>Anzahl der Artikel pro Seite</value>
   </data>
   <data name="Number of articles published" xml:space="preserve">
-    <value>已发表文章数</value>
+    <value>Anzahl der Artikel veröffentlicht</value>
   </data>
   <data name="Number of pages" xml:space="preserve">
-    <value>页面稿件</value>
+    <value>Seitenzahl</value>
   </data>
   <data name="Number of pages published" xml:space="preserve">
-    <value>已发表页面数</value>
+    <value>Anzahl der Seiten veröffentlicht</value>
   </data>
   <data name="Old password" xml:space="preserve">
-    <value>原密码</value>
+    <value>Altes Kennwort</value>
   </data>
   <data name="Operation successful" xml:space="preserve">
-    <value>操作成功</value>
+    <value>Operation erfolgreich</value>
   </data>
   <data name="or search for other resources" xml:space="preserve">
-    <value>或搜索其他资源</value>
+    <value>oder für andere Ressourcen suchen</value>
   </data>
   <data name="Page" xml:space="preserve">
-    <value>页面</value>
+    <value>Seite</value>
   </data>
   <data name="Page description" xml:space="preserve">
-    <value>页面描述</value>
+    <value>Seitenbeschreibung</value>
   </data>
   <data name="Pages" xml:space="preserve">
-    <value>页面</value>
+    <value>Seiten</value>
   </data>
   <data name="Parent" xml:space="preserve">
-    <value>上级</value>
+    <value>Elternteil</value>
   </data>
   <data name="Parent does not exists" xml:space="preserve">
-    <value>不存在的上级页面</value>
+    <value>Elternteil existiert nicht</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>密码</value>
+    <value>Passwort</value>
   </data>
   <data name="Pending comments" xml:space="preserve">
-    <value>未经审核的评论</value>
+    <value>Schwebende Kommentare</value>
   </data>
   <data name="Pending for review" xml:space="preserve">
-    <value>待审核</value>
+    <value>In Erwartung für die Überprüfung</value>
   </data>
   <data name="Pendings" xml:space="preserve">
-    <value>待审核</value>
+    <value>Pendings</value>
   </data>
   <data name="Personal Information" xml:space="preserve">
-    <value>个人资料</value>
+    <value>Persönliche Angaben</value>
   </data>
   <data name="Please check your password" xml:space="preserve">
-    <value>请确认密码</value>
+    <value>Bitte überprüfen Sie Ihr Passwort</value>
   </data>
   <data name="Please enter a category name" xml:space="preserve">
-    <value>请输入分类名称</value>
+    <value>Bitte geben Sie einen Kategorienamen</value>
   </data>
   <data name="Please enter a nickname" xml:space="preserve">
-    <value>请输入昵称</value>
+    <value>Bitte geben Sie einen Spitznamen ein</value>
   </data>
   <data name="Please enter a valid email" xml:space="preserve">
-    <value>请输入合法的邮箱地址</value>
+    <value>Bitte geben Sie eine gültige Email-Adresse ein</value>
   </data>
   <data name="Please enter correct number of comments" xml:space="preserve">
-    <value>请输入正确的评论数量</value>
+    <value>Bitte geben Sie korrekte Anzahl der Kommentare</value>
   </data>
   <data name="Please enter correct port number" xml:space="preserve">
-    <value>请输入正确的端口号</value>
+    <value>Bitte geben Sie korrekte Portnummer</value>
   </data>
   <data name="Please enter number of comments" xml:space="preserve">
-    <value>请输入评论数目</value>
+    <value>Bitte geben Sie die Anzahl der Kommentare</value>
   </data>
   <data name="Please enter the blog host" xml:space="preserve">
-    <value>请输入博客地址</value>
+    <value>Bitte geben Sie den Host-Blog</value>
   </data>
   <data name="Please enter the blog title" xml:space="preserve">
-    <value>请输入博客标题</value>
+    <value>Bitte geben Sie den Blog-Titel</value>
   </data>
   <data name="Please enter the content" xml:space="preserve">
-    <value>请输入内容</value>
+    <value>Bitte geben Sie den Inhalt</value>
   </data>
   <data name="Please enter the content of the article" xml:space="preserve">
-    <value>请输入文章标题</value>
+    <value>Bitte geben Sie den Inhalt des Artikels</value>
   </data>
   <data name="Please enter the correct number of articles" xml:space="preserve">
-    <value>请输入正确的文章数量</value>
+    <value>Bitte geben Sie die korrekte Anzahl von Gegenständen</value>
   </data>
   <data name="Please enter the name" xml:space="preserve">
-    <value>请输入名称</value>
+    <value>Bitte geben Sie den Namen</value>
   </data>
   <data name="Please enter the number of articles" xml:space="preserve">
-    <value>请输入文章数目</value>
+    <value>Bitte geben Sie die Anzahl der Artikel ein</value>
   </data>
   <data name="Please enter the page content" xml:space="preserve">
-    <value>请输入页面内容</value>
+    <value>Bitte geben Sie den Seiteninhalt</value>
   </data>
   <data name="Please enter the page title" xml:space="preserve">
-    <value>请输入页面标题</value>
+    <value>Bitte geben Sie den Seitentitel</value>
   </data>
   <data name="Please enter the title" xml:space="preserve">
-    <value>请输入标题</value>
+    <value>Bitte geben Sie den Titel</value>
   </data>
   <data name="Please enter the title of the article" xml:space="preserve">
-    <value>请输入文章标题</value>
+    <value>Bitte geben Sie den Titel des Artikels</value>
   </data>
   <data name="please enter username" xml:space="preserve">
-    <value>请输入用户名</value>
+    <value>Bitte geben sie einen Benutzernamen ein</value>
   </data>
   <data name="Please enter your email" xml:space="preserve">
-    <value>请填写邮箱</value>
+    <value>Bitte geben Sie ihre E-Mail-Adresse ein</value>
   </data>
   <data name="Please enter your nickname" xml:space="preserve">
-    <value>请输入昵称</value>
+    <value>Bitte geben Sie ihren Spitznamen ein</value>
   </data>
   <data name="please enter your password" xml:space="preserve">
-    <value>请输入密码</value>
+    <value>Bitte geben Sie Ihr Passwort ein</value>
   </data>
   <data name="please enter your username" xml:space="preserve">
-    <value>请输入用户名</value>
+    <value>Bitte geben Sie Ihren Benutzernamen ein</value>
   </data>
   <data name="Please fill in the comments" xml:space="preserve">
-    <value>请填写评论内容</value>
+    <value>Bitte füllen Sie die Kommentare</value>
   </data>
   <data name="Please fill in the name" xml:space="preserve">
-    <value>请填写名字</value>
+    <value>Bitte geben Sie den Namen</value>
   </data>
   <data name="Please fill in the reply" xml:space="preserve">
-    <value>请填写回复内容</value>
+    <value>Bitte geben Sie die Antwort</value>
   </data>
   <data name="Please select the default language" xml:space="preserve">
-    <value>请选择默认语言</value>
+    <value>Bitte wählen Sie die Standardsprache</value>
   </data>
   <data name="Please sign in" xml:space="preserve">
-    <value>请登录</value>
+    <value>Bitte einloggen</value>
   </data>
   <data name="Please type correct email address" xml:space="preserve">
-    <value>请输入正确的邮箱地址</value>
+    <value>Bitte geben Sie korrekte E-Mail-Adresse</value>
   </data>
   <data name="Please type your email" xml:space="preserve">
-    <value>请输入邮箱</value>
+    <value>Bitte geben Sie Ihre E-Mail</value>
   </data>
   <data name="Please upload the correct format image file" xml:space="preserve">
-    <value>请上传正确格式的图片文件</value>
+    <value>Bitte laden Sie das richtige Format Bilddatei</value>
   </data>
   <data name="Port number" xml:space="preserve">
-    <value>端口号</value>
+    <value>Port-Nummer</value>
   </data>
   <data name="Publish" xml:space="preserve">
-    <value>发布</value>
+    <value>Veröffentlichen</value>
   </data>
   <data name="Published" xml:space="preserve">
-    <value>已发布</value>
+    <value>Veröffentlicht</value>
   </data>
   <data name="Push" xml:space="preserve">
-    <value>推送</value>
+    <value>drücken</value>
   </data>
   <data name="Recent articles" xml:space="preserve">
-    <value>最新文章</value>
+    <value>Aktuelle Artikel</value>
   </data>
   <data name="Recent comments" xml:space="preserve">
-    <value>最新评论</value>
+    <value>Letzte Kommentare</value>
   </data>
   <data name="Recent drafts" xml:space="preserve">
-    <value>文章稿件</value>
+    <value>Aktuelle Entwürfe</value>
   </data>
   <data name="Registration" xml:space="preserve">
-    <value>注册</value>
+    <value>Anmeldung</value>
   </data>
   <data name="Reject" xml:space="preserve">
-    <value>拒绝</value>
+    <value>Ablehnen</value>
   </data>
   <data name="Rejected" xml:space="preserve">
-    <value>已拒绝</value>
+    <value>Abgelehnt</value>
   </data>
   <data name="related articles" xml:space="preserve">
-    <value>相关文章</value>
+    <value>In Verbindung stehende Artikel</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>移除</value>
+    <value>Entfernen</value>
   </data>
   <data name="Reply" xml:space="preserve">
-    <value>回复</value>
+    <value>Antworten</value>
   </data>
   <data name="Reply to comment" xml:space="preserve">
-    <value>回复评论</value>
+    <value>Auf Kommentar antworten</value>
   </data>
   <data name="Reply to comment not available" xml:space="preserve">
-    <value>回复的评论不存在</value>
+    <value>Antworten nicht verfügbar Kommentar</value>
   </data>
   <data name="Request an error. Please try again later" xml:space="preserve">
-    <value>请求发生错误，请稍后再试</value>
+    <value>einen Fehler anfordern. Bitte versuchen Sie es später noch einmal</value>
   </data>
   <data name="Request page is wrong please try again later" xml:space="preserve">
-    <value>请求的页面发生错误,请稍后再试...</value>
+    <value>Anfrage Seite falsch ist, versuchen Sie es später noch einmal ...</value>
   </data>
   <data name="return to home page" xml:space="preserve">
-    <value>返回首页</value>
+    <value>zur Startseite zurückkehren</value>
   </data>
   <data name="return to the home page" xml:space="preserve">
-    <value>返回首页</value>
+    <value>Rückkehr zur Homepage</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>保存</value>
+    <value>speichern</value>
   </data>
   <data name="Save comment" xml:space="preserve">
-    <value>保存评论</value>
+    <value>Speichern Kommentar</value>
   </data>
   <data name="Save the draft quickly" xml:space="preserve">
-    <value>快捷保存草稿</value>
+    <value>Speichern Sie den Entwurf schnell</value>
   </data>
   <data name="Saved drafts" xml:space="preserve">
-    <value>文章稿件</value>
+    <value>Gespeicherte Entwürfe</value>
   </data>
   <data name="Saved successfully" xml:space="preserve">
-    <value>保存成功</value>
+    <value>Erfolgreich gespeichert</value>
   </data>
   <data name="search for" xml:space="preserve">
-    <value>搜索</value>
+    <value>suchen nach</value>
   </data>
   <data name="Search result" xml:space="preserve">
-    <value>搜索结果</value>
+    <value>Suchergebnis</value>
   </data>
   <data name="Search result: {0}" xml:space="preserve">
-    <value>搜索结果:{0}</value>
+    <value>Sucher: {0}</value>
   </data>
   <data name="Select language" xml:space="preserve">
-    <value>选择语言</value>
+    <value>Sprache auswählen</value>
   </data>
   <data name="Selected parent does not exists" xml:space="preserve">
-    <value>不存在的上级页面</value>
+    <value>Ausgewählte Elternteil existiert nicht</value>
   </data>
   <data name="Send notification via email when received a comment" xml:space="preserve">
-    <value>发送评论邮件</value>
+    <value>Senden Benachrichtigung per E-Mail, wenn Sie eine empfangene</value>
   </data>
   <data name="Set as homepage" xml:space="preserve">
-    <value>是否为首页</value>
+    <value>Als Startseite festlegen</value>
   </data>
   <data name="Setup" xml:space="preserve">
-    <value>设置</value>
+    <value>Konfiguration</value>
   </data>
   <data name="Show alias" xml:space="preserve">
-    <value>显示别名</value>
+    <value>Show Alias</value>
   </data>
   <data name="Show date" xml:space="preserve">
-    <value>显示日期</value>
+    <value>Datum anzeigen</value>
   </data>
   <data name="Show only article summary" xml:space="preserve">
-    <value>仅显示文章摘要</value>
+    <value>Nur Artikel Zusammenfassung</value>
   </data>
   <data name="Show RSS Button" xml:space="preserve">
-    <value>显示RSS按钮</value>
+    <value>Anzeigen RSS-Knopf</value>
   </data>
   <data name="Show summary" xml:space="preserve">
-    <value>显示摘要</value>
+    <value>Zusammenfassung zeigen</value>
   </data>
   <data name="Show the number of articles" xml:space="preserve">
-    <value>显示文章数</value>
+    <value>Zeigen Sie die Anzahl der Artikel</value>
   </data>
   <data name="Show the number of comments" xml:space="preserve">
-    <value>显示评论数目</value>
+    <value>Zeigen Sie die Anzahl der Kommentare</value>
   </data>
   <data name="Site navigation" xml:space="preserve">
-    <value>站点导航</value>
+    <value>Seitennavigation</value>
   </data>
   <data name="SMTP address" xml:space="preserve">
-    <value>SMTP address</value>
+    <value>SMTP-Adresse</value>
   </data>
   <data name="Sorry the system has made an error" xml:space="preserve">
-    <value>很抱歉,系统发生错误</value>
+    <value>Leider hat das System einen Fehler gemacht</value>
   </data>
   <data name="Sorting" xml:space="preserve">
-    <value>排序</value>
+    <value>Sortierung</value>
   </data>
   <data name="Statistics" xml:space="preserve">
-    <value>统计</value>
+    <value>Statistiken</value>
   </data>
   <data name="Status" xml:space="preserve">
-    <value>状态</value>
+    <value>Status</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>提交</value>
+    <value>einreichen</value>
   </data>
   <data name="Successful operation" xml:space="preserve">
-    <value>操作成功</value>
+    <value>Der erfolgreiche Betrieb</value>
   </data>
   <data name="Summary" xml:space="preserve">
-    <value>摘要</value>
+    <value>Zusammenfassung</value>
   </data>
   <data name="System Administrator" xml:space="preserve">
-    <value>系统管理员</value>
+    <value>Systemadministrator</value>
   </data>
   <data name="Tag" xml:space="preserve">
-    <value>标签</value>
+    <value>Etikett</value>
   </data>
   <data name="Tag: {0}" xml:space="preserve">
-    <value>标签:{0}</value>
+    <value>Tag: {0}</value>
   </data>
   <data name="Tags" xml:space="preserve">
-    <value>标签</value>
+    <value>Stichworte</value>
   </data>
   <data name="Test Email" xml:space="preserve">
-    <value>Test Email</value>
+    <value>Test-Email</value>
   </data>
   <data name="Test email settings" xml:space="preserve">
-    <value>undefined</value>
+    <value>Test E-Mail-Einstellungen</value>
   </data>
   <data name="Test successfully" xml:space="preserve">
-    <value>测试成功</value>
+    <value>Test erfolgreich</value>
   </data>
   <data name="The article does not exists" xml:space="preserve">
-    <value>文章不存在</value>
+    <value>Der Artikel existiert nicht</value>
   </data>
   <data name="The label does not exists" xml:space="preserve">
-    <value>标签不存在</value>
+    <value>Das Etikett nicht existiert</value>
   </data>
   <data name="The label name is duplicated" xml:space="preserve">
-    <value>标签名称重复</value>
+    <value>Der Markenname wird dupliziert</value>
   </data>
   <data name="The page does not exists anymore" xml:space="preserve">
-    <value>页面不存在</value>
+    <value>Die Seite existiert nicht mehr</value>
   </data>
   <data name="The server has encountered an error" xml:space="preserve">
-    <value>服务器发生错误</value>
+    <value>Der Server ist ein Fehler aufgetreten</value>
   </data>
   <data name="The title of the article" xml:space="preserve">
-    <value>文章的标题</value>
+    <value>Der Titel des Artikels</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>时间</value>
+    <value>Zeit</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>标题</value>
+    <value>Titel</value>
   </data>
   <data name="To View" xml:space="preserve">
-    <value>查看</value>
+    <value>Sehen</value>
   </data>
   <data name="Trust authenticated comment's users" xml:space="preserve">
-    <value>信任已通过验证的评论作者</value>
+    <value>Vertrauen authentifizierten Kommentar Nutzer</value>
   </data>
   <data name="Unaudited comments ({0})" xml:space="preserve">
-    <value>未审核的评论（{0})</value>
+    <value>Ungeprüfte Kommentare ({0})</value>
   </data>
   <data name="Unaudited comments({0})" xml:space="preserve">
-    <value>未审核的评论({0})</value>
+    <value>Ungeprüfte Kommentare ({0})</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value>用户</value>
+    <value>Nutzer</value>
   </data>
   <data name="User does not exists" xml:space="preserve">
-    <value>用户不存在</value>
+    <value>Benutzer existiert nicht</value>
   </data>
   <data name="User Image" xml:space="preserve">
-    <value>用户图像</value>
+    <value>User Image</value>
   </data>
   <data name="Username" xml:space="preserve">
-    <value>用户名</value>
+    <value>Nutzername</value>
   </data>
   <data name="Verfiy comment" xml:space="preserve">
-    <value>审核评论</value>
+    <value>Verfiy Kommentar</value>
   </data>
   <data name="Welcome {0}" xml:space="preserve">
-    <value>{0} 已登录</value>
+    <value>Willkommen {0}</value>
   </data>
   <data name="Welcome comment" xml:space="preserve">
-    <value>这是一个示例注释</value>
+    <value>Dies ist ein Beispiel Kommentar</value>
   </data>
   <data name="Welcome to DotNetBlog" xml:space="preserve">
-    <value>欢迎使用DotNetBlog</value>
+    <value>Willkommen bei DotNetBlog</value>
   </data>
   <data name="Welcome topic content" xml:space="preserve">
-    <value>感谢安装DotNetBlog😊。 要修改此内容并管理您的博客，您可以打开&lt;a href="/admin"&gt; Admin &lt;/a&gt;页面并使用您的用户名和密码登录。</value>
+    <value>Dank DotNetBlog 😊 zu installieren. Um diesen Inhalt zu ändern und zu verwalten einen Blog können Sie öffnen &lt;a href="/admin"&gt; Admin &lt;/a&gt; Seite und Login mit Ihrem Benutzernamen und Passwort ein.</value>
   </data>
   <data name="Wrong paging parameters" xml:space="preserve">
-    <value>错误的分页参数</value>
+    <value>Falsche Ausrufungsparameter</value>
   </data>
   <data name="Wrong password" xml:space="preserve">
-    <value>密码错误</value>
+    <value>Falsches Passwort</value>
   </data>
   <data name="Wrong reply object" xml:space="preserve">
-    <value>错误的回复对象</value>
+    <value>Falsche Antwort Objekt</value>
   </data>
   <data name="Wrong username or password" xml:space="preserve">
-    <value>用户名或密码错误</value>
+    <value>Falscher Benutzername und Passwort</value>
   </data>
   <data name="Wrote" xml:space="preserve">
-    <value>写道</value>
+    <value>Schrieb</value>
   </data>
   <data name="You are sure you want to delete comments?" xml:space="preserve">
-    <value>您确定要 删除 评论?</value>
+    <value>Sie sind sicher, dass Sie Kommentare löschen?</value>
   </data>
   <data name="You can" xml:space="preserve">
-    <value>你可以</value>
+    <value>Sie können</value>
   </data>
   <data name="You cannot set as parent" xml:space="preserve">
-    <value>不存在的上级页面</value>
+    <value>Sie können nicht als Mutter gesetzt</value>
   </data>
   <data name="Your comment has been added successfully and requires an administrator to approve it before it can be displayed" xml:space="preserve">
-    <value>您的评论已经添加成功,需要管理员审核通过后才能显示</value>
+    <value>Dein Kommentar wurde erfolgreich hinzugefügt und erfordert einen Administrator zu genehmigen, bevor sie angezeigt werden kann</value>
   </data>
 </root>

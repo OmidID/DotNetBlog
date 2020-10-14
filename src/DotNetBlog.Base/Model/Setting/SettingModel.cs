@@ -40,9 +40,9 @@ namespace DotNetBlog.Model.Setting
 
         public Dictionary<string, string> Settings { get; private set; }
 
-        internal IStringLocalizer<SettingModel> L { get; set; }
+        internal IStringLocalizer<Shared> L { get; set; }
 
-        public SettingModel(Dictionary<string, string> settings, IStringLocalizer<SettingModel> localizer)
+        public SettingModel(Dictionary<string, string> settings, IStringLocalizer<Shared> localizer)
         {
             Settings = settings;
             L = localizer;

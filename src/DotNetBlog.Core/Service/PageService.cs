@@ -7,6 +7,7 @@ using DotNetBlog.Model.Page;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,12 @@ namespace DotNetBlog.Service
 
         private IMemoryCache Cache { get; set; }
 
-        private IHtmlLocalizer<PageService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
 
         public PageService(BlogContext blogContext,
             IMemoryCache cache,
-            IHtmlLocalizer<PageService> localizer,
+            IStringLocalizer<Shared> localizer,
             IMapper mapper)
         {
             this.BlogContext = blogContext;

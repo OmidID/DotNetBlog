@@ -1,6 +1,6 @@
 ﻿@using DotNetBlog.Model.Comment
 @model List<CommentItemModel>
-@inject IViewLocalizer L
+@inject IHtmlLocalizer<Shared> L
 @{ 
     var config = ViewBag.Config as RecentCommentWidgetConfigModel;
 }

@@ -4,6 +4,7 @@ using DotNetBlog.Model.Api;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
@@ -23,14 +24,14 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 
-        IHtmlLocalizer<ControllerBase> localizer;
-        private IHtmlLocalizer<ControllerBase> L
+        IStringLocalizer<Shared> localizer;
+        private IStringLocalizer<Shared> L
         {
             get
             {
                 if (localizer == null)
                 {
-                    localizer = this.HttpContext.RequestServices.GetService(typeof(IHtmlLocalizer<ControllerBase>)) as IHtmlLocalizer<ControllerBase>;
+                    localizer = this.HttpContext.RequestServices.GetService(typeof(IStringLocalizer<Shared>)) as IStringLocalizer<Shared>;
                 }
                 return localizer;
             }

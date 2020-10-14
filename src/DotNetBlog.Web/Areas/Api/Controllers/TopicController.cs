@@ -3,6 +3,7 @@ using DotNetBlog.Service;
 using DotNetBlog.Model.Api.Topic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
 using System.Threading.Tasks;
 
 namespace DotNetBlog.Web.Areas.Api.Controllers
@@ -13,9 +14,9 @@ namespace DotNetBlog.Web.Areas.Api.Controllers
     {
         private TopicService TopicService { get; set; }
 
-        private IHtmlLocalizer<TopicController> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
-        public TopicController(TopicService topicService, IHtmlLocalizer<TopicController> localizer)
+        public TopicController(TopicService topicService, IStringLocalizer<Shared> localizer)
         {
             this.TopicService = topicService;
             this.L = localizer;

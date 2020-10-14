@@ -1,6 +1,6 @@
 ﻿@using DotNetBlog.Model.Topic
 @model List<MonthStatisticsModel>
-@inject IViewLocalizer L
+@inject IHtmlLocalizer<Shared> L
 
 @{ 
     var groupList = Model.GroupBy(t => t.Month.Year);

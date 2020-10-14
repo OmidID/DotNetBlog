@@ -6,6 +6,7 @@ using DotNetBlog.Model.Setting;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using MimeKit;
 using NLog;
 using System;
@@ -21,9 +22,9 @@ namespace DotNetBlog.Service
 
         private BlogContext BlogContext { get; set; }
 
-        private IHtmlLocalizer<EmailService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
-        public EmailService(SettingModel settings, BlogContext blogContext, IHtmlLocalizer<EmailService> localizer)
+        public EmailService(SettingModel settings, BlogContext blogContext, IStringLocalizer<Shared> localizer)
         {
             this.Settings = settings;
             this.BlogContext = blogContext;

@@ -5,6 +5,7 @@ using DotNetBlog.Model;
 using DotNetBlog.Model.Category;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace DotNetBlog.Service
     public class CategoryService
     {
         private BlogContext BlogContext { get; set; }
-        private IHtmlLocalizer<CategoryService> L { get; set; }
+        private IStringLocalizer<Shared> L { get; set; }
 
-        public CategoryService(BlogContext blogContext, IHtmlLocalizer<CategoryService> localizer)
+        public CategoryService(BlogContext blogContext, IStringLocalizer<Shared> localizer)
         {
             BlogContext = blogContext;
             L = localizer;

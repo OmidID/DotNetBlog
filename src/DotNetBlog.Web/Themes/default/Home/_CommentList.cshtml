@@ -1,6 +1,6 @@
 ﻿@model CommentListViewModel
 @inject ClientManager clientManager
-@inject IViewLocalizer L
+@inject IHtmlLocalizer<Shared> L
 
 @foreach (var comment in Model.CommentList)
 {
