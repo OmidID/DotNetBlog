@@ -105,16 +105,17 @@ namespace DotNetBlog.Web
             {
                 var supportedCultures = new List<CultureInfo>
                 {
-                    new CultureInfo("en-GB"),
-                    new CultureInfo("zh-CN")
+                    new CultureInfo("en"),
+                    new CultureInfo("de-DE"),
+                    new CultureInfo("fr-FR"),
+                    new CultureInfo("zh-CN"),
                 };
 
-                opts.DefaultRequestCulture = new RequestCulture("en-GB");
+                opts.DefaultRequestCulture = new RequestCulture("en");
                 // Formatting numbers, dates, etc.
                 opts.SupportedCultures = supportedCultures;
                 // UI strings that we have localized.
                 opts.SupportedUICultures = supportedCultures;
-
                 //Uncomment for change language by user
                 opts.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async context =>
                 {

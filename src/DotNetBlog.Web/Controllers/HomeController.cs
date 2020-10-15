@@ -23,7 +23,7 @@ namespace DotNetBlog.Web.Controllers
 
         private TopicService TopicService { get; set; }
         private SettingModel SettingModel { get; set; }
-        private IStringLocalizer<Shared> L { get; set; }
+        private IHtmlLocalizer<Shared> L { get; set; }
 
         public HomeController(
             TopicService topicService,
@@ -33,7 +33,7 @@ namespace DotNetBlog.Web.Controllers
             CommentService commentService,
             PageService pageService,
             ClientManager clientManager,
-            IStringLocalizer<Shared> localizer)
+            IHtmlLocalizer<Shared> localizer)
         {
             TopicService = topicService;
             SettingModel = settingModel;

@@ -19,5 +19,15 @@ namespace DotNetBlog.Web.ViewEngines
                 baseResourceName = BaseViewName + baseResourceName.Substring(baseResourceName.IndexOf(".", BaseThemeName.Length) + 1);
             return base.GetResourcePrefix(baseResourceName, baseNamespace);
         }
+
+        protected override string GetResourcePrefix(string location, string baseName, string resourceLocation)
+        {
+            return base.GetResourcePrefix(location, baseName, resourceLocation);
+        }
+
+         protected override string GetResourcePrefix(System.Reflection.TypeInfo typeInfo)
+         {
+            return base.GetResourcePrefix(typeInfo);
+         }
     }
 }
