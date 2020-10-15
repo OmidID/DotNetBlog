@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Localization;
+﻿using System;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -8,6 +9,9 @@ namespace DotNetBlog.Web.ViewEngines
     {
         private static string BaseThemeName = $"{nameof(DotNetBlog)}.{nameof(DotNetBlog.Web)}.Themes.";
         private static string BaseViewName = $"{nameof(DotNetBlog)}.{nameof(DotNetBlog.Web)}.Views.";
+
+        private static Type SharedType = typeof (Shared);
+        private static string SharedResourcePath = typeof (DotNetBlog.Resources.Shared).FullName;
 
         public ThemeResourceLocalizationFactory(IOptions<LocalizationOptions> localizationOptions, ILoggerFactory loggerFactory) : base(localizationOptions, loggerFactory)
         {
@@ -20,13 +24,10 @@ namespace DotNetBlog.Web.ViewEngines
             return base.GetResourcePrefix(baseResourceName, baseNamespace);
         }
 
-        protected override string GetResourcePrefix(string location, string baseName, string resourceLocation)
-        {
-            return base.GetResourcePrefix(location, baseName, resourceLocation);
-        }
-
          protected override string GetResourcePrefix(System.Reflection.TypeInfo typeInfo)
          {
+            if (typeInfo == SharedType)
+                return SharedResourcePath;
             return base.GetResourcePrefix(typeInfo);
          }
     }

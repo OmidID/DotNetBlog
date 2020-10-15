@@ -29,29 +29,22 @@
     <div id="main">
 
     </div>
+    
+    <script type="text/javascript">
+        var user = {
+            username: "@Html.Raw(clientManager.CurrentUser.UserName)",
+            nickname: "@Html.Raw(clientManager.CurrentUser.Nickname)",
+            icon: "http://gravatar.duoshuo.com/",
+            lang: "@requestCulture.RequestCulture.UICulture.Name"
+        }
+    </script>
+
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/toastr.js/2.1.3/toastr.min.js"></script>
+    <script src="//cdn.bootcss.com/lodash.js/4.14.1/lodash.min.js"></script>
+    <script src="~/lib/editor.md/editormd.min.js"></script>
+
+    <script src="~/dist/app.js"></script>
 </body>
 </html>
-
-<script type="text/javascript">
-    var user = {
-        username: "@Html.Raw(clientManager.CurrentUser.UserName)",
-        nickname: "@Html.Raw(clientManager.CurrentUser.Nickname)",
-        icon: "http://gravatar.duoshuo.com/",
-        lang: "@requestCulture.RequestCulture.UICulture.Name"
-    }
-</script>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="//cdn.bootcss.com/toastr.js/2.1.3/toastr.min.js"></script>
-<script src="//cdn.bootcss.com/lodash.js/4.14.1/lodash.min.js"></script>
-<script src="~/lib/editor.md/editormd.min.js"></script>
-
-<environment names="Development">
-    <!--please use webpack-dev-server to serve the development js file-->
-    @*<script src="~/dist/app.js"></script>*@
-    <script src="http://localhost:8080/app.js"></script>
-</environment>
-<environment names="Production">
-    <script src="~/dist/app.js"></script>
-</environment>
