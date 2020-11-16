@@ -2,9 +2,9 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <AspNetLibrariesVersion>5.0.0-rc.2.*</AspNetLibrariesVersion>
-    <EfLibrariesVersion>5.0.0-rc.2.*</EfLibrariesVersion>
-    <EfNpgSqlVersion>5.0.0-rc.2.*</EfNpgSqlVersion>
+    <AspNetLibrariesVersion>5.0.0</AspNetLibrariesVersion>
+    <EfLibrariesVersion>5.0.0</EfLibrariesVersion>
+    <EfNpgSqlVersion>5.0.0-rc.1.*</EfNpgSqlVersion>
     <EfMySqlVersion>8.0.21</EfMySqlVersion>
     <AutoMapperVersion>10.0.0</AutoMapperVersion>
     <NewtonsoftJsonVersion>12.0.3</NewtonsoftJsonVersion>

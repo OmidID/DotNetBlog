@@ -15,7 +15,7 @@ namespace DotNetBlog.Web.Controllers
     [Authorize(Policy = Policies.AdminAccess)]
     public class ManagerController : Controller
     {
-        [Route("{*path}")]
+        [Route("")]
         public IActionResult Index()
         {
             return View();

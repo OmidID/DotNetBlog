@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MimeKit.Cryptography;
 using System.IO;
 
 namespace DotNetBlog.Web
@@ -87,7 +88,7 @@ namespace DotNetBlog.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                // endpoints.MapControllers();
+                
                 endpoints.MapRazorPages();
             });
 
@@ -101,7 +102,6 @@ namespace DotNetBlog.Web
                     endpoints.MapFallbackToController("Index", "Manager");
                     endpoints.MapBlazorHub();
                 });
-                // app.UseBlazorClientSideFiles<WebAdmin.Program>();
             });
 
             return app;

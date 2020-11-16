@@ -1,5 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">DotNetBlog.WebAdmin</a>
+﻿@inject IStringLocalizer<Shared> L
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">@L["DotNetBlog"]</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,9 +10,36 @@
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+            <NavLink class="nav-link" href="content/topics" Match="NavLinkMatch.All">
+                <span class="oi oi-justify-left" aria-hidden="true"></span> @L["Content"]
             </NavLink>
+            <ul>
+                <li>
+                    <NavLink class="nav-link" href="content/topics" Match="NavLinkMatch.All">
+                        @L["Topics"]
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink class="nav-link" href="content/comments" Match="NavLinkMatch.All">
+                        @L["Comments"]
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink class="nav-link" href="content/pages" Match="NavLinkMatch.All">
+                        @L["Pages"]
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink class="nav-link" href="content/categories" Match="NavLinkMatch.All">
+                        @L["Managment categories"]
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink class="nav-link" href="content/tags" Match="NavLinkMatch.All">
+                        @L["Tag"]
+                    </NavLink>
+                </li>
+            </ul>
         </li>
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="counter">

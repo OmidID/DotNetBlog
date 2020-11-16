@@ -31,3 +31,4 @@ package-lock.json
 !/src/DotNetBlog.Web/wwwroot/app/webpack.config.js
 /src/DotNetBlog.Web/App_Data/
 .vs/
+*.log
